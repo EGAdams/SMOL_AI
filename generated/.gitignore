@@ -1,0 +1,58 @@
+# .gitignore
+
+# Compiled object files
+*.o
+
+# Compiled dynamic libraries
+*.so
+
+# Compiled executables
+*.exe
+
+# Generated documentation
+doc/
+
+# Build directory
+build/
+
+# IDE files
+.vscode/
+.idea/
+
+# Dependency files
+dependencies/
+
+# Temporary files
+*.tmp
+
+# Backup files
+*~
+
+# Ignore all files in the root directory except for the necessary files
+/*
+!.gitignore
+!Makefile
+!doxygen_config
+!prompt_notes.txt
+
+# Ignore all files in the ScoreBoard directory except for the necessary files
+/ScoreBoard/*
+!/ScoreBoard/ScoreBoard.h
+!/ScoreBoard/ScoreBoard.cpp
+!/ScoreBoard/ScoreBoard_test.cpp
+!/ScoreBoard/ScoreBoard.html
+
+# Ignore all files in the Player directory except for the necessary files
+/Player/*
+!/Player/Player.h
+!/Player/Player.cpp
+
+# Ignore all files in the GameState directory except for the necessary files
+/GameState/*
+!/GameState/GameState.h
+!/GameState/GameState.cpp
+
+# Ignore all files in the BigNumberDrawer directory except for the necessary files
+/BigNumberDrawer/*
+!/BigNumberDrawer/BigNumberDrawer.h
+!/BigNumberDrawer/BigNumberDrawer.cpp
