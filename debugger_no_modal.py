@@ -36,11 +36,21 @@ def main(prompt, model=TURBO_MODEL ):
     code_contents = walk_directory( "generated" )
     # Now, `code_contents` is a dictionary that contains the content of all your non-image files
     # You can send this to OpenAI's text-davinci-003 for help
-    context = "\n".join( f"{path}:\n{contents}" for path, contents in code_contents.items())
+
+    context = "\n".join(
+        f"{path}:\n{contents}" for path, contents in code_contents.items()
+    )
     system = "You are an AI debugger who is trying to debug a program for a user based on their file system. The user has provided you with the following files and their contents, finally followed by the error message or issue they are facing."
-    prompt = ( "My files are as follows: " + context + "\n\n" + "My issue is as follows: " + prompt )
-    print( "Prompt: ", prompt )
-    prompt += ( "\n\nGive me ideas for what could be wrong and what fixes to do in which files." )
+    prompt = (
+        "My files are as follows: "
+        + context
+        + "\n\n"
+        + "My issue is as follows: "
+        + prompt
+    )
+    prompt += (
+        "\n\nGive me ideas for what could be wrong and what fixes to do in which files."
+    )
     res = generate_response(system, prompt, model)
     print("\033[96m" + res + "\033[0m") # print res in teal
 
