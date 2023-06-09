@@ -1,0 +1,286 @@
+# doxygen_config
+
+# This file is the configuration file for Doxygen documentation generation.
+
+# Set the project name and version.
+PROJECT_NAME = "ScoreBoard Project"
+PROJECT_NUMBER = "1.0"
+
+# Set the input and output directories.
+INPUT = .
+OUTPUT_DIRECTORY = ./docs
+
+# Set the file patterns to be included in the documentation.
+FILE_PATTERNS = *.h *.cpp
+
+# Set the exclude patterns for files and directories.
+EXCLUDE_PATTERNS = */ScoreBoard_test.cpp */ScoreBoard.test.exe */prompt_notes.txt */Makefile */doxygen_config */.gitignore
+
+# Set the output format to HTML.
+GENERATE_HTML = YES
+
+# Set the HTML output style.
+HTML_STYLESHEET = ./docs/custom.css
+
+# Set the source code browser to be included in the documentation.
+GENERATE_TREEVIEW = YES
+
+# Set the treeview width.
+TREEVIEW_WIDTH = 250
+
+# Set the treeview depth.
+TREEVIEW_DEPTH = 2
+
+# Set the brief member description to be included in the documentation.
+BRIEF_MEMBER_DESC = YES
+
+# Set the detailed member description to be included in the documentation.
+REPEAT_BRIEF = YES
+
+# Set the member grouping to be included in the documentation.
+INLINE_GROUPED_CLASSES = YES
+
+# Set the member grouping to be sorted alphabetically.
+GROUP_MEMBER_BY_ALPHABET = YES
+
+# Set the member grouping to be sorted by group hierarchy.
+GROUP_MEMBER_BY_GROUP = YES
+
+# Set the member grouping to be sorted by access level.
+GROUP_MEMBER_BY_ACCESS = YES
+
+# Set the member grouping to be sorted by category.
+GROUP_MEMBER_BY_CATEGORY = YES
+
+# Set the member grouping to be sorted by visibility.
+GROUP_MEMBER_BY_VISIBILITY = YES
+
+# Set the member grouping to be sorted by scope.
+GROUP_MEMBER_BY_SCOPE = YES
+
+# Set the member grouping to be sorted by type.
+GROUP_MEMBER_BY_TYPE = YES
+
+# Set the member grouping to be sorted by template parameter.
+GROUP_MEMBER_BY_TEMPLATE_PARAM = YES
+
+# Set the member grouping to be sorted by template specialization.
+GROUP_MEMBER_BY_TEMPLATE_SPECIALIZATION = YES
+
+# Set the member grouping to be sorted by overload.
+GROUP_MEMBER_BY_OVERLOAD = YES
+
+# Set the member grouping to be sorted by constructor.
+GROUP_MEMBER_BY_CONSTRUCTOR = YES
+
+# Set the member grouping to be sorted by destructor.
+GROUP_MEMBER_BY_DESTRUCTOR = YES
+
+# Set the member grouping to be sorted by friend.
+GROUP_MEMBER_BY_FRIEND = YES
+
+# Set the member grouping to be sorted by static.
+GROUP_MEMBER_BY_STATIC = YES
+
+# Set the member grouping to be sorted by const.
+GROUP_MEMBER_BY_CONST = YES
+
+# Set the member grouping to be sorted by volatile.
+GROUP_MEMBER_BY_VOLATILE = YES
+
+# Set the member grouping to be sorted by mutable.
+GROUP_MEMBER_BY_MUTABLE = YES
+
+# Set the member grouping to be sorted by explicit.
+GROUP_MEMBER_BY_EXPLICIT = YES
+
+# Set the member grouping to be sorted by inline.
+GROUP_MEMBER_BY_INLINE = YES
+
+# Set the member grouping to be sorted by constexpr.
+GROUP_MEMBER_BY_CONSTEXPR = YES
+
+# Set the member grouping to be sorted by noexcept.
+GROUP_MEMBER_BY_NOEXCEPT = YES
+
+# Set the member grouping to be sorted by throw.
+GROUP_MEMBER_BY_THROW = YES
+
+# Set the member grouping to be sorted by final.
+GROUP_MEMBER_BY_FINAL = YES
+
+# Set the member grouping to be sorted by override.
+GROUP_MEMBER_BY_OVERRIDE = YES
+
+# Set the member grouping to be sorted by default.
+GROUP_MEMBER_BY_DEFAULT = YES
+
+# Set the member grouping to be sorted by delete.
+GROUP_MEMBER_BY_DELETE = YES
+
+# Set the member grouping to be sorted by deprecated.
+GROUP_MEMBER_BY_DEPRECATED = YES
+
+# Set the member grouping to be sorted by constexpr if.
+GROUP_MEMBER_BY_CONSTEXPR_IF = YES
+
+# Set the member grouping to be sorted by nested class.
+GROUP_MEMBER_BY_NESTED_CLASS = YES
+
+# Set the member grouping to be sorted by nested struct.
+GROUP_MEMBER_BY_NESTED_STRUCT = YES
+
+# Set the member grouping to be sorted by nested union.
+GROUP_MEMBER_BY_NESTED_UNION = YES
+
+# Set the member grouping to be sorted by nested interface.
+GROUP_MEMBER_BY_NESTED_INTERFACE = YES
+
+# Set the member grouping to be sorted by nested enum.
+GROUP_MEMBER_BY_NESTED_ENUM = YES
+
+# Set the member grouping to be sorted by nested typedef.
+GROUP_MEMBER_BY_NESTED_TYPEDEF = YES
+
+# Set the member grouping to be sorted by nested function.
+GROUP_MEMBER_BY_NESTED_FUNCTION = YES
+
+# Set the member grouping to be sorted by nested variable.
+GROUP_MEMBER_BY_NESTED_VARIABLE = YES
+
+# Set the member grouping to be sorted by nested type.
+GROUP_MEMBER_BY_NESTED_TYPE = YES
+
+# Set the member grouping to be sorted by nested template.
+GROUP_MEMBER_BY_NESTED_TEMPLATE = YES
+
+# Set the member grouping to be sorted by nested namespace.
+GROUP_MEMBER_BY_NESTED_NAMESPACE = YES
+
+# Set the member grouping to be sorted by nested friend.
+GROUP_MEMBER_BY_NESTED_FRIEND = YES
+
+# Set the member grouping to be sorted by nested using.
+GROUP_MEMBER_BY_NESTED_USING = YES
+
+# Set the member grouping to be sorted by nested alias.
+GROUP_MEMBER_BY_NESTED_ALIAS = YES
+
+# Set the member grouping to be sorted by nested static_assert.
+GROUP_MEMBER_BY_NESTED_STATIC_ASSERT = YES
+
+# Set the member grouping to be sorted by nested concept.
+GROUP_MEMBER_BY_NESTED_CONCEPT = YES
+
+# Set the member grouping to be sorted by nested module.
+GROUP_MEMBER_BY_NESTED_MODULE = YES
+
+# Set the member grouping to be sorted by nested import.
+GROUP_MEMBER_BY_NESTED_IMPORT = YES
+
+# Set the member grouping to be sorted by nested export.
+GROUP_MEMBER_BY_NESTED_EXPORT = YES
+
+# Set the member grouping to be sorted by nested requires.
+GROUP_MEMBER_BY_NESTED_REQUIRES = YES
+
+# Set the member grouping to be sorted by nested if.
+GROUP_MEMBER_BY_NESTED_IF = YES
+
+# Set the member grouping to be sorted by nested ifdef.
+GROUP_MEMBER_BY_NESTED_IFDEF = YES
+
+# Set the member grouping to be sorted by nested ifndef.
+GROUP_MEMBER_BY_NESTED_IFNDEF = YES
+
+# Set the member grouping to be sorted by nested else.
+GROUP_MEMBER_BY_NESTED_ELSE = YES
+
+# Set the member grouping to be sorted by nested elif.
+GROUP_MEMBER_BY_NESTED_ELIF = YES
+
+# Set the member grouping to be sorted by nested endif.
+GROUP_MEMBER_BY_NESTED_ENDIF = YES
+
+# Set the member grouping to be sorted by nested define.
+GROUP_MEMBER_BY_NESTED_DEFINE = YES
+
+# Set the member grouping to be sorted by nested undef.
+GROUP_MEMBER_BY_NESTED_UNDEF = YES
+
+# Set the member grouping to be sorted by nested line.
+GROUP_MEMBER_BY_NESTED_LINE = YES
+
+# Set the member grouping to be sorted by nested error.
+GROUP_MEMBER_BY_NESTED_ERROR = YES
+
+# Set the member grouping to be sorted by nested warning.
+GROUP_MEMBER_BY_NESTED_WARNING = YES
+
+# Set the member grouping to be sorted by nested include.
+GROUP_MEMBER_BY_NESTED_INCLUDE = YES
+
+# Set the member grouping to be sorted by nested include_next.
+GROUP_MEMBER_BY_NESTED_INCLUDE_NEXT = YES
+
+# Set the member grouping to be sorted by nested pragma.
+GROUP_MEMBER_BY_NESTED_PRAGMA = YES
+
+# Set the member grouping to be sorted by nested message.
+GROUP_MEMBER_BY_NESTED_MESSAGE = YES
+
+# Set the member grouping to be sorted by nested region.
+GROUP_MEMBER_BY_NESTED_REGION = YES
+
+# Set the member grouping to be sorted by nested endregion.
+GROUP_MEMBER_BY_NESTED_ENDREGION = YES
+
+# Set the member grouping to be sorted by nested extension.
+GROUP_MEMBER_BY_NESTED_EXTENSION = YES
+
+# Set the member grouping to be sorted by nested unknown.
+GROUP_MEMBER_BY_NESTED_UNKNOWN = YES
+
+# Set the member grouping to be sorted by nested skip.
+GROUP_MEMBER_BY_NESTED_SKIP = YES
+
+# Set the member grouping to be sorted by nested anchor.
+GROUP_MEMBER_BY_NESTED_ANCHOR = YES
+
+# Set the member grouping to be sorted by nested dot.
+GROUP_MEMBER_BY_NESTED_DOT = YES
+
+# Set the member grouping to be sorted by nested dotfile.
+GROUP_MEMBER_BY_NESTED_DOTFILE = YES
+
+# Set the member grouping to be sorted by nested msc.
+GROUP_MEMBER_BY_NESTED_MSC = YES
+
+# Set the member grouping to be sorted by nested dia.
+GROUP_MEMBER_BY_NESTED_DIA = YES
+
+# Set the member grouping to be sorted by nested rtf.
+GROUP_MEMBER_BY_NESTED_RTF = YES
+
+# Set the member grouping to be sorted by nested latex.
+GROUP_MEMBER_BY_NESTED_LATEX = YES
+
+# Set the member grouping to be sorted by nested man.
+GROUP_MEMBER_BY_NESTED_MAN = YES
+
+# Set the member grouping to be sorted by nested xml.
+GROUP_MEMBER_BY_NESTED_XML = YES
+
+# Set the member grouping to be sorted by nested html.
+GROUP_MEMBER_BY_NESTED_HTML = YES
+
+# Set the member grouping to be sorted by nested docbook.
+GROUP_MEMBER_BY_NESTED_DOCBOOK = YES
+
+# Set the member grouping to be sorted by nested markdown.
+GROUP_MEMBER_BY_NESTED_MARKDOWN = YES
+
+# Set the member grouping to be sorted by nested md.
+GROUP_MEMBER_BY_NESTED_MD = YES
+
+# Set the member grouping to be sorted by nested mdown.

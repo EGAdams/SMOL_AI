@@ -1,0 +1,15 @@
+// This file contains notes and prompts related to the ScoreBoard class and its associated files.
+
+// The ScoreBoard class takes in two Player objects and a GameState object as parameters.
+// It has an update() function that prints out the points of each player.
+// It also has a _drawPlayerScore() function that determines the vertical offset and serves a bar of a player and draws their score using BigNumberDrawer objects.
+// The _translate() function translates the raw score into a string format.
+// The _showLittleNumbers() function draws little numbers on a canvas.
+
+// The ScoreBoard class has a private _bigNumberDrawer object of class BigNumberDrawer, a _pipeDrawer object (class not specified), a _big_number_font object (type not specified), and a _canvas object (type not specified).
+
+// Remember to adhere to SOLID programming principles during development.
+// Write unit tests for each class and method.
+// Use Doxygen to generate well-documented HTML files for each class.
+// Set up a Git repository to version control the project.
+// Configure a Makefile to automate the build and testing process.
