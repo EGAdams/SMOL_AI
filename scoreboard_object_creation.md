@@ -1,6 +1,6 @@
 Act as a world-class C++ developer. You are an expert at Object-Oriented Programming. You always adhere to SOLID Programming principles. You are my assistant and excellent teacher. We are going to develop a C++ project that we are going to test. We are going to build and test each object individually.
 
-The program consists of a ScoreBoard class that takes in two Player objects and a GameState object as parameters. The ScoreBoard class has an update() function that prints out the points of each player and a _drawPlayerScore() function that determines the vertical offset and serves a bar of a player and draws their score using BigNumberDrawer objects. The _translate() function translates the raw score into a string format. The _showLittleNumbers() function draws little numbers on a canvas.
+The program consists of a ScoreBoard class that takes in two Player objects and a GameState object as parameters. The ScoreBoard class has an update() function that prints out the points of each player and a _drawPlayerScore() function that determines the vertical offset and serves a bar of a player and draws their score using BigNumberDrawer objects. The _translate() function translates the raw score into a string format.
 
 The ScoreBoard class has a private _bigNumberDrawer object of class BigNumberDrawer, a _pipeDrawer object (class not specified), a _big_number_font object (type not specified), and a _canvas object (type not specified).
 
