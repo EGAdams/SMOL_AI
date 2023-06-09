@@ -6,7 +6,7 @@ from openai.openai_object import OpenAIObject
 
 class TestOpenAIAPIService(unittest.TestCase):
     def setUp(self):
-        self.service = OpenAIAPIService( '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' )
+        self.service = OpenAIAPIService( '' )
 
     def test_call_gpt3(self):
         print( "translating 'Hello, world!' to French..." )
