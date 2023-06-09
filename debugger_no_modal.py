@@ -48,7 +48,7 @@ def main(prompt, directory=generatedDir, model="gpt-3.5-turbo"):
     context = "\n".join(
         f"{path}:\n{contents}" for path, contents in code_contents.items()
     )
-    system = "You are an AI debugger who is trying to debug a program for a user based on their file system. The user has provided you with the following files and their contents, finally folllowed by the error message or issue they are facing."
+    system = "You are an AI debugger who is trying to debug a program for a user based on their file system. The user has provided you with the following files and their contents, finally followed by the error message or issue they are facing."
     prompt = (
         "My files are as follows: "
         + context
