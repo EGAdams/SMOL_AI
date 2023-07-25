@@ -4,7 +4,7 @@ import ast
 from time import sleep
 
 generatedDir = "generated"
-openai_model = "gpt-3.5-turbo" #"gpt-4"  # or 'gpt-3.5-turbo',
+openai_model = "gpt-3.5-turbo"
 openai_model_max_tokens = 2000  # i wonder how to tweak this properly
 
 def generate_response(system_prompt, user_prompt, *args):
@@ -70,7 +70,7 @@ def generate_file(
     filecode = generate_response(
         f"""You are an AI developer who is trying to write a program that will generate code for the user based on their intent.
 
-    the app is: {prompt}
+    the purpose of our app is: {prompt}
 
     the files we have decided to generate are: {filepaths_string}
 
@@ -162,7 +162,7 @@ def main(prompt, directory=generatedDir, file=None):
             In response to the user's prompt:
 
             ---
-            the app is: {prompt}
+            the purpose of our app is: {prompt}
             ---
 
             the files we have decided to generate are: {filepaths_string}
@@ -216,6 +216,7 @@ def clean_dir(directory):
         ".ico",
         ".tif",
         ".tiff",
+        ".txt"
     ]  # Add more extensions if needed
 
     # Check if the directory exists

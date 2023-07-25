@@ -3,11 +3,9 @@ import os
 
 generatedDir = "generated"
 
-
 def read_file(filename):
     with open(filename, "r") as file:
         return file.read()
-
 
 def walk_directory(directory):
     image_extensions = [
@@ -19,8 +17,8 @@ def walk_directory(directory):
         ".svg",
         ".ico",
         ".tif",
-        ".tiff",
-    ]
+        ".tiff", ]
+    
     code_contents = {}
     for root, dirs, files in os.walk(directory):
         for file in files:
@@ -81,7 +79,6 @@ def generate_response(system_prompt, user_prompt, model="gpt-3.5-turbo", *args):
 
     params = {
         "model": model,
-        # "model": "gpt-4",
         "messages": messages,
         "max_tokens": 1500,
         "temperature": 0,
