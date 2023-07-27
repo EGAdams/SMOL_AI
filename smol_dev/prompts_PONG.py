@@ -11,11 +11,9 @@ from tenacity import (
     wait_random_exponential,
 )
 
-# tried this, unsure... 
-# Act as a superintelligent Object-Oriented C++ design expert
-# and always adheres to the SOLID Principles of Programming.
-SMOL_DEV_SYSTEM_PROMPT = """ 
-You are expected to be a top tier AI developer who is trying to write a program that will generate code for the user based on their intent.
+
+SMOL_DEV_SYSTEM_PROMPT = """
+You are a top tier AI developer who is trying to write a program that will generate code for the user based on their intent.
 Do not leave any todos, fully implement every feature requested.
 
 When writing code, add comments to explain what you intend to do and why it aligns with the program plan and specific instructions from the original prompt.
@@ -31,7 +29,7 @@ def file_paths(files_to_edit: List[str]) -> List[str]:
     return files_to_edit
 
 
-def specify_file_paths(prompt: str, plan: str, model: str = 'gpt-3.5-turbo-16k'):
+def specify_file_paths(prompt: str, plan: str, model: str = 'gpt-3.5-turbo-0613'):
     completion = openai.ChatCompletion.create(
         model=model,
         temperature=0.7,
@@ -48,10 +46,10 @@ def specify_file_paths(prompt: str, plan: str, model: str = 'gpt-3.5-turbo-16k')
       do not add any other explanation, only return a python list of strings.
                   """,
             },
-            # {
-            #     "role": "user",
-            #     "content": f""" I want a: {prompt} """,
-            # },
+            {
+                "role": "user",
+                "content": f""" I want a: {prompt} """,
+            },
             {
                 "role": "user",
                 "content": f""" The plan we have agreed on is: {plan} """,
@@ -62,7 +60,7 @@ def specify_file_paths(prompt: str, plan: str, model: str = 'gpt-3.5-turbo-16k')
     return result
 
 
-def plan(prompt: str, stream_handler: Optional[Callable[[bytes], None]] = None, model: str='gpt-3.5-turbo-16k', extra_messages: List[Any] = []):
+def plan(prompt: str, stream_handler: Optional[Callable[[bytes], None]] = None, model: str='gpt-3.5-turbo-0613', extra_messages: List[Any] = []):
     completion = openai.ChatCompletion.create(
         model=model,
         temperature=0.7,
@@ -102,7 +100,7 @@ def plan(prompt: str, stream_handler: Optional[Callable[[bytes], None]] = None, 
 
 @retry(wait=wait_random_exponential(min=1, max=60), stop=stop_after_attempt(6))
 async def generate_code(prompt: str, plan: str, current_file: str, stream_handler: Optional[Callable[Any, Any]] = None,
-                        model: str = 'gpt-3.5-turbo-16k') -> str:
+                        model: str = 'gpt-3.5-turbo-0613') -> str:
     first = True
     chunk_count = 0
     start_time = time.time()
@@ -178,6 +176,6 @@ async def generate_code(prompt: str, plan: str, current_file: str, stream_handle
 
 def generate_code_sync(prompt: str, plan: str, current_file: str,
                        stream_handler: Optional[Callable[Any, Any]] = None,
-                       model: str = 'gpt-3.5-turbo-16k') -> str:
+                       model: str = 'gpt-3.5-turbo-0613') -> str:
     loop = asyncio.get_event_loop()
     return loop.run_until_complete(generate_code(prompt, plan, current_file, stream_handler, model))

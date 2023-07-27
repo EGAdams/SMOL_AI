@@ -83,7 +83,6 @@ def generate_response(system_prompt, user_prompt, model=DEFAULT_MODEL, *args):
 
     params = {
         "model": model,
-        # "model": "gpt-4",
         "messages": messages,
         "max_tokens": 1500,
         "temperature": 0,
