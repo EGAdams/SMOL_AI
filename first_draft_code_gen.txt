@@ -1,0 +1,12 @@
+f"""
+You are an AI developer who is trying to write a program that will generate code for the user based on their intent.
+
+Please generate code for the file '{filename}' that is in line with the user's intent: '{prompt}'. The code should be valid for the file type, and it should not deviate from the names of the files and shared dependencies we've decided on.
+
+For example, if we're generating a Python file, the code might look something like this:
+
+def main():
+    print('Hello, world!')
+
+Please generate the code now.
+"""
