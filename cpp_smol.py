@@ -4,8 +4,12 @@ import ast
 from time import sleep
 
 generatedDir = "generated"
-openai_model = "gpt-3.5-turbo"
-openai_model_max_tokens = 2000  # i wonder how to tweak this properly
+openai_model = "gpt-3.5-turbo-16k"
+SOMETHING_TWEAK_UNTIL_PROPER = 3000 # waz 2000
+openai_model_max_tokens = SOMETHING_TWEAK_UNTIL_PROPER
+# openai_model_max_tokens = 2000  
+# # i wonder how to tweak this properly -{ original_author }
+# if the sentences are getting cut off, we need to adjust it. idk...
 
 def generate_response(system_prompt, user_prompt, *args):
     import openai
@@ -157,7 +161,7 @@ def main(prompt, directory=generatedDir, file=None):
         else:
             clean_dir(directory)
             # print it first
-            print( """You are an AI developer who is trying to write a program that will generate code for the user based on their intent.
+            the_prompt_to_check = """You are an AI developer who is trying to write a program that will generate code for the user based on their intent.
 
             In response to the user's prompt:
 
@@ -170,7 +174,8 @@ def main(prompt, directory=generatedDir, file=None):
             Now that we have a list of files, we need to understand what dependencies they share.
             Please name and briefly describe what is shared between the files we are generating, including exported variables, data schemas, id names of every DOM elements that javascript functions will use, message names, and function names.
             Exclusively focus on the names of the shared dependencies, and do not add any other explanation.
-            """ )
+            """, prompt, filepaths_string
+            print ( the_prompt_to_check )
             input("\033[92m" + "generating shared dependencies, ok? " + "\033[0m")
             # understand shared dependencies
             shared_dependencies = generate_response(
@@ -185,7 +190,10 @@ def main(prompt, directory=generatedDir, file=None):
             the files we have decided to generate are: {filepaths_string}
 
             Now that we have a list of files, we need to understand what dependencies they share.
-            Please name and briefly describe what is shared between the files we are generating, including exported variables, data schemas, id names of every DOM elements that javascript functions will use, message names, and function names.
+            Please name and briefly describe what is shared between the files we are generating, 
+            
+            including data schemas, variable, class and method names, and any other shared dependencies that you can think of.
+
             Exclusively focus on the names of the shared dependencies, and do not add any other explanation.
             """,
                 prompt,
