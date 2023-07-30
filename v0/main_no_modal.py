@@ -5,6 +5,7 @@ from time import sleep
 from utils import clean_dir
 from constants import DEFAULT_DIR, DEFAULT_MODEL, DEFAULT_MAX_TOKENS
 
+SMART_EXPENSIVE          = "gpt-4"
 TURBO_MODEL              = "gpt-3.5-turbo"
 SHARED_DEPENDENCIES_FILE = "shared_dependencies.md"
 
