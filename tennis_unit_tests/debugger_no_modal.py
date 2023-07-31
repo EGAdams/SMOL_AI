@@ -51,6 +51,8 @@ def main(prompt, model=TURBO_MODEL ):
     prompt += (
         "\n\nGive me ideas for what could be wrong and what fixes to do in which files."
     )
+    print( system )
+    print( prompt )
     res = generate_response(system, prompt, model)
     # print res in teal
     print("\033[96m" + res + "\033[0m")
