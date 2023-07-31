@@ -4,13 +4,21 @@ I am getting the following error when running:
 ```
 
 ``` error
-g++ -std=c++14 -Wall -Wextra -c -o /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/build/PinInterface/MockPinInterface.o MockPinInterface.cpp
-g++ -std=c++14 -Wall -Wextra -o /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/build/PinInterface/MockPinInterfaceTest /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/build/PinInterface/MockPinInterface.o /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/googletest/build/lib/libgtest.a /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/googletest/build/lib/libgtest_main.a /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/googletest/build/lib/libgmock.a /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/googletest/build/lib/libgmock_main.a
-/usr/bin/ld: /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/googletest/build/lib/libgtest_main.a(gtest_main.cc.o): in function `main':
-gtest_main.cc:(.text+0x3a): undefined reference to `testing::InitGoogleTest(int*, char**)'
-/usr/bin/ld: /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/googletest/build/lib/libgtest_main.a(gtest_main.cc.o): in function `RUN_ALL_TESTS()':
-gtest_main.cc:(.text._Z13RUN_ALL_TESTSv[_Z13RUN_ALL_TESTSv]+0x9): undefined reference to `testing::UnitTest::GetInstance()'
-/usr/bin/ld: gtest_main.cc:(.text._Z13RUN_ALL_TESTSv[_Z13RUN_ALL_TESTSv]+0x11): undefined reference to `testing::UnitTest::Run()'
-collect2: error: ld returned 1 exit status
-make: *** [Makefile:30: /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/build/PinInterface/MockPinInterfaceTest] Error 1
+g++ -std=c++14 -Wall -Wextra -c -o /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/PinInterface/MockPinInterface.o MockPinInterface.cpp
+In file included from /usr/local/include/gmock/gmock-actions.h:147,
+                 from /usr/local/include/gmock/gmock.h:56,
+                 from MockPinInterface.cpp:2:
+MockPinInterface.cpp:11:22: error: ‘testing::internal::Function<int(int)>::Result MockPinInterface::pinAnalogRead(testing::internal::ElemFromList<0, int>::type)’ marked ‘override’, but does not override
+   11 |     MOCK_METHOD(int, pinAnalogRead, (int pin), (override));
+      |                      ^~~~~~~~~~~~~
+MockPinInterface.cpp:12:22: error: ‘testing::internal::Function<int(int)>::Result MockPinInterface::pinDigitalRead(testing::internal::ElemFromList<0, int>::type)’ marked ‘override’, but does not override
+   12 |     MOCK_METHOD(int, pinDigitalRead, (int pin), (override));
+      |                      ^~~~~~~~~~~~~~
+MockPinInterface.cpp:13:23: error: ‘testing::internal::Function<void(int, int)>::Result MockPinInterface::pinAnalogWrite(testing::internal::ElemFromList<0, int, int>::type, testing::internal::ElemFromList<1, int, int>::type)’ marked ‘override’, but does not override
+   13 |     MOCK_METHOD(void, pinAnalogWrite, (int pin, int value), (override));
+      |                       ^~~~~~~~~~~~~~
+MockPinInterface.cpp:14:23: error: ‘testing::internal::Function<void(int, int)>::Result MockPinInterface::pinDigitalWrite(testing::internal::ElemFromList<0, int, int>::type, testing::internal::ElemFromList<1, int, int>::type)’ marked ‘override’, but does not override
+   14 |     MOCK_METHOD(void, pinDigitalWrite, (int pin, int value), (override));
+      |                       ^~~~~~~~~~~~~~~
+make: *** [Makefile:34: /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/PinInterface/MockPinInterface.o] Error 1
 ```

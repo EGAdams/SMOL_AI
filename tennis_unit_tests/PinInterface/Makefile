@@ -5,7 +5,7 @@ CXXFLAGS := -std=c++14 -Wall -Wextra
 # Directories
 SRC_DIR   := /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/PinInterface
 TEST_DIR  := /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/PinInterface
-BUILD_DIR := /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/build/PinInterface
+BUILD_DIR := /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/PinInterface
 
 # Google Test and Google Mock directories
 GTEST_DIR := /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/googletest/build/lib
@@ -14,7 +14,6 @@ GMOCK_DIR := /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/googletest/build/l
 # Object files and dependencies
 TEST_OBJ := $(BUILD_DIR)/MockPinInterface.o
 DEPS := $(GTEST_DIR)/libgtest.a $(GTEST_DIR)/libgtest_main.a $(GMOCK_DIR)/libgmock.a $(GMOCK_DIR)/libgmock_main.a
-
 
 # Main target (unit tests)
 TARGET := $(BUILD_DIR)/MockPinInterfaceTest
@@ -25,22 +24,21 @@ TARGET := $(BUILD_DIR)/MockPinInterfaceTest
 all: $(TARGET)
 
 # Build the unit test executable
-$(TARGET): $(DEPS) $(TEST_OBJ)
+$(TARGET): $(TEST_OBJ) $(DEPS)
 	@mkdir -p $(@D)
-	$(CXX) $(CXXFLAGS) -o $@ $^
+	$(CXX) $(CXXFLAGS) -o $@ $^ -lgtest -lgtest_main -lpthread
 
 # Compile the unit test source file
 $(BUILD_DIR)/%.o: %.cpp
 	@mkdir -p $(@D)
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
+# Google Test and Google Mock dependencies
 $(GTEST_DIR)/libgtest_main.a:
-	cd /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/googletest && cmake .
-	cd /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/googletest && make
+        # Build Google Test if needed
 
 $(GMOCK_DIR)/libgmock_main.a:
-	cd /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/googletest && cmake .
-	cd /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/googletest && make
+        # Build Google Mock if needed
 
 # Clean build artifacts
 clean:

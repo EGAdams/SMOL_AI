@@ -8,11 +8,11 @@
 class PinInterface {
   public:
     PinInterface(PinState* pinState);
-    ~PinInterface();
-    void pinAnalogWrite(int pin, int value);
-    void pinDigitalWrite(int pin, int value);
-    int pinAnalogRead(int pin);
-    int pinDigitalRead(int pin);
+    virtual ~PinInterface();
+    virtual void pinAnalogWrite(int pin, int value);
+    virtual void pinDigitalWrite(int pin, int value);
+    virtual int pinAnalogRead(int pin);
+    virtual int pinDigitalRead(int pin);
     std::map<std::string, int> getPinStateMap();
 
   private:
