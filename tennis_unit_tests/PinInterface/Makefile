@@ -44,4 +44,5 @@ $(GMOCK_DIR)/libgmock_main.a:
 
 # Clean build artifacts
 clean:
-	rm -rf $(BUILD_DIR)
+	find $(BUILD_DIR) -type f -name '*.o' -delete
+	rm -f $(TARGET)
