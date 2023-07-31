@@ -1,22 +1,23 @@
 # Compiler settings
 CXX := g++
-CXXFLAGS := -std=c++11 -Wall -Wextra
+CXXFLAGS := -std=c++14 -Wall -Wextra
 
 # Directories
-SRC_DIR := /home/adamsl/SMOL_AI/tennis_unit_tests/PinInterface
-TEST_DIR := /home/adamsl/SMOL_AI/tennis_unit_tests/PinInterface
-BUILD_DIR := /home/adamsl/SMOL_AI/tennis_unit_tests/build/PinInterface
+SRC_DIR   := /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/PinInterface
+TEST_DIR  := /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/PinInterface
+BUILD_DIR := /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/build/PinInterface
 
 # Google Test and Google Mock directories
-GTEST_DIR := /home/adamsl/SMOL_AI/tennis_unit_tests/googletest/build/lib
-GMOCK_DIR := /home/adamsl/SMOL_AI/tennis_unit_tests/googletest/build/lib
+GTEST_DIR := /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/googletest/build/lib
+GMOCK_DIR := /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/googletest/build/lib
 
 # Object files and dependencies
-TEST_OBJ := $(BUILD_DIR)/PinInterfaceTest.o
-DEPS := $(GTEST_DIR)/libgtest_main.a $(GMOCK_DIR)/libgmock_main.a
+TEST_OBJ := $(BUILD_DIR)/MockPinInterface.o
+DEPS := $(GTEST_DIR)/libgtest.a $(GTEST_DIR)/libgtest_main.a $(GMOCK_DIR)/libgmock.a $(GMOCK_DIR)/libgmock_main.a
+
 
 # Main target (unit tests)
-TARGET := $(BUILD_DIR)/PinInterfaceTest
+TARGET := $(BUILD_DIR)/MockPinInterfaceTest
 
 # Targets
 .PHONY: all clean
@@ -24,21 +25,22 @@ TARGET := $(BUILD_DIR)/PinInterfaceTest
 all: $(TARGET)
 
 # Build the unit test executable
-$(TARGET): $(TEST_OBJ) $(DEPS)
+$(TARGET): $(DEPS) $(TEST_OBJ)
 	@mkdir -p $(@D)
 	$(CXX) $(CXXFLAGS) -o $@ $^
 
 # Compile the unit test source file
-$(BUILD_DIR)/%.o: $(TEST_DIR)/%.cpp
+$(BUILD_DIR)/%.o: %.cpp
 	@mkdir -p $(@D)
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
-# Google Test and Google Mock dependencies
 $(GTEST_DIR)/libgtest_main.a:
-	# Build Google Test if needed
+	cd /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/googletest && cmake .
+	cd /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/googletest && make
 
 $(GMOCK_DIR)/libgmock_main.a:
-	# Build Google Mock if needed
+	cd /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/googletest && cmake .
+	cd /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/googletest && make
 
 # Clean build artifacts
 clean:

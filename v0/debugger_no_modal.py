@@ -1,7 +1,7 @@
 import sys
 import os
 import openai
-# import dotenv
+import dotenv
 
 generatedDir = "generated"
 TURBO_MODEL = "gpt-3.5-turbo"
@@ -56,7 +56,7 @@ def main(prompt, model=TURBO_MODEL ):
     print("\033[96m" + res + "\033[0m")
 
 
-def generate_response(system_prompt, user_prompt, model=DEFAULT_MODEL, *args):
+def generate_response(system_prompt, user_prompt, model=TURBO_MODEL, *args):
     import openai
 
     # Set up your OpenAI API credentials
@@ -64,8 +64,8 @@ def generate_response(system_prompt, user_prompt, model=DEFAULT_MODEL, *args):
 
 def generate_response(system_prompt, user_prompt, model=TURBO_MODEL , *args):
     # import openai
-    # openai.api_key = dotenv.dotenv_values()["OPENAI_API_KEY"] # Set up your OpenAI API credentials
-    openai.api_key = ""
+    openai.api_key = dotenv.dotenv_values()["OPENAI_API_KEY"] # Set up your OpenAI API credentials
+    # openai.api_key = ""
     messages = []
     messages.append({"role": "system", "content": system_prompt})
     messages.append({"role": "user", "content": user_prompt})
