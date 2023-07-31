@@ -12,7 +12,7 @@ GTEST_DIR := /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/googletest/build/l
 GMOCK_DIR := /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/googletest/build/lib
 
 # Object files and dependencies
-TEST_OBJ := $(BUILD_DIR)/MockPinInterface.o $(BUILD_DIR)/PinState.o $(BUILD_DIR)/PinInterface.o
+TEST_OBJ := $(BUILD_DIR)/MockPinInterface.o $(BUILD_DIR)/PinState.o $(BUILD_DIR)/PinInterface.o $(BUILD_DIR)/TranslateConstant.o
 DEPS := $(GTEST_DIR)/libgtest.a $(GTEST_DIR)/libgtest_main.a $(GMOCK_DIR)/libgmock.a $(GMOCK_DIR)/libgmock_main.a
 
 # Main target (unit tests)
@@ -33,12 +33,16 @@ $(BUILD_DIR)/%.o: %.cpp
 	@mkdir -p $(@D)
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
-# Compile the PinState and PinInterface source files
+# Compile the PinState, PinInterface, and TranslateConstant source files
 $(BUILD_DIR)/PinState.o: ../PinState/PinState.cpp
 	@mkdir -p $(@D)
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
 $(BUILD_DIR)/PinInterface.o: PinInterface.cpp
+	@mkdir -p $(@D)
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
+$(BUILD_DIR)/TranslateConstant.o: ../TranslateConstant/TranslateConstant.cpp
 	@mkdir -p $(@D)
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
