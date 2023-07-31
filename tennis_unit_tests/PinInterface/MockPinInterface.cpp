@@ -35,7 +35,7 @@ protected:
 // Define tests
 TEST_F(PinInterfaceTest, TestAnalogRead) {
     int pin = 5;
-    int value = 123;
+    int value = 1;
     pinMap[std::to_string(pin)] = value;
 
     EXPECT_CALL(*mockPinInterface, pinAnalogRead(pin))
@@ -59,12 +59,14 @@ TEST_F(PinInterfaceTest, TestDigitalRead) {
 
 TEST_F(PinInterfaceTest, TestAnalogWrite) {
     int pin = 5;
-    int value = 123;
+    int value = 1;
 
     EXPECT_CALL(*mockPinInterface, pinAnalogWrite(pin, value))
-        .Times(1);
+        .Times(1)
+        .WillOnce(::testing::Invoke(mockPinInterface, &PinInterface::pinAnalogWrite));
 
     mockPinInterface->pinAnalogWrite(pin, value);
+    std::cout << "pinState: " << pinState->getPinState(std::to_string(pin)) << std::endl;
     EXPECT_EQ(pinState->getPinState(std::to_string(pin)), value);
 }
 
@@ -73,8 +75,10 @@ TEST_F(PinInterfaceTest, TestDigitalWrite) {
     int value = 1; // Digital pins can only be HIGH (1) or LOW (0)
 
     EXPECT_CALL(*mockPinInterface, pinDigitalWrite(pin, value))
-        .Times(1);
+        .Times(1)
+        .WillOnce(::testing::Invoke(mockPinInterface, &PinInterface::pinDigitalWrite));
 
     mockPinInterface->pinDigitalWrite(pin, value);
+    std::cout << "pinState: " << pinState->getPinState(std::to_string(pin)) << std::endl;
     EXPECT_EQ(pinState->getPinState(std::to_string(pin)), value);
 }

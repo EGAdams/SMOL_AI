@@ -1,6 +1,6 @@
 # Compiler settings
 CXX := g++
-CXXFLAGS := -std=c++14 -Wall -Wextra
+CXXFLAGS := -std=c++14 -Wall -Wextra -g
 
 # Directories
 SRC_DIR   := /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/PinInterface
