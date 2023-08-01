@@ -89,7 +89,7 @@ if __name__ == "__main__":
     #     sys.exit(1)
     # prompt = sys.argv[1]
     # read make_error_prompt.md into prompt variable
-    full_path_to_propmt = "/home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/make_error_prompt.md"
+    full_path_to_propmt = "/home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/tuesday_debug.md"
     prompt = read_file( full_path_to_propmt )
     model = sys.argv[2] if len(sys.argv) > 2 else TURBO_MODEL 
     main( prompt, model )
