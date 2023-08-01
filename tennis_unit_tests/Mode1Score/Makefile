@@ -1,19 +1,19 @@
 CXX := g++  # Compiler settings
 CXXFLAGS := -std=c++14 -Wall -Wextra -g
 
-SRC_DIR   := /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/PinInterface  # Directories
-TEST_DIR  := /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/PinInterface
-BUILD_DIR := /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/PinInterface
+SRC_DIR   := /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/Mode1Score  # Directories
+TEST_DIR  := /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/Mode1Score
+BUILD_DIR := /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/Mode1Score
 
 # Google Test and Google Mock directories
 GTEST_DIR := /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/googletest/build/lib
 GMOCK_DIR := /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/googletest/build/lib
 
 # Object files and dependencies
-TEST_OBJ := $(BUILD_DIR)/PinInterfaceTest.o $(BUILD_DIR)/PinState.o $(BUILD_DIR)/PinInterface.o $(BUILD_DIR)/TranslateConstant.o
+TEST_OBJ := $(BUILD_DIR)/Mode1ScoreTest.o $(BUILD_DIR)/PinState.o $(BUILD_DIR)/Mode1Score.o $(BUILD_DIR)/TranslateConstant.o
 DEPS := $(GTEST_DIR)/libgtest.a $(GTEST_DIR)/libgtest_main.a $(GMOCK_DIR)/libgmock.a $(GMOCK_DIR)/libgmock_main.a
 
-TARGET := $(BUILD_DIR)/PinInterfaceTest  # Main target (unit tests)
+TARGET := $(BUILD_DIR)/Mode1ScoreTest  # Main target (unit tests)
 
 .PHONY: all clean # Targets
 
@@ -27,12 +27,12 @@ $(BUILD_DIR)/%.o: %.cpp # Compile the unit test source file
 	@mkdir -p $(@D)
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
-# Compile the PinState, PinInterface, and TranslateConstant source files
+# Compile the PinState, Mode1Score, and TranslateConstant source files
 $(BUILD_DIR)/PinState.o: ../PinState/PinState.cpp
 	@mkdir -p $(@D)
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
-$(BUILD_DIR)/PinInterface.o: PinInterface.cpp
+$(BUILD_DIR)/Mode1Score.o: Mode1Score.cpp
 	@mkdir -p $(@D)
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 

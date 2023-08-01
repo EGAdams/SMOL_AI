@@ -1,0 +1,40 @@
+CXX := g++  # Compiler settings
+CXXFLAGS := -std=c++14 -Wall -Wextra -g
+
+SRC_DIR   := { FullPath }  # Directories
+TEST_DIR  := { FullPath }
+BUILD_DIR := { FullPath }
+
+# Google Test and Google Mock directories
+GTEST_DIR := { FullPath }
+GMOCK_DIR := { FullPath }
+
+# Object files and dependencies
+TEST_OBJ := $(BUILD_DIR)/{ YourTestFile }.o $(BUILD_DIR)/{ YourSourceFile }.o
+DEPS := $(GTEST_DIR)/libgtest.a $(GTEST_DIR)/libgtest_main.a $(GMOCK_DIR)/libgmock.a $(GMOCK_DIR)/libgmock_main.a
+
+TARGET := $(BUILD_DIR)/{ YourTestFile }  # Main target (unit tests)
+
+.PHONY: all clean # Targets
+
+all: $(TARGET)
+
+$(TARGET): $(TEST_OBJ) $(DEPS)  # Build the unit test executable
+        @mkdir -p $(@D)
+        $(CXX) $(CXXFLAGS) -o $@ $^ -lgtest -lgtest_main -lpthread
+
+$(BUILD_DIR)/%.o: %.cpp # Compile the unit test source file
+        @mkdir -p $(@D)
+        $(CXX) $(CXXFLAGS) -c -o $@ $<
+
+# Compile the source files
+$(BUILD_DIR)/{ YourSourceFile }.o: { YourSourceFile }.cpp
+        @mkdir -p $(@D)
+        $(CXX) $(CXXFLAGS) -c -o $@ $<
+
+$(GTEST_DIR)/libgtest_main.a:  # Google Test and Google Mock dependencies
+$(GMOCK_DIR)/libgmock_main.a:
+
+clean:                          # Clean build artifacts
+        find $(BUILD_DIR) -type f -name '*.o' -delete
+        rm -f $(TARGET)

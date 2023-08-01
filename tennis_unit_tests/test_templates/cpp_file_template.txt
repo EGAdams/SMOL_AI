@@ -1,0 +1,16 @@
+#include "{ YourHeaderFile }.h"
+#include <gtest/gtest.h>
+
+class { YourTestClass } : public ::testing::Test {  // Define a test fixture
+protected:
+    { YourClass }* { yourObject };
+
+    void SetUp() override {
+        { yourObject } = new { YourClass }(); }
+
+    void TearDown() override {
+        delete { yourObject }; }};
+
+TEST_F( { YourTestClass }, { YourTestMethod } ) {  // Define tests
+    // Your test code here
+    EXPECT_EQ( { yourObject }->{ yourMethod }(), { expectedValue } );}

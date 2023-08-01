@@ -17,7 +17,5 @@ class PinInterface {
 
   private:
     std::map<std::string, int> _pin_map;
-    PinState* _pinState;
-};
-
+    PinState* _pinState; };
 #endif
