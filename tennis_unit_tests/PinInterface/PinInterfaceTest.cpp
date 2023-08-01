@@ -20,14 +20,16 @@ protected:
 TEST_F( PinInterfaceTest, TestAnalogRead ) {
     int pin = 5;
     int value = 1;
-    pinMap[ std::to_string( pin )] = value;
+    // pinMap[ std::to_string( pin )] = value;
+    pinInterface->pinAnalogWrite( pin, value );
 
     EXPECT_EQ( pinInterface->pinAnalogRead( pin ), value );}
 
 TEST_F( PinInterfaceTest, TestDigitalRead ) {
     int pin = 5;
     int value = 1; // Digital pins can only be HIGH ( 1 ) or LOW (0)
-    pinMap[ std::to_string( pin )] = value;
+    // pinMap[ std::to_string( pin )] = value;
+    pinInterface->pinDigitalWrite( pin, value );
 
     EXPECT_EQ( pinInterface->pinDigitalRead( pin ), value );}
 

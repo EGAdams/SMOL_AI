@@ -15,3 +15,6 @@ tennis_unit_tests/doc.a
 tennis_unit_tests/build/PinInterface/MockPinInterface.o
 tennis_unit_tests/PinInterface/PinInterface.o
 tennis_unit_tests/PinInterface/PinState.o
+tennis_unit_tests/PinInterface/PinState.o
+tennis_unit_tests/PinInterface/PinState.o
+tennis_unit_tests/PinInterface/PinInterface.o

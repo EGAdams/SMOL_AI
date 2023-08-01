@@ -1,6 +1,12 @@
 #include "PinState.h"
 
-PinState::PinState( std::map< std::string, int > pin_map ) : _pin_map( pin_map ) {}
+PinState::PinState( std::map< std::string, int > pin_map ) : _pin_map( pin_map ) {
+    std::cout << "pin state constructor" << std::endl;
+    std::cout << "pin map size: " << _pin_map.size() << std::endl;
+    for ( auto const& pin : _pin_map ) {
+        std::cout << "pin: " << pin.first << " value: " << pin.second << std::endl;
+    }
+}
 PinState::~PinState() {}
 
 int PinState::getPinState( std::string pin ) {
@@ -15,6 +21,7 @@ int PinState::getPinState( std::string pin ) {
     } else {
         std::cout << "translated constant: " << _translateConstant.get_translated_constant( std::stoi( pin ) ) << std::endl;
     }
+    std::cout << "returning pin state: " << _pin_map[ pin ] << std::endl;
     return _pin_map[ pin ];
 }
 
