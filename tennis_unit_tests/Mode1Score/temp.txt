@@ -1,0 +1,1 @@
+g++   -std=c++14 -Wall -Wextra -g -c -o /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/Mode1Score/Mode1ScoreTest.o Mode1ScoreTest.cpp

@@ -63,7 +63,7 @@ protected:
     Mode1Score* mode1Score;
 
     void SetUp() override {
-        mode1Score = new Mode1Score(&player1, &player2, &pinInterface, &gameState, &history);
+        mode1Score = new Mode1Score( &player1, &player2, &pinInterface, &gameState, &history );
     }
 
     void TearDown() override {
@@ -71,19 +71,19 @@ protected:
     }
 };
 
-TEST(Mode1ScoreTest, Mode1P1ScoreTest) {
-    // Create a Mode1Score object
-    Mode1Score mode1Score;
+TEST_F(Mode1ScoreTest, Mode1P1ScoreTest) {
+    // Now you can use player1, player2, pinInterface, gameState, and history
 
     // Set player 1 score to 2
-    mode1Score.player1.setScore(2);
+    player1.setPoints( 2 );
 
     // Call the mode1P1Score method
-    mode1Score.mode1P1Score();
+    mode1Score->mode1P1Score();
 
     // Check that the score has been updated correctly
-    ASSERT_EQ(mode1Score.player1.getScore(), 3);
+    ASSERT_EQ(player1.getPoints(), 3 );
 }
+
 
 TEST_F(Mode1ScoreTest, TestMode1P1Score_LessThan3Points) {
     // Arrange
