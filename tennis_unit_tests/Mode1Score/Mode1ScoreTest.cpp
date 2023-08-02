@@ -29,7 +29,11 @@ public:
 
 class MockPinInterface : public PinInterface {
 public:
-    // Mock methods...
+    MockPinInterface(PinState* pinState) : PinInterface(pinState) {
+        // Initialize your mock object here if necessary
+    }
+
+    // Add your mock methods here...
 };
 
 class MockGameState : public GameState {
@@ -56,13 +60,14 @@ public:
 
 class Mode1ScoreTest : public ::testing::Test {
 protected:
-    MockPlayer player1, player2;
-    MockPinInterface pinInterface;
     MockGameState gameState;
+    MockPlayer player1{&gameState, 1}, player2{&gameState, 2};
+    PinState pinState;
+    MockPinInterface pinInterface{&pinState};
     MockHistory history;
     Mode1Score* mode1Score;
 
-    void SetUp() override {
+    Mode1ScoreTest() {
         mode1Score = new Mode1Score( &player1, &player2, &pinInterface, &gameState, &history );
     }
 
@@ -70,6 +75,8 @@ protected:
         delete mode1Score;
     }
 };
+
+
 
 TEST_F(Mode1ScoreTest, Mode1P1ScoreTest) {
     // Now you can use player1, player2, pinInterface, gameState, and history
