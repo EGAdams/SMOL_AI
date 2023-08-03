@@ -33,7 +33,7 @@ def walk_directory( directory ):
     return code_contents
 
 def main(prompt, model=TURBO_MODEL ):
-    code_contents = walk_directory( "/home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/PinInterface" )
+    code_contents = walk_directory( "/home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/Mode1Score" )
     # Now, `code_contents` is a dictionary that contains the content of all your non-image files
     # You can send this to OpenAI's text-davinci-003 for help
 
@@ -51,9 +51,17 @@ def main(prompt, model=TURBO_MODEL ):
     prompt += (
         "\n\nGive me ideas for what could be wrong and what fixes to do in which files."
     )
-    print( system )
-    print( prompt )
+
+    # write system message to file
+    with open( os.path.join(".", "system_prompt.md" ), "w" ) as file:
+        file.write( system )
+
+    # now append prompt to system message
+    with open( os.path.join( ".", "system_prompt.md" ), "a" ) as file:
+        file.write( prompt )
+
     res = generate_response(system, prompt, model)
+
     # print res in teal
     print("\033[96m" + res + "\033[0m")
 
@@ -84,11 +92,6 @@ def generate_response(system_prompt, user_prompt, model=TURBO_MODEL , *args):
     return reply
 
 if __name__ == "__main__":
-    # if len(sys.argv) < 2:
-    #     print("Please provide a prompt")
-    #     sys.exit(1)
-    # prompt = sys.argv[1]
-    # read make_error_prompt.md into prompt variable
     full_path_to_propmt = "/home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/make_error_prompt.md"
     prompt = read_file( full_path_to_propmt )
     model = sys.argv[2] if len(sys.argv) > 2 else TURBO_MODEL 
