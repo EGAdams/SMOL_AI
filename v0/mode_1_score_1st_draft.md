@@ -15,7 +15,7 @@
   - _pointLeds: PointLeds (initialized with player1, player2, and pinInterface)
   - _gameLeds: GameLeds (initialized with player1, player2, and pinInterface)
   - _setLeds: SetLeds (initialized with player1, player2, and pinInterface)
-  - _mode1WinSequences: Mode1WinSequences (initialized with player1, player2, pinInterface, and gameState)
+  - _mode1WinSequences: WinSequences (initialized with player1, player2, pinInterface, and gameState)
   - _undo: Undo (initialized with player1, player2, pinInterface, and gameState)
 
 ### Destructor:

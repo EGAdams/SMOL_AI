@@ -17,13 +17,13 @@
 #include "../ScoreBoard/ScoreBoard.h"
 #include "../SetWin/SetWin.h"
 
-class Mode1WinSequences {
+class WinSequences {
  public:
-    Mode1WinSequences(  IPlayer* player1,
+    WinSequences(  IPlayer* player1,
                         IPlayer* player2,
                         PinInterface* pinInterface,
                         GameState* gameState);
-    ~Mode1WinSequences();
+    ~WinSequences();
     void setScoreBoards( ScoreBoard* scoreBoard );
     void p1GameWinSequence();
     void p1SetWinSequence();

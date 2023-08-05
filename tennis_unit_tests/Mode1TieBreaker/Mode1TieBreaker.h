@@ -54,7 +54,7 @@ class Mode1TieBreaker {
   GameLeds _gameLeds;
   ServeLeds _serveLeds;
   SetLeds _setLeds;
-  Mode1WinSequences _mode1WinSequences;
+  WinSequences _mode1WinSequences;
   Undo _undo;
 };
 

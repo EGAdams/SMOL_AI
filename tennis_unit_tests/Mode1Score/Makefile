@@ -10,7 +10,7 @@ GTEST_DIR := /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/googletest/build/l
 GMOCK_DIR := /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/googletest/build/lib
 
 # Object files and dependencies
-TEST_OBJ := $(BUILD_DIR)/Mode1WinSequences.o $(BUILD_DIR)/Mode1ScoreTest.o $(BUILD_DIR)/Player.o $(BUILD_DIR)/GameState.o $(BUILD_DIR)/Mode1TieBreaker.o $(BUILD_DIR)/Mode1ScoreTest.o $(BUILD_DIR)/PinState.o $(BUILD_DIR)/Mode1Score.o $(BUILD_DIR)/TranslateConstant.o
+TEST_OBJ := $(BUILD_DIR)/WinSequences.o $(BUILD_DIR)/Mode1ScoreTest.o $(BUILD_DIR)/Player.o $(BUILD_DIR)/GameState.o $(BUILD_DIR)/Mode1TieBreaker.o $(BUILD_DIR)/Mode1ScoreTest.o $(BUILD_DIR)/PinState.o $(BUILD_DIR)/Mode1Score.o $(BUILD_DIR)/TranslateConstant.o
 DEPS := $(GTEST_DIR)/libgtest.a $(GTEST_DIR)/libgtest_main.a $(GMOCK_DIR)/libgmock.a $(GMOCK_DIR)/libgmock_main.a
 
 TARGET := $(BUILD_DIR)/Mode1ScoreTest  # Main target (unit tests)
@@ -34,7 +34,7 @@ $(BUILD_DIR)Mode1TieBreaker.o: ../Mode1TieBreaker/Mode1TieBreaker.cpp
 	@mkdir -p $(@D)
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
-$(BUILD_DIR)/Mode1WinSequences.o: ../Mode1WinSequences/Mode1WinSequences.cpp
+$(BUILD_DIR)/WinSequences.o: ../WinSequences/WinSequences.cpp
 	@mkdir -p $(@D)
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
