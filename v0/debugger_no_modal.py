@@ -33,10 +33,10 @@ def main():
     model           = TURBO_MODEL                                       # the model to use
     code_contents   = walk_directory( directory ) # code_contents will contain all of the code.
     context         = "\n".join( f"{path}:\n{contents}" for path, contents in code_contents.items())
-    system          = "You are an AI debugger who is trying to debug a program for a user based on their file system. The user has provided you with the following files and their contents, finally folllowed by the error message or issue they are facing."
+    system          = "You are an AI debugger who is trying to debug a C++ project based on the current file system. You are provided with the following files and their contents, finally folllowed by the error message or issue we are facing now."
 
     prompt =  ( "My files are as follows:\n```\n" + context + "```\n\n" + "My issue is as follows: " + prompt )
-    prompt += ( "\n\nAct as a world-class, expert C++ project debugger and my helpful assistant.  Please rewrite the Makefile as necessary." )
+    prompt += ( "\n\nAct as a world-class, expert C++ project debugger and give me ideas for what could be wrong and what fixes to do in which files." )
     
     with open( "temp.md", "w" ) as file: # write prompt contents into temp.md
         file.write( prompt )

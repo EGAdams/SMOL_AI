@@ -29,7 +29,7 @@ if __name__ == "__main__":
         
         parser = argparse.ArgumentParser()
         parser.add_argument("--prompt", type=str, help="Prompt for the app to be created.")
-        parser.add_argument("--model", type=str, default="gpt-4-0613", help="model to use. can also use gpt-3.5-turbo-0613")
+        parser.add_argument("--model", type=str, default="gpt-3.5-turbo", help="model to use. can also use gpt-3.5-turbo-0613")
         parser.add_argument("--generate_folder_path", type=str, default="generated", help="Path of the folder for generated code.")
         parser.add_argument("--debug", type=bool, default=False, help="Enable or disable debug mode.")
         args = parser.parse_args()
