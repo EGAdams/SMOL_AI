@@ -8,7 +8,7 @@ def read_file(filename):
     with open(filename, "r" ) as file:
         return file.read()
 
-def walk_directory(directory):
+def walk_directory( directory ):
     image_extensions = [ ".png", ".jpg", ".jpeg", ".gif", ".bmp", ".svg", ".ico", ".tif", ".tiff" ]
     code_contents = {}
     for root, dirs, files in os.walk(directory):
@@ -18,6 +18,7 @@ def walk_directory(directory):
                     relative_filepath = os.path.relpath(
                         os.path.join(root, file), directory
                     )
+                    print( "Reading file: ", relative_filepath )
                     code_contents[relative_filepath] = read_file(
                         os.path.join(root, file)
                     )
@@ -25,6 +26,7 @@ def walk_directory(directory):
                     code_contents[
                         relative_filepath
                     ] = f"Error reading file {file}: {str(e)}"
+    print( "Code contents: ", code_contents )
     return code_contents
 
 def main():

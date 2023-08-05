@@ -11,5 +11,11 @@ venv/
 
 # Don't ignore .gitkeep files in the generated directory
 !/generated/.gitkeep
-
-workspace
+tennis_unit_tests/doc.a
+tennis_unit_tests/PinInterface/PinInterface.o
+tennis_unit_tests/PinInterface/PinState.o
+tennis_unit_tests/PinInterface/PinState.o
+tennis_unit_tests/PinInterface/PinState.o
+tennis_unit_tests/PinInterface/PinInterface.o
+tennis_unit_tests/PinInterface/PinInterfaceTest.o
+tennis_unit_tests/PinInterface/PinInterfaceTest

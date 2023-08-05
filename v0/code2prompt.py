@@ -1,9 +1,15 @@
-import modal
+# import modal
 import os
 from constants import DEFAULT_DIR, DEFAULT_MODEL, DEFAULT_MAX_TOKENS, EXTENSION_TO_SKIP
+# import argparse
+# from modal import stub
 
-stub = modal.Stub("smol-codetoprompt-v1")
-openai_image = modal.Image.debian_slim().pip_install("openai")
+DEFAULT_DIR="/home/adamsl/developer/tennis_unit_tests/Mode1Score/"
+DEFAULT_MODEL="gpt-3.5-turbo-16k"
+DEFAULT_MAX_TOKENS="8000" 
+
+# stub = modal.Stub("smol-codetoprompt-v1")
+# openai_image = modal.Image.debian_slim().pip_install("openai")
 
 
 
@@ -25,7 +31,7 @@ def walk_directory(directory):
 
 
 
-@stub.local_entrypoint()
+# @stub.local_entrypoint()
 def main(prompt=None, directory=DEFAULT_DIR, model=DEFAULT_MODEL):
   code_contents = walk_directory(directory)
 
@@ -36,27 +42,28 @@ def main(prompt=None, directory=DEFAULT_DIR, model=DEFAULT_MODEL):
   system = "You are an AI debugger who is trying to fully describe a program, in order for another AI program to reconstruct every file, data structure, function and functionality. The user has provided you with the following files and their contents:"
   prompt = "My files are as follows: " + context + "\n\n" + (("Take special note of the following: " + prompt) if prompt else "")
   prompt += "\n\nDescribe the program in markdown using specific language that will help another AI program reconstruct the given program in as high fidelity as possible."
-  res = generate_response.call(system, prompt, model)
+  res = generate_response(system, prompt, model)
   # print res in teal
   print("\033[96m" + res + "\033[0m")
 
 
-@stub.function(
-    image=openai_image,
-    secret=modal.Secret.from_dotenv(),
-    retries=modal.Retries(
-        max_retries=3,
-        backoff_coefficient=2.0,
-        initial_delay=1.0,
-    ),
-    concurrency_limit=5,
-    timeout=120,
-)
+# @stub.function(
+#     image=openai_image,
+#     secret=modal.Secret.from_dotenv(),
+#     retries=modal.Retries(
+#         max_retries=3,
+#         backoff_coefficient=2.0,
+#         initial_delay=1.0,
+#     ),
+#     concurrency_limit=5,
+#     timeout=120,
+# )
 def generate_response(system_prompt, user_prompt, model=DEFAULT_MODEL, *args):
     import openai
 
     # Set up your OpenAI API credentials
     openai.api_key = os.environ["OPENAI_API_KEY"]
+    # openai.api_key="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"
 
     messages = []
     messages.append({"role": "system", "content": system_prompt})
@@ -70,9 +77,12 @@ def generate_response(system_prompt, user_prompt, model=DEFAULT_MODEL, *args):
     params = {
         'model': model,
         "messages": messages,
-        "max_tokens": 2500,
+        "max_tokens": 8000, #16400, #2500,
         "temperature": 0,
     }
+    
+    # show params as string
+    
 
     # Send the API request
     response = openai.ChatCompletion.create(**params)
@@ -80,3 +90,6 @@ def generate_response(system_prompt, user_prompt, model=DEFAULT_MODEL, *args):
     # Get the reply from the API response
     reply = response.choices[0]["message"]["content"]
     return reply
+
+if __name__ == "__main__":
+    main()

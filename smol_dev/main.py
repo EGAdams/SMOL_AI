@@ -1,14 +1,15 @@
 import sys
 import time
 
-from smol_dev.prompts import plan, specify_file_paths, generate_code_sync
-from smol_dev.utils import generate_folder, write_file
+from prompts import plan, specify_file_paths, generate_code_sync
+from utils import generate_folder, write_file
 import argparse
 
-# model = "gpt-3.5-turbo-0613"
-defaultmodel = "gpt-4-0613"
+model           = "gpt-3.5-turbo-16k"
+defaultmodel    = "gpt-3.5-turbo-16k"
 
 def main(prompt, generate_folder_path="generated", debug=False, model: str = defaultmodel):
+    prompt = open( "/home/adamsl/developer/smol_dev/late_night_wed.md", "r").read()
     # create generateFolder folder if doesnt exist
     generate_folder(generate_folder_path)
 
@@ -76,17 +77,9 @@ def main(prompt, generate_folder_path="generated", debug=False, model: str = def
 # python main.py --prompt "a simple JavaScript/HTML/CSS/Canvas app that is a one player game of PONG..." --generate_folder_path "generated" --debug True
 
 if __name__ == "__main__":
-    prompt = """
-  a simple JavaScript/HTML/CSS/Canvas app that is a one player game of PONG. 
-  The left paddle is controlled by the player, following where the mouse goes.
-  The right paddle is controlled by a simple AI algorithm, which slowly moves the paddle toward the ball at every frame, with some probability of error.
-  Make the canvas a 400 x 400 black square and center it in the app.
-  Make the paddles 100px long, yellow and the ball small and red.
-  Make sure to render the paddles and name them so they can controlled in javascript.
-  Implement the collision detection and scoring as well.
-  Every time the ball bouncess off a paddle, the ball should move faster.
-  It is meant to run in Chrome browser, so dont use anything that is not supported by Chrome, and don't use the import and export keywords.
-  """
+    # read text from late_night_wed.md 
+    
+        
     if len(sys.argv) == 2:
         prompt = sys.argv[1]
     else:
@@ -100,5 +93,17 @@ if __name__ == "__main__":
             prompt = args.prompt
         
     print(prompt)
-        
-    main(prompt=prompt, generate_folder_path=args.generate_folder_path, debug=args.debug)
+    
+    # args.generate_folder_path = "generated"
+    main(prompt=prompt, generate_folder_path="generated", debug=1 ) #args.debug = true 
+    
+#   a simple JavaScript/HTML/CSS/Canvas app that is a one player game of PONG. 
+#   The left paddle is controlled by the player, following where the mouse goes.
+#   The right paddle is controlled by a simple AI algorithm, which slowly moves 
+#   the paddle toward the ball at every frame, with some probability of error.
+#   Make the canvas a 400 x 400 black square and center it in the app.
+#   Make the paddles 100px long, yellow and the ball small and red.
+#   Make sure to render the paddles and name them so they can controlled in javascript.
+#   Implement the collision detection and scoring as well.
+#   Every time the ball bouncess off a paddle, the ball should move faster.
+#   It is meant to run in Chrome browser, so dont use anything that is not supported by Chrome, and don't use the import and export keywords.

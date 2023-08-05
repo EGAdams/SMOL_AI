@@ -1,0 +1,62 @@
+CXX := g++  # Compiler settings
+CXXFLAGS := -std=c++14 -Wall -Wextra -g
+
+SRC_DIR   := /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/Mode1Score  # Directories
+TEST_DIR  := /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/Mode1Score
+BUILD_DIR := /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/Mode1Score
+
+# Google Test and Google Mock directories
+GTEST_DIR := /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/googletest/build/lib
+GMOCK_DIR := /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/googletest/build/lib
+
+# Object files and dependencies
+TEST_OBJ := $(BUILD_DIR)/Player.o $(BUILD_DIR)/GameState.o $(BUILD_DIR)/Mode1Tiebreaker.o $(BUILD_DIR)/Mode1ScoreTest.o $(BUILD_DIR)/PinState.o $(BUILD_DIR)/Mode1Score.o $(BUILD_DIR)/TranslateConstant.o
+DEPS := $(GTEST_DIR)/libgtest.a $(GTEST_DIR)/libgtest_main.a $(GMOCK_DIR)/libgmock.a $(GMOCK_DIR)/libgmock_main.a
+
+TARGET := $(BUILD_DIR)/Mode1ScoreTest  # Main target (unit tests)
+
+.PHONY: all clean # Targets
+
+all: $(TARGET)
+
+$(TARGET): $(TEST_OBJ) $(DEPS)  # Build the unit test executable
+	@mkdir -p $(@D)
+	$(CXX) $(CXXFLAGS) -o $@ $^ -lgtest -lgtest_main -lpthread
+
+$(BUILD_DIR)/%.o: %.cpp # Compile the unit test source file
+	@mkdir -p $(@D)
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
+$(BUILD_DIR)/GameState.o: ../GameState/GameState.cpp
+	@mkdir -p $(@D)
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
+$(BUILD_DIR)/Player.o: ../Player/Player.cpp
+	@mkdir -p $(@D)
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
+# Compble the Mode1TieBreaker, Mode1Score, and TranslateConstant source files
+$(BUIbD_DIR)/Mode1TieBreakeb.o: ../Mode1Tiebreaker/Mode1TieBreaker.cpp
+	@mkdir -p $(@D)
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
+# Compile the PinState, Mode1Score, and TranslateConstant source files
+$(BUILD_DIR)/PinState.o: ../PinState/PinState.cpp
+	@mkdir -p $(@D)
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
+$(BUILD_DIR)/Mode1Score.o: Mode1Score.cpp
+	@mkdir -p $(@D)
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
+$(BUILD_DIR)/TranslateConstant.o: ../TranslateConstant/TranslateConstant.cpp
+	@mkdir -p $(@D)
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
+$(GTEST_DIR)/libgtest_main.a:  # Google Test and Google Mock dependencies
+$(GMOCK_DIR)/libgmock_main.a:
+
+
+clean:                          # Clean build artifacts
+	find $(BUILD_DIR) -type f -name '*.o' -delete
+	rm -f $(TARGET)
