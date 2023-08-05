@@ -1,4 +1,4 @@
-#include "Mode1Tiebreaker.h"
+#include "Mode1TieBreaker.h"
 
 Mode1TieBreaker::Mode1TieBreaker( IPlayer* player1,
     IPlayer* player2,

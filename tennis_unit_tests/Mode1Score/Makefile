@@ -10,7 +10,7 @@ GTEST_DIR := /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/googletest/build/l
 GMOCK_DIR := /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/googletest/build/lib
 
 # Object files and dependencies
-TEST_OBJ := $(BUILD_DIR)/Player.o $(BUILD_DIR)/GameState.o $(BUILD_DIR)/Mode1Tiebreaker.o $(BUILD_DIR)/Mode1ScoreTest.o $(BUILD_DIR)/PinState.o $(BUILD_DIR)/Mode1Score.o $(BUILD_DIR)/TranslateConstant.o
+TEST_OBJ := $(BUILD_DIR)/Mode1WinSequences.o $(BUILD_DIR)/Mode1ScoreTest.o $(BUILD_DIR)/Player.o $(BUILD_DIR)/GameState.o $(BUILD_DIR)/Mode1TieBreaker.o $(BUILD_DIR)/Mode1ScoreTest.o $(BUILD_DIR)/PinState.o $(BUILD_DIR)/Mode1Score.o $(BUILD_DIR)/TranslateConstant.o
 DEPS := $(GTEST_DIR)/libgtest.a $(GTEST_DIR)/libgtest_main.a $(GMOCK_DIR)/libgmock.a $(GMOCK_DIR)/libgmock_main.a
 
 TARGET := $(BUILD_DIR)/Mode1ScoreTest  # Main target (unit tests)
@@ -21,9 +21,40 @@ all: $(TARGET)
 
 $(TARGET): $(TEST_OBJ) $(DEPS)  # Build the unit test executable
 	@mkdir -p $(@D)
-	$(CXX) $(CXXFLAGS) -o $@ $^ -lgtest -lgtest_main -lpthread
+# $(CXX) $(CXXFLAGS) -o $@ $^ -lgtest -lgtest_main -lgmock -libgmock_main -lpthread
+	$(CXX) $(CXXFLAGS) -o $@ $^ -lgtest -lgtest_main -lgmock -lpthread
 
 $(BUILD_DIR)/%.o: %.cpp # Compile the unit test source file
+	@mkdir -p $(@D)
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
+
+
+$(BUILD_DIR)Mode1TieBreaker.o: ../Mode1TieBreaker/Mode1TieBreaker.cpp
+	@mkdir -p $(@D)
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
+$(BUILD_DIR)/Mode1WinSequences.o: ../Mode1WinSequences/Mode1WinSequences.cpp
+	@mkdir -p $(@D)
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
+$(BUILD_DIR)/PointLeds.o: ../PointLeds/PointLeds.cpp
+	@mkdir -p $(@D)
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
+$(BUILD_DIR)/ServeLeds.o: ../ServeLeds/ServeLeds.cpp
+	@mkdir -p $(@D)
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
+$(BUILD_DIR)/SetLeds.o: ../SetLeds/SetLeds.cpp
+	@mkdir -p $(@D)
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
+$(BUILD_DIR)/PointLeds.o: ../PointLeds/PointLeds.cpp
+	@mkdir -p $(@D)
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
+$(BUILD_DIR)/GameLeds.o: ../GameLeds/GameLeds.cpp
 	@mkdir -p $(@D)
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
@@ -35,8 +66,8 @@ $(BUILD_DIR)/Player.o: ../Player/Player.cpp
 	@mkdir -p $(@D)
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
-# Compble the Mode1TieBreaker, Mode1Score, and TranslateConstant source files
-$(BUIbD_DIR)/Mode1TieBreakeb.o: ../Mode1Tiebreaker/Mode1TieBreaker.cpp
+# Compile the Mode1TieBreaker, Mode1Score, and TranslateConstant source files
+$(BUILD_DIR)/Mode1TieBreaker.o: ../Mode1TieBreaker/Mode1TieBreaker.cpp
 	@mkdir -p $(@D)
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
