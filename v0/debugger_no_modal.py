@@ -1,14 +1,11 @@
-import sys
 import os
-import openai
-import dotenv
-
-generatedDir = "generated"
-TURBO_MODEL = "gpt-3.5-turbo"
-# TURBO_MODEL = "gpt-4"
+from time import sleep
+DEFAULT_DIR             = "/home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/"
+OBJECT_OF_INTEREST      = "PinInterface"
+TURBO_MODEL             = "gpt-3.5-turbo"
 
 def read_file(filename):
-    with open(filename, "r") as file:
+    with open(filename, "r" ) as file:
         return file.read()
 
 def walk_directory( directory ):
@@ -32,40 +29,27 @@ def walk_directory( directory ):
     print( "Code contents: ", code_contents )
     return code_contents
 
-def main(prompt, model=TURBO_MODEL ):
-    code_contents = walk_directory( "generated" )
-    # Now, `code_contents` is a dictionary that contains the content of all your non-image files
-    # You can send this to OpenAI's text-davinci-003 for help
+def main():
+    prompt          = read_file( DEFAULT_DIR + "make_error_prompt.md" ) # the error message
+    directory       = DEFAULT_DIR + OBJECT_OF_INTEREST                  # the object's directory
+    model           = TURBO_MODEL                                       # the model to use
+    code_contents   = walk_directory( directory ) # code_contents will contain all of the code.
+    context         = "\n".join( f"{path}:\n{contents}" for path, contents in code_contents.items())
+    system          = "You are an AI debugger who is trying to debug a C++ project based on the current file system. You are provided with the following files and their contents, finally folllowed by the error message or issue we are facing now."
 
-    context = "\n".join(
-        f"{path}:\n{contents}" for path, contents in code_contents.items()
-    )
-    system = "You are an AI debugger who is trying to debug a program for a user based on their file system. The user has provided you with the following files and their contents, finally followed by the error message or issue they are facing."
-    prompt = (
-        "My files are as follows: "
-        + context
-        + "\n\n"
-        + "My issue is as follows: "
-        + prompt
-    )
-    prompt += (
-        "\n\nGive me ideas for what could be wrong and what fixes to do in which files."
-    )
-    res = generate_response(system, prompt, model)
-    # print res in teal
-    print("\033[96m" + res + "\033[0m")
+    prompt =  ( "My files are as follows:\n```\n" + context + "```\n\n" + "My issue is as follows: " + prompt )
+    prompt += ( "\n\nAct as a world-class, expert C++ project debugger and give me ideas for what could be wrong and what fixes to do in which files." )
+    
+    with open( "temp.md", "w" ) as file: # write prompt contents into temp.md
+        file.write( prompt )
 
-
+    print( "\033[96m" + generate_response( system, prompt, model ) + "\033[0m" ) # print res in teal
+    # delete temp.md
+    os.remove( "temp.md" )
+    
 def generate_response(system_prompt, user_prompt, model=TURBO_MODEL, *args):
     import openai
-
-    # Set up your OpenAI API credentials
-    openai.api_key = os.environ["OPENAI_API_KEY"]
-
-def generate_response(system_prompt, user_prompt, model=TURBO_MODEL , *args):
-    # import openai
-    openai.api_key = dotenv.dotenv_values()["OPENAI_API_KEY"] # Set up your OpenAI API credentials
-    # openai.api_key = ""
+    openai.api_key = os.environ[ "OPENAI_API_KEY" ] # Set up your OpenAI API credentials
     messages = []
     messages.append({"role": "system", "content": system_prompt})
     messages.append({"role": "user", "content": user_prompt})
@@ -74,18 +58,19 @@ def generate_response(system_prompt, user_prompt, model=TURBO_MODEL , *args):
     for value in args:
         messages.append({"role": role, "content": value})
         role = "user" if role == "assistant" else "assistant"
-
     params = { "model": model, "messages": messages, "max_tokens": 1500, "temperature": 0 }
-    response = openai.ChatCompletion.create(**params) # Send the API request
-    reply = response.choices[0]["message"]["content"]
-    print( "Reply: ", reply )
+    keep_trying = True
+    while keep_trying:  # Send the API request
+        try:
+            response = openai.ChatCompletion.create( **params )
+            keep_trying = False
+        except Exception as e:
+            # e.g. when the API is too busy, we don't want to fail everything
+            print( "Failed to generate response. Error: ", e)
+            sleep( 30 )
+            print( "Retrying..." )
+    reply = response.choices[ 0 ][ "message" ][ "content" ] # Get the reply from the API response
     return reply
 
 if __name__ == "__main__":
-    # if len(sys.argv) < 2:
-    #     print("Please provide a prompt")
-    #     sys.exit(1)
-    # prompt = sys.argv[1]
-    prompt = "please debug my code."
-    model = sys.argv[2] if len(sys.argv) > 2 else TURBO_MODEL 
-    main( prompt, model )
+    main()
