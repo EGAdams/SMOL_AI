@@ -1,7 +1,8 @@
 #include "WinSequences.h"
 
 WinSequences::~WinSequences() {
-    std::cout << "*** WinSequences destructor called. ***" << std::endl; delete _setWin; }
+    std::cout << "*** WinSequences destructor called. ***" << std::endl;
+    delete _setWin; }
     
 WinSequences::WinSequences( IPlayer* player1, IPlayer* player2, PinInterface* pinInterface,
                                       GameState* gameState ): 
