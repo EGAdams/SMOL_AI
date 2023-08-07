@@ -13,9 +13,7 @@ GMOCK_DIR := /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/googletest/build/l
 TEST_OBJ := $(BUILD_DIR)/FontLoader.o $(BUILD_DIR)/SetDrawer.o $(BUILD_DIR)/ScoreBoard.o $(BUILD_DIR)/PointLeds.o $(BUILD_DIR)/GameState.o $(BUILD_DIR)/Mode1Score.o $(BUILD_DIR)/Mode1ScoreTest.o $(BUILD_DIR)/Mode1TieBreaker.o $(BUILD_DIR)/PinState.o $(BUILD_DIR)/Player.o $(BUILD_DIR)/TranslateConstant.o $(BUILD_DIR)/WinSequences.o
 DEPS := $(GTEST_DIR)/libgtest.a $(GTEST_DIR)/libgtest_main.a $(GMOCK_DIR)/libgmock.a $(GMOCK_DIR)/libgmock_main.a
 
-TARGET := $(BUILD_DIR)/Mode1ScoreTest  # Main target (unit tests)
-
-
+TARGET := $(BUILD_DIR)/PinInterfaceTest  # Main target (unit tests)
 
 .PHONY: all clean # Targets
 
@@ -23,7 +21,7 @@ all: $(TARGET)
 
 $(TARGET): $(TEST_OBJ) $(DEPS)  # Build the unit test executable
 	@mkdir -p $(@D)
-	$(CXX) $(CXXFLAGS) $^ -o $@ -lpthread $(GTEST_DIR)/lib/libgtest.a $(GTEST_DIR)/lib/libgtest_main.a
+	$(CXX) $(CXXFLAGS) $^ -o $@ -lpthread $(GTEST_DIR)/libgtest.a $(GTEST_DIR)/libgtest_main.a
 
 $(BUILD_DIR)/%.o: %.cpp # Compile the unit test source file
 	@mkdir -p $(@D)
@@ -78,7 +76,7 @@ $(BUILD_DIR)/PinState.o: ../PinState/PinState.cpp
 	@mkdir -p $(@D)
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
-$(BUILD_DIR)/Mode1Score.o: Mode1Score.cpp
+$(BUILD_DIR)/Mode1Score.o: ../Mode1Score/Mode1Score.cpp
 	@mkdir -p $(@D)
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 

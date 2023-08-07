@@ -1,76 +1,130 @@
+Thank you.
+
+Act as a super-intelligent C++ project debugger.
+
+Here is the output of "make Mode1ScoreTest:``` output
 make Mode1ScoreTest
-g++   -std=c++14 -Wall -Wextra -g    Mode1ScoreTest.cpp   -o Mode1ScoreTest
-In file included from ../GameLeds/../ScoreBoard/../NumberDrawer/../../include/led-matrix.h:31,
-                 from ../GameLeds/../ScoreBoard/../NumberDrawer/NumberDrawer.h:4,
-                 from ../GameLeds/../ScoreBoard/ScoreBoard.h:7,
-                 from ../GameLeds/GameLeds.h:8,
-                 from Mode1Score.h:5,
-                 from Mode1ScoreTest.cpp:3:
-../GameLeds/../ScoreBoard/../NumberDrawer/../../include/pixel-mapper.h: In member function ‘virtual bool rgb_matrix::PixelMapper::SetParameters(int, int, const char*)’:
-../GameLeds/../ScoreBoard/../NumberDrawer/../../include/pixel-mapper.h:51:34: warning: unused parameter ‘chain’ [-Wunused-parameter]
-   51 |   virtual bool SetParameters(int chain, int parallel,
-      |                              ~~~~^~~~~
-../GameLeds/../ScoreBoard/../NumberDrawer/../../include/pixel-mapper.h:51:45: warning: unused parameter ‘parallel’ [-Wunused-parameter]
-   51 |   virtual bool SetParameters(int chain, int parallel,
-      |                                         ~~~~^~~~~~~~
-../GameLeds/../ScoreBoard/../NumberDrawer/../../include/pixel-mapper.h:52:42: warning: unused parameter ‘parameter_string’ [-Wunused-parameter]
-   52 |                              const char *parameter_string) {
-      |                              ~~~~~~~~~~~~^~~~~~~~~~~~~~~~
+g++     Mode1ScoreTest.cpp   -o Mode1ScoreTest
 /usr/bin/ld: /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/Scrt1.o: in function `_start':
 (.text+0x24): undefined reference to `main'
-/usr/bin/ld: /tmp/ccwFwCVF.o: in function `Mode1ScoreTest_Mode1P1ScoreTest_Test::TestBody()':
-/home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/Mode1Score/Mode1ScoreTest.cpp:33: undefined reference to `Player::setPoints(int)'
-/usr/bin/ld: /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/Mode1Score/Mode1ScoreTest.cpp:36: undefined reference to `Mode1Score::mode1P1Score()'
-/usr/bin/ld: /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/Mode1Score/Mode1ScoreTest.cpp:39: undefined reference to `Player::getPoints()'
-/usr/bin/ld: /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/Mode1Score/Mode1ScoreTest.cpp:39: undefined reference to `testing::Message::Message()'
-/usr/bin/ld: /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/Mode1Score/Mode1ScoreTest.cpp:39: undefined reference to `testing::internal::AssertHelper::AssertHelper(testing::TestPartResult::Type, char const*, int, char const*)'
-/usr/bin/ld: /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/Mode1Score/Mode1ScoreTest.cpp:39: undefined reference to `testing::internal::AssertHelper::operator=(testing::Message const&) const'
-/usr/bin/ld: /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/Mode1Score/Mode1ScoreTest.cpp:39: undefined reference to `testing::internal::AssertHelper::~AssertHelper()'
-/usr/bin/ld: /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/Mode1Score/Mode1ScoreTest.cpp:39: undefined reference to `testing::internal::AssertHelper::~AssertHelper()'
-/usr/bin/ld: /tmp/ccwFwCVF.o: in function `__static_initialization_and_destruction_0(int, int)':
-/home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/Mode1Score/Mode1ScoreTest.cpp:29: undefined reference to `testing::internal::MakeAndRegisterTestInfo(char const*, char const*, char const*, char const*, testing::internal::CodeLocation, void const*, void (*)(), void (*)(), testing::internal::TestFactoryBase*)'
-/usr/bin/ld: /tmp/ccwFwCVF.o: in function `Mode1ScoreTest::Mode1ScoreTest()':
-/home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/Mode1Score/Mode1ScoreTest.cpp:17: undefined reference to `testing::Test::Test()'
-/usr/bin/ld: /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/Mode1Score/Mode1ScoreTest.cpp:17: undefined reference to `GameState::GameState()'
-/usr/bin/ld: /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/Mode1Score/Mode1ScoreTest.cpp:17: undefined reference to `Player::Player(IGameState*, int)'
-/usr/bin/ld: /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/Mode1Score/Mode1ScoreTest.cpp:17: undefined reference to `Player::Player(IGameState*, int)'
-/usr/bin/ld: /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/Mode1Score/Mode1ScoreTest.cpp:17: undefined reference to `PinState::PinState(std::map<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, int, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, int> > >)'
-/usr/bin/ld: /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/Mode1Score/Mode1ScoreTest.cpp:17: undefined reference to `PinInterface::PinInterface(PinState*)'
-/usr/bin/ld: /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/Mode1Score/Mode1ScoreTest.cpp:17: undefined reference to `History::History()'
-/usr/bin/ld: /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/Mode1Score/Mode1ScoreTest.cpp:18: undefined reference to `Mode1Score::Mode1Score(IPlayer*, IPlayer*, PinInterface*, GameState*, History*)'
-/usr/bin/ld: /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/Mode1Score/Mode1ScoreTest.cpp:17: undefined reference to `History::~History()'
-/usr/bin/ld: /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/Mode1Score/Mode1ScoreTest.cpp:17: undefined reference to `PinInterface::~PinInterface()'
-/usr/bin/ld: /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/Mode1Score/Mode1ScoreTest.cpp:17: undefined reference to `PinState::~PinState()'
-/usr/bin/ld: /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/Mode1Score/Mode1ScoreTest.cpp:17: undefined reference to `Player::~Player()'
-/usr/bin/ld: /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/Mode1Score/Mode1ScoreTest.cpp:17: undefined reference to `Player::~Player()'
-/usr/bin/ld: /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/Mode1Score/Mode1ScoreTest.cpp:17: undefined reference to `GameState::~GameState()'
-/usr/bin/ld: /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/Mode1Score/Mode1ScoreTest.cpp:17: undefined reference to `testing::Test::~Test()'
-/usr/bin/ld: /tmp/ccwFwCVF.o: in function `Mode1ScoreTest::TearDown()':
-/home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/Mode1Score/Mode1ScoreTest.cpp:22: undefined reference to `Mode1Score::~Mode1Score()'
-/usr/bin/ld: /tmp/ccwFwCVF.o: in function `testing::internal::SuiteApiResolver<Mode1ScoreTest>::GetSetUpCaseOrSuite(char const*, int)':
-/usr/local/include/gtest/internal/gtest-internal.h:514: undefined reference to `testing::internal::IsTrue(bool)'
-/usr/bin/ld: /usr/local/include/gtest/internal/gtest-internal.h:514: undefined reference to `testing::internal::GTestLog::GTestLog(testing::internal::GTestLogSeverity, char const*, int)'
-/usr/bin/ld: /usr/local/include/gtest/internal/gtest-internal.h:514: undefined reference to `testing::internal::GTestLog::~GTestLog()'
-/usr/bin/ld: /usr/local/include/gtest/internal/gtest-internal.h:514: undefined reference to `testing::internal::GTestLog::~GTestLog()'
-/usr/bin/ld: /tmp/ccwFwCVF.o: in function `testing::internal::SuiteApiResolver<Mode1ScoreTest>::GetTearDownCaseOrSuite(char const*, int)':
-/usr/local/include/gtest/internal/gtest-internal.h:535: undefined reference to `testing::internal::IsTrue(bool)'
-/usr/bin/ld: /usr/local/include/gtest/internal/gtest-internal.h:535: undefined reference to `testing::internal::GTestLog::GTestLog(testing::internal::GTestLogSeverity, char const*, int)'
-/usr/bin/ld: /usr/local/include/gtest/internal/gtest-internal.h:535: undefined reference to `testing::internal::GTestLog::~GTestLog()'
-/usr/bin/ld: /usr/local/include/gtest/internal/gtest-internal.h:535: undefined reference to `testing::internal::GTestLog::~GTestLog()'
-/usr/bin/ld: /tmp/ccwFwCVF.o: in function `testing::AssertionResult testing::internal::CmpHelperEQ<int, int>(char const*, char const*, int const&, int const&)':
-/usr/local/include/gtest/gtest.h:1380: undefined reference to `testing::AssertionSuccess()'
-/usr/bin/ld: /tmp/ccwFwCVF.o: in function `testing::AssertionResult testing::internal::CmpHelperEQFailure<int, int>(char const*, char const*, int const&, int const&)':
-/usr/local/include/gtest/gtest.h:1364: undefined reference to `testing::internal::EqFailure(char const*, char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool)'
-/usr/bin/ld: /tmp/ccwFwCVF.o:(.data.rel.ro._ZTV36Mode1ScoreTest_Mode1P1ScoreTest_Test[_ZTV36Mode1ScoreTest_Mode1P1ScoreTest_Test]+0x20): undefined reference to `testing::Test::SetUp()'
-/usr/bin/ld: /tmp/ccwFwCVF.o: in function `Mode1ScoreTest::~Mode1ScoreTest()':
-/home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/Mode1Score/Mode1ScoreTest.cpp:7: undefined reference to `History::~History()'
-/usr/bin/ld: /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/Mode1Score/Mode1ScoreTest.cpp:7: undefined reference to `PinInterface::~PinInterface()'
-/usr/bin/ld: /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/Mode1Score/Mode1ScoreTest.cpp:7: undefined reference to `PinState::~PinState()'
-/usr/bin/ld: /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/Mode1Score/Mode1ScoreTest.cpp:7: undefined reference to `Player::~Player()'
-/usr/bin/ld: /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/Mode1Score/Mode1ScoreTest.cpp:7: undefined reference to `Player::~Player()'
-/usr/bin/ld: /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/Mode1Score/Mode1ScoreTest.cpp:7: undefined reference to `GameState::~GameState()'
-/usr/bin/ld: /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/Mode1Score/Mode1ScoreTest.cpp:7: undefined reference to `testing::Test::~Test()'
-/usr/bin/ld: /tmp/ccwFwCVF.o:(.data.rel.ro._ZTV14Mode1ScoreTest[_ZTV14Mode1ScoreTest]+0x20): undefined reference to `testing::Test::SetUp()'
-/usr/bin/ld: /tmp/ccwFwCVF.o:(.data.rel.ro._ZTI14Mode1ScoreTest[_ZTI14Mode1ScoreTest]+0x10): undefined reference to `typeinfo for testing::Test'
+/usr/bin/ld: /tmp/ccafKTFG.o: in function `Mode1ScoreTest_Mode1P1ScoreTest_Test::TestBody()':
+Mode1ScoreTest.cpp:(.text+0x33): undefined reference to `Player::setPoints(int)'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text+0x46): undefined reference to `Mode1Score::mode1P1Score()'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text+0x5f): undefined reference to `Player::getPoints()'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text+0xa6): undefined reference to `testing::Message::Message()'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text+0xd5): undefined reference to `testing::internal::AssertHelper::AssertHelper(testing::TestPartResult::Type, char const*, int, char const*)'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text+0xe8): undefined reference to `testing::internal::AssertHelper::operator=(testing::Message const&) const'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text+0xf4): undefined reference to `testing::internal::AssertHelper::~AssertHelper()'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text+0x14b): undefined reference to `testing::internal::AssertHelper::~AssertHelper()'
+/usr/bin/ld: /tmp/ccafKTFG.o: in function `__static_initialization_and_destruction_0(int, int)':
+Mode1ScoreTest.cpp:(.text+0x2b0): undefined reference to `testing::internal::MakeAndRegisterTestInfo(char const*, char const*, char const*, char const*, testing::internal::CodeLocation, void const*, void (*)(), void (*)(), testing::internal::TestFactoryBase*)'
+/usr/bin/ld: /tmp/ccafKTFG.o: in function `Mode1ScoreTest::Mode1ScoreTest()':
+Mode1ScoreTest.cpp:(.text._ZN14Mode1ScoreTestC2Ev[_ZN14Mode1ScoreTestC5Ev]+0x2a): undefined reference to `testing::Test::Test()'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN14Mode1ScoreTestC2Ev[_ZN14Mode1ScoreTestC5Ev]+0x48): undefined reference to `GameState::GameState()'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN14Mode1ScoreTestC2Ev[_ZN14Mode1ScoreTestC5Ev]+0x6a): undefined reference to `Player::Player(IGameState*, int)'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN14Mode1ScoreTestC2Ev[_ZN14Mode1ScoreTestC5Ev]+0x8c): undefined reference to `Player::Player(IGameState*, int)'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN14Mode1ScoreTestC2Ev[_ZN14Mode1ScoreTestC5Ev]+0xd2): undefined reference to `PinState::PinState(std::map<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, int, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, int> > >)'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN14Mode1ScoreTestC2Ev[_ZN14Mode1ScoreTestC5Ev]+0xfe): undefined reference to `PinInterface::PinInterface(PinState*)'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN14Mode1ScoreTestC2Ev[_ZN14Mode1ScoreTestC5Ev]+0x110): undefined reference to `History::History()'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN14Mode1ScoreTestC2Ev[_ZN14Mode1ScoreTestC5Ev]+0x161): undefined reference to `Mode1Score::Mode1Score(IPlayer*, IPlayer*, PinInterface*, GameState*, History*)'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN14Mode1ScoreTestC2Ev[_ZN14Mode1ScoreTestC5Ev]+0x1cc): undefined reference to `History::~History()'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN14Mode1ScoreTestC2Ev[_ZN14Mode1ScoreTestC5Ev]+0x1e7): undefined reference to `PinInterface::~PinInterface()'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN14Mode1ScoreTestC2Ev[_ZN14Mode1ScoreTestC5Ev]+0x202): undefined reference to `PinState::~PinState()'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN14Mode1ScoreTestC2Ev[_ZN14Mode1ScoreTestC5Ev]+0x22f): undefined reference to `Player::~Player()'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN14Mode1ScoreTestC2Ev[_ZN14Mode1ScoreTestC5Ev]+0x24a): undefined reference to `Player::~Player()'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN14Mode1ScoreTestC2Ev[_ZN14Mode1ScoreTestC5Ev]+0x263): undefined reference to `GameState::~GameState()'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN14Mode1ScoreTestC2Ev[_ZN14Mode1ScoreTestC5Ev]+0x278): undefined reference to `testing::Test::~Test()'
+/usr/bin/ld: /tmp/ccafKTFG.o: in function `Mode1ScoreTest::TearDown()':
+Mode1ScoreTest.cpp:(.text._ZN14Mode1ScoreTest8TearDownEv[_ZN14Mode1ScoreTest8TearDownEv]+0x25): undefined reference to `Mode1Score::~Mode1Score()'
+/usr/bin/ld: /tmp/ccafKTFG.o: in function `testing::internal::SuiteApiResolver<Mode1ScoreTest>::GetSetUpCaseOrSuite(char const*, int)':
+Mode1ScoreTest.cpp:(.text._ZN7testing8internal16SuiteApiResolverI14Mode1ScoreTestE19GetSetUpCaseOrSuiteEPKci[_ZN7testing8internal16SuiteApiResolverI14Mode1ScoreTestE19GetSetUpCaseOrSuiteEPKci]+0x71): undefined reference to `testing::internal::IsTrue(bool)'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN7testing8internal16SuiteApiResolverI14Mode1ScoreTestE19GetSetUpCaseOrSuiteEPKci[_ZN7testing8internal16SuiteApiResolverI14Mode1ScoreTestE19GetSetUpCaseOrSuiteEPKci]+0x96): undefined reference to `testing::internal::GTestLog::GTestLog(testing::internal::GTestLogSeverity, char const*, int)'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN7testing8internal16SuiteApiResolverI14Mode1ScoreTestE19GetSetUpCaseOrSuiteEPKci[_ZN7testing8internal16SuiteApiResolverI14Mode1ScoreTestE19GetSetUpCaseOrSuiteEPKci]+0xfd): undefined reference to `testing::internal::GTestLog::~GTestLog()'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN7testing8internal16SuiteApiResolverI14Mode1ScoreTestE19GetSetUpCaseOrSuiteEPKci[_ZN7testing8internal16SuiteApiResolverI14Mode1ScoreTestE19GetSetUpCaseOrSuiteEPKci]+0x132): undefined reference to `testing::internal::GTestLog::~GTestLog()'
+/usr/bin/ld: /tmp/ccafKTFG.o: in function `testing::internal::SuiteApiResolver<Mode1ScoreTest>::GetTearDownCaseOrSuite(char const*, int)':
+Mode1ScoreTest.cpp:(.text._ZN7testing8internal16SuiteApiResolverI14Mode1ScoreTestE22GetTearDownCaseOrSuiteEPKci[_ZN7testing8internal16SuiteApiResolverI14Mode1ScoreTestE22GetTearDownCaseOrSuiteEPKci]+0x71): undefined reference to `testing::internal::IsTrue(bool)'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN7testing8internal16SuiteApiResolverI14Mode1ScoreTestE22GetTearDownCaseOrSuiteEPKci[_ZN7testing8internal16SuiteApiResolverI14Mode1ScoreTestE22GetTearDownCaseOrSuiteEPKci]+0x96): undefined reference to `testing::internal::GTestLog::GTestLog(testing::internal::GTestLogSeverity, char const*, int)'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN7testing8internal16SuiteApiResolverI14Mode1ScoreTestE22GetTearDownCaseOrSuiteEPKci[_ZN7testing8internal16SuiteApiResolverI14Mode1ScoreTestE22GetTearDownCaseOrSuiteEPKci]+0xfd): undefined reference to `testing::internal::GTestLog::~GTestLog()'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN7testing8internal16SuiteApiResolverI14Mode1ScoreTestE22GetTearDownCaseOrSuiteEPKci[_ZN7testing8internal16SuiteApiResolverI14Mode1ScoreTestE22GetTearDownCaseOrSuiteEPKci]+0x132): undefined reference to `testing::internal::GTestLog::~GTestLog()'
+/usr/bin/ld: /tmp/ccafKTFG.o: in function `testing::AssertionResult testing::internal::CmpHelperEQ<int, int>(char const*, char const*, int const&, int const&)':
+Mode1ScoreTest.cpp:(.text._ZN7testing8internal11CmpHelperEQIiiEENS_15AssertionResultEPKcS4_RKT_RKT0_[_ZN7testing8internal11CmpHelperEQIiiEENS_15AssertionResultEPKcS4_RKT_RKT0_]+0x47): undefined reference to `testing::AssertionSuccess()'
+/usr/bin/ld: /tmp/ccafKTFG.o: in function `testing::AssertionResult testing::internal::CmpHelperEQFailure<int, int>(char const*, char const*, int const&, int const&)':
+Mode1ScoreTest.cpp:(.text._ZN7testing8internal18CmpHelperEQFailureIiiEENS_15AssertionResultEPKcS4_RKT_RKT0_[_ZN7testing8internal18CmpHelperEQFailureIiiEENS_15AssertionResultEPKcS4_RKT_RKT0_]+0x8b): undefined reference to `testing::internal::EqFailure(char const*, char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool)'
+/usr/bin/ld: /tmp/ccafKTFG.o:(.data.rel.ro._ZTV36Mode1ScoreTest_Mode1P1ScoreTest_Test[_ZTV36Mode1ScoreTest_Mode1P1ScoreTest_Test]+0x20): undefined reference to `testing::Test::SetUp()'
+/usr/bin/ld: /tmp/ccafKTFG.o: in function `Mode1ScoreTest::~Mode1ScoreTest()':
+Mode1ScoreTest.cpp:(.text._ZN14Mode1ScoreTestD2Ev[_ZN14Mode1ScoreTestD5Ev]+0x2c): undefined reference to `History::~History()'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN14Mode1ScoreTestD2Ev[_ZN14Mode1ScoreTestD5Ev]+0x3e): undefined reference to `PinInterface::~PinInterface()'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN14Mode1ScoreTestD2Ev[_ZN14Mode1ScoreTestD5Ev]+0x50): undefined reference to `PinState::~PinState()'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN14Mode1ScoreTestD2Ev[_ZN14Mode1ScoreTestD5Ev]+0x74): undefined reference to `Player::~Player()'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN14Mode1ScoreTestD2Ev[_ZN14Mode1ScoreTestD5Ev]+0x86): undefined reference to `Player::~Player()'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN14Mode1ScoreTestD2Ev[_ZN14Mode1ScoreTestD5Ev]+0x96): undefined reference to `GameState::~GameState()'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN14Mode1ScoreTestD2Ev[_ZN14Mode1ScoreTestD5Ev]+0xa2): undefined reference to `testing::Test::~Test()'
+/usr/bin/ld: /tmp/ccafKTFG.o:(.data.rel.ro._ZTV14Mode1ScoreTest[_ZTV14Mode1ScoreTest]+0x20): undefined reference to `testing::Test::SetUp()'
+/usr/bin/ld: /tmp/ccafKTFG.o:(.data.rel.ro._ZTI14Mode1ScoreTest[_ZTI14Mode1ScoreTest]+0x10): undefined reference to `typeinfo for testing::Test'
 collect2: error: ld returned 1 exit status
 make: *** [<builtin>: Mode1ScoreTest] Error 1
+adamsl@DESKTOP-BKHEBT0:~/linuxBash/SMOL_AI/tennis_unit_tests/Mode1Score$ make clean
+make: *** No rule to make target 'clean'.  Stop.
+adamsl@DESKTOP-BKHEBT0:~/linuxBash/SMOL_AI/tennis_unit_tests/Mode1Score$ make Mode1ScoreTest
+g++     Mode1ScoreTest.cpp   -o Mode1ScoreTest
+/usr/bin/ld: /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/Scrt1.o: in function `_start':
+(.text+0x24): undefined reference to `main'
+/usr/bin/ld: /tmp/ccIhuWNd.o: in function `Mode1ScoreTest_Mode1P1ScoreTest_Test::TestBody()':
+Mode1ScoreTest.cpp:(.text+0x33): undefined reference to `Player::setPoints(int)'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text+0x46): undefined reference to `Mode1Score::mode1P1Score()'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text+0x5f): undefined reference to `Player::getPoints()'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text+0xa6): undefined reference to `testing::Message::Message()'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text+0xd5): undefined reference to `testing::internal::AssertHelper::AssertHelper(testing::TestPartResult::Type, char const*, int, char const*)'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text+0xe8): undefined reference to `testing::internal::AssertHelper::operator=(testing::Message const&) const'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text+0xf4): undefined reference to `testing::internal::AssertHelper::~AssertHelper()'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text+0x14b): undefined reference to `testing::internal::AssertHelper::~AssertHelper()'
+/usr/bin/ld: /tmp/ccIhuWNd.o: in function `__static_initialization_and_destruction_0(int, int)':
+Mode1ScoreTest.cpp:(.text+0x2b0): undefined reference to `testing::internal::MakeAndRegisterTestInfo(char const*, char const*, char const*, char const*, testing::internal::CodeLocation, void const*, void (*)(), void (*)(), testing::internal::TestFactoryBase*)'
+/usr/bin/ld: /tmp/ccIhuWNd.o: in function `Mode1ScoreTest::Mode1ScoreTest()':
+Mode1ScoreTest.cpp:(.text._ZN14Mode1ScoreTestC2Ev[_ZN14Mode1ScoreTestC5Ev]+0x2a): undefined reference to `testing::Test::Test()'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN14Mode1ScoreTestC2Ev[_ZN14Mode1ScoreTestC5Ev]+0x48): undefined reference to `GameState::GameState()'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN14Mode1ScoreTestC2Ev[_ZN14Mode1ScoreTestC5Ev]+0x6a): undefined reference to `Player::Player(IGameState*, int)'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN14Mode1ScoreTestC2Ev[_ZN14Mode1ScoreTestC5Ev]+0x8c): undefined reference to `Player::Player(IGameState*, int)'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN14Mode1ScoreTestC2Ev[_ZN14Mode1ScoreTestC5Ev]+0xd2): undefined reference to `PinState::PinState(std::map<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, int, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, int> > >)'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN14Mode1ScoreTestC2Ev[_ZN14Mode1ScoreTestC5Ev]+0xfe): undefined reference to `PinInterface::PinInterface(PinState*)'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN14Mode1ScoreTestC2Ev[_ZN14Mode1ScoreTestC5Ev]+0x110): undefined reference to `History::History()'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN14Mode1ScoreTestC2Ev[_ZN14Mode1ScoreTestC5Ev]+0x161): undefined reference to `Mode1Score::Mode1Score(IPlayer*, IPlayer*, PinInterface*, GameState*, History*)'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN14Mode1ScoreTestC2Ev[_ZN14Mode1ScoreTestC5Ev]+0x1cc): undefined reference to `History::~History()'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN14Mode1ScoreTestC2Ev[_ZN14Mode1ScoreTestC5Ev]+0x1e7): undefined reference to `PinInterface::~PinInterface()'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN14Mode1ScoreTestC2Ev[_ZN14Mode1ScoreTestC5Ev]+0x202): undefined reference to `PinState::~PinState()'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN14Mode1ScoreTestC2Ev[_ZN14Mode1ScoreTestC5Ev]+0x22f): undefined reference to `Player::~Player()'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN14Mode1ScoreTestC2Ev[_ZN14Mode1ScoreTestC5Ev]+0x24a): undefined reference to `Player::~Player()'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN14Mode1ScoreTestC2Ev[_ZN14Mode1ScoreTestC5Ev]+0x263): undefined reference to `GameState::~GameState()'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN14Mode1ScoreTestC2Ev[_ZN14Mode1ScoreTestC5Ev]+0x278): undefined reference to `testing::Test::~Test()'
+/usr/bin/ld: /tmp/ccIhuWNd.o: in function `Mode1ScoreTest::TearDown()':
+Mode1ScoreTest.cpp:(.text._ZN14Mode1ScoreTest8TearDownEv[_ZN14Mode1ScoreTest8TearDownEv]+0x25): undefined reference to `Mode1Score::~Mode1Score()'
+/usr/bin/ld: /tmp/ccIhuWNd.o: in function `testing::internal::SuiteApiResolver<Mode1ScoreTest>::GetSetUpCaseOrSuite(char const*, int)':
+Mode1ScoreTest.cpp:(.text._ZN7testing8internal16SuiteApiResolverI14Mode1ScoreTestE19GetSetUpCaseOrSuiteEPKci[_ZN7testing8internal16SuiteApiResolverI14Mode1ScoreTestE19GetSetUpCaseOrSuiteEPKci]+0x71): undefined reference to `testing::internal::IsTrue(bool)'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN7testing8internal16SuiteApiResolverI14Mode1ScoreTestE19GetSetUpCaseOrSuiteEPKci[_ZN7testing8internal16SuiteApiResolverI14Mode1ScoreTestE19GetSetUpCaseOrSuiteEPKci]+0x96): undefined reference to `testing::internal::GTestLog::GTestLog(testing::internal::GTestLogSeverity, char const*, int)'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN7testing8internal16SuiteApiResolverI14Mode1ScoreTestE19GetSetUpCaseOrSuiteEPKci[_ZN7testing8internal16SuiteApiResolverI14Mode1ScoreTestE19GetSetUpCaseOrSuiteEPKci]+0xfd): undefined reference to `testing::internal::GTestLog::~GTestLog()'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN7testing8internal16SuiteApiResolverI14Mode1ScoreTestE19GetSetUpCaseOrSuiteEPKci[_ZN7testing8internal16SuiteApiResolverI14Mode1ScoreTestE19GetSetUpCaseOrSuiteEPKci]+0x132): undefined reference to `testing::internal::GTestLog::~GTestLog()'
+/usr/bin/ld: /tmp/ccIhuWNd.o: in function `testing::internal::SuiteApiResolver<Mode1ScoreTest>::GetTearDownCaseOrSuite(char const*, int)':
+Mode1ScoreTest.cpp:(.text._ZN7testing8internal16SuiteApiResolverI14Mode1ScoreTestE22GetTearDownCaseOrSuiteEPKci[_ZN7testing8internal16SuiteApiResolverI14Mode1ScoreTestE22GetTearDownCaseOrSuiteEPKci]+0x71): undefined reference to `testing::internal::IsTrue(bool)'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN7testing8internal16SuiteApiResolverI14Mode1ScoreTestE22GetTearDownCaseOrSuiteEPKci[_ZN7testing8internal16SuiteApiResolverI14Mode1ScoreTestE22GetTearDownCaseOrSuiteEPKci]+0x96): undefined reference to `testing::internal::GTestLog::GTestLog(testing::internal::GTestLogSeverity, char const*, int)'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN7testing8internal16SuiteApiResolverI14Mode1ScoreTestE22GetTearDownCaseOrSuiteEPKci[_ZN7testing8internal16SuiteApiResolverI14Mode1ScoreTestE22GetTearDownCaseOrSuiteEPKci]+0xfd): undefined reference to `testing::internal::GTestLog::~GTestLog()'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN7testing8internal16SuiteApiResolverI14Mode1ScoreTestE22GetTearDownCaseOrSuiteEPKci[_ZN7testing8internal16SuiteApiResolverI14Mode1ScoreTestE22GetTearDownCaseOrSuiteEPKci]+0x132): undefined reference to `testing::internal::GTestLog::~GTestLog()'
+/usr/bin/ld: /tmp/ccIhuWNd.o: in function `testing::AssertionResult testing::internal::CmpHelperEQ<int, int>(char const*, char const*, int const&, int const&)':
+Mode1ScoreTest.cpp:(.text._ZN7testing8internal11CmpHelperEQIiiEENS_15AssertionResultEPKcS4_RKT_RKT0_[_ZN7testing8internal11CmpHelperEQIiiEENS_15AssertionResultEPKcS4_RKT_RKT0_]+0x47): undefined reference to `testing::AssertionSuccess()'
+/usr/bin/ld: /tmp/ccIhuWNd.o: in function `testing::AssertionResult testing::internal::CmpHelperEQFailure<int, int>(char const*, char const*, int const&, int const&)':
+Mode1ScoreTest.cpp:(.text._ZN7testing8internal18CmpHelperEQFailureIiiEENS_15AssertionResultEPKcS4_RKT_RKT0_[_ZN7testing8internal18CmpHelperEQFailureIiiEENS_15AssertionResultEPKcS4_RKT_RKT0_]+0x8b): undefined reference to `testing::internal::EqFailure(char const*, char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool)'
+/usr/bin/ld: /tmp/ccIhuWNd.o:(.data.rel.ro._ZTV36Mode1ScoreTest_Mode1P1ScoreTest_Test[_ZTV36Mode1ScoreTest_Mode1P1ScoreTest_Test]+0x20): undefined reference to `testing::Test::SetUp()'
+/usr/bin/ld: /tmp/ccIhuWNd.o: in function `Mode1ScoreTest::~Mode1ScoreTest()':
+Mode1ScoreTest.cpp:(.text._ZN14Mode1ScoreTestD2Ev[_ZN14Mode1ScoreTestD5Ev]+0x2c): undefined reference to `History::~History()'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN14Mode1ScoreTestD2Ev[_ZN14Mode1ScoreTestD5Ev]+0x3e): undefined reference to `PinInterface::~PinInterface()'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN14Mode1ScoreTestD2Ev[_ZN14Mode1ScoreTestD5Ev]+0x50): undefined reference to `PinState::~PinState()'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN14Mode1ScoreTestD2Ev[_ZN14Mode1ScoreTestD5Ev]+0x74): undefined reference to `Player::~Player()'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN14Mode1ScoreTestD2Ev[_ZN14Mode1ScoreTestD5Ev]+0x86): undefined reference to `Player::~Player()'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN14Mode1ScoreTestD2Ev[_ZN14Mode1ScoreTestD5Ev]+0x96): undefined reference to `GameState::~GameState()'
+/usr/bin/ld: Mode1ScoreTest.cpp:(.text._ZN14Mode1ScoreTestD2Ev[_ZN14Mode1ScoreTestD5Ev]+0xa2): undefined reference to `testing::Test::~Test()'
+/usr/bin/ld: /tmp/ccIhuWNd.o:(.data.rel.ro._ZTV14Mode1ScoreTest[_ZTV14Mode1ScoreTest]+0x20): undefined reference to `testing::Test::SetUp()'
+/usr/bin/ld: /tmp/ccIhuWNd.o:(.data.rel.ro._ZTI14Mode1ScoreTest[_ZTI14Mode1ScoreTest]+0x10): undefined reference to `typeinfo for testing::Test'
+collect2: error: ld returned 1 exit status
+make: *** [<builtin>: Mode1ScoreTest] Error 1
+```
+
+Please help me debug this problem.
