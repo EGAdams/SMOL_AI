@@ -4,7 +4,7 @@ import openai
 import dotenv
 
 generatedDir    = "generated"
-TURBO_MODEL     = "gpt-3.5-turbo"
+TURBO_MODEL     = "gpt-3.5-turbo-16k"
 EXPENSIVE_MODEL = "gpt-4"
 
 def read_file(filename):
@@ -40,7 +40,12 @@ def main(prompt, model=TURBO_MODEL ):
     context = "\n".join(
         f"{path}:\n{contents}" for path, contents in code_contents.items()
     )
-    system = "You are an AI debugger who is trying to debug a program for a user based on their file system. The user has provided you with the following files and their contents, finally followed by the error message or issue they are facing."
+
+    # system = "You are an AI debugger who is trying to debug a program for me based on the contents of the C++ header, source and Makefile on my file system. I am providing you with the following files and their contents, finally followed by the error message or issue that I am facing"
+
+    # rephrased by g4...
+    system = "You are an expert C++ Developer specializing in writting brilliant unit tests with the C++ Google framework.  Your task is to help me troubleshoot a problem with my C++ project build. This task will involve analyzing the C++ header files, source files, and Makefile present on my system. I will provide you with these files and their contents, as well as the error message or issue I'm encountering."
+
     prompt = (
         "My files are as follows: \n```"
         + context

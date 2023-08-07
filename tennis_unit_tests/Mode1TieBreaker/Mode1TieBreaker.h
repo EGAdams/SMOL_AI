@@ -1,5 +1,5 @@
-#ifndef Mode1Tiebreaker_h
-#define Mode1Tiebreaker_h
+#ifndef Mode1TieBreaker_h
+#define Mode1TieBreaker_h
 #include "../Arduino/Arduino.h"
 #include "../GameLeds/GameLeds.h"
 #include "../GameLeds/GameLeds.h"
@@ -10,7 +10,6 @@
 #include "../ServeLeds/ServeLeds.h"
 #include "../SetLeds/SetLeds.h"
 #include "../WatchTimer/WatchTimer.h"
-#include "../Mode1Tiebreaker/Mode1Tiebreaker.h"
 #include "../WinSequences/WinSequences.h"
 #include "../Undo/Undo.h"
 #include "../Inputs/Inputs.h"

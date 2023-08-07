@@ -5,7 +5,7 @@
 #include "../GameLeds/GameLeds.h"
 #include "../GameState/GameState.h"
 #include "../GameTimer/GameTimer.h"
-#include "../Mode1Tiebreaker/Mode1Tiebreaker.h"
+#include "../Mode1TieBreaker/Mode1TieBreaker.h"
 #include "../WinSequences/WinSequences.h"
 #include "../PointLeds/PointLeds.h"
 #include "../PinInterface/PinInterface.h"
@@ -40,7 +40,7 @@ class Mode1Score {
     IPlayer* _player2;
     GameState* _gameState;
     History* _history;
-    Mode1TieBreaker _mode1TieBreaker;
+    Mode1TieBreaker _Mode1TieBreaker;
     PointLeds _pointLeds;
     GameLeds _gameLeds;
     SetLeds _setLeds;
