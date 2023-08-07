@@ -41,7 +41,7 @@ This file contains the implementation of the `Mode1Score` class.
 - `PointLeds _pointLeds`: Instance of the `PointLeds` class.
 - `GameLeds _gameLeds`: Instance of the `GameLeds` class.
 - `SetLeds _setLeds`: Instance of the `SetLeds` class.
-- `Mode1WinSequences _mode1WinSequences`: Instance of the `Mode1WinSequences` class.
+- `WinSequences _mode1WinSequences`: Instance of the `WinSequences` class.
 - `Undo _undo`: Instance of the `Undo` class.
 - `ScoreBoard* _scoreBoard`: Pointer to the score board object.
 
@@ -88,7 +88,7 @@ This file contains the declaration of the `Mode1Score` class.
 - `PointLeds _pointLeds`: Instance of the `PointLeds` class.
 - `GameLeds _gameLeds`: Instance of the `GameLeds` class.
 - `SetLeds _setLeds`: Instance of the `SetLeds` class.
-- `Mode1WinSequences _mode1WinSequences`: Instance of the `Mode1WinSequences` class.
+- `WinSequences _mode1WinSequences`: Instance of the `WinSequences` class.
 - `Undo _undo`: Instance of the `Undo` class.
 - `ScoreBoard* _scoreBoard`: Pointer to the score board object.
 

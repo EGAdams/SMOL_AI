@@ -15,7 +15,7 @@
   - _pointLeds: PointLeds
   - _gameLeds: GameLeds
   - _setLeds: SetLeds
-  - _mode1WinSequences: Mode1WinSequences
+  - _mode1WinSequences: WinSequences
   - _undo: Undo
 
 ### Destructor:

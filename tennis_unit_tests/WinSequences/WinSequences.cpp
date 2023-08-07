@@ -1,10 +1,10 @@
 #include "WinSequences.h"
 
-Mode1WinSequences::~Mode1WinSequences() {
-    std::cout << "*** Mode1WinSequences destructor called. ***" << std::endl;
+WinSequences::~WinSequences() {
+    std::cout << "*** WinSequences destructor called. ***" << std::endl;
     delete _setWin; }
     
-Mode1WinSequences::Mode1WinSequences( IPlayer* player1, IPlayer* player2, PinInterface* pinInterface,
+WinSequences::WinSequences( IPlayer* player1, IPlayer* player2, PinInterface* pinInterface,
                                       GameState* gameState ): 
     _player1( player1 ), _player2( player2 ),
     _pinInterface( pinInterface ),
@@ -16,13 +16,13 @@ Mode1WinSequences::Mode1WinSequences( IPlayer* player1, IPlayer* player2, PinInt
     _undo( player1, player2, pinInterface, gameState ) { 
         _setWin = new SetWin( &_undo, _gameState, &_setLeds );}
 
-void Mode1WinSequences::setScoreBoards( ScoreBoard* scoreBoard ) {
+void WinSequences::setScoreBoards( ScoreBoard* scoreBoard ) {
     _pointLeds.setScoreBoard( scoreBoard );
     _gameLeds.setScoreBoard(  scoreBoard );
     _setLeds.setScoreBoard(   scoreBoard );
     _scoreBoard =             scoreBoard; } // set mine too!
 
-void Mode1WinSequences::p1GameWinSequence() {
+void WinSequences::p1GameWinSequence() {
     std::cout << "//////////////////////// p1GameWinSequence() ////////////////////////" << std::endl;
     GameWinSequence gameWinSequence; 
     gameWinSequence.run( _player1, _gameState, &_gameLeds, _scoreBoard, _player1->getGames());
@@ -34,11 +34,11 @@ void Mode1WinSequences::p1GameWinSequence() {
     _player1->setPoints( 0 );
     _player2->setPoints( 0 );}
 
-void Mode1WinSequences::p1SetWinSequence() { 
+void WinSequences::p1SetWinSequence() { 
     std::cout << "*** executing _setWin->execute for player one... ***" << std::endl;
     _setWin->execute( _player1 ); }
 
-void Mode1WinSequences::p1MatchWinSequence() {
+void WinSequences::p1MatchWinSequence() {
     std::cout << "//////////////////////// p1MatchWinSequence() ////////////////////////" << std::endl;
     _undo.memory();
     _pointLeds.updateTBPoints();
@@ -47,7 +47,7 @@ void Mode1WinSequences::p1MatchWinSequence() {
     MatchWinSequence matchWinSequence; matchWinSequence.run( _player1, _gameState, &_gameLeds, &_setLeds );
     _reset.resetScoreboard();}
 
-void Mode1WinSequences::p2GameWinSequence() {
+void WinSequences::p2GameWinSequence() {
     GameWinSequence gameWinSequence; 
     gameWinSequence.run( _player2, _gameState, &_gameLeds, _scoreBoard, _player2->getGames());
     std::cout << "*** inside WinSequences class.  executing p2GameWinSequence()... ***" << std::endl;
@@ -58,12 +58,12 @@ void Mode1WinSequences::p2GameWinSequence() {
     _player1->setPoints( 0 );
     _player2->setPoints( 0 );}
 
-void Mode1WinSequences::p2SetWinSequence() { 
+void WinSequences::p2SetWinSequence() { 
      std::cout << "*** executing _setWin->execute... ***" << std::endl;
     _setWin->execute( _player2 ); }   
     // _undo.memory();  does this go here?
 
-void Mode1WinSequences::p2MatchWinSequence() {
+void WinSequences::p2MatchWinSequence() {
     std::cout << "//////////////////////// p2MatchWinSequence() ////////////////////////" << std::endl;
     _undo.memory();               
     _pointLeds.updateTBPoints();
@@ -72,7 +72,7 @@ void Mode1WinSequences::p2MatchWinSequence() {
     MatchWinSequence matchWinSequence; matchWinSequence.run( _player2, _gameState, &_gameLeds, &_setLeds );
     _reset.resetScoreboard();}
 
-void Mode1WinSequences::p1TBGameWinSequence() {
+void WinSequences::p1TBGameWinSequence() {
     _undo.memory();
     if ( _scoreBoard->hasCanvas()) {
         GameWinSequence gameWinSequence; 
@@ -92,7 +92,7 @@ void Mode1WinSequences::p1TBGameWinSequence() {
     _player2->setGames( 0 );
     _gameLeds.updateGames();}
 
-void Mode1WinSequences::p2TBGameWinSequence() {     
+void WinSequences::p2TBGameWinSequence() {     
     _undo.memory();  
     if ( _scoreBoard->hasCanvas()) {     // the matrix is active
         GameWinSequence gameWinSequence; 
@@ -114,7 +114,7 @@ void Mode1WinSequences::p2TBGameWinSequence() {
     _gameLeds.updateGames(); }    
 
 ////////////////////////////////// SET WIN SEQUENCES //////////////////////////////////////////////
-void Mode1WinSequences::p1TBSetWinSequence() {  // for entering set t/b
+void WinSequences::p1TBSetWinSequence() {  // for entering set t/b
     _undo.memory();                               
     for ( int currentPulseCount = 0; currentPulseCount < SET_WIN_PULSE_COUNT; currentPulseCount++ ) {
         _player1->setSets( _gameState, 0 );
@@ -129,7 +129,7 @@ void Mode1WinSequences::p1TBSetWinSequence() {  // for entering set t/b
     _player2->setGames( 0 );
     tieLEDsOn();}
 
-void Mode1WinSequences::p2TBSetWinSequence() {  // for entering set t/b
+void WinSequences::p2TBSetWinSequence() {  // for entering set t/b
     _undo.memory();                               
     for ( int currentPulseCount = 0; currentPulseCount < SET_WIN_PULSE_COUNT; currentPulseCount++ ) {
         _player2->setSets( _gameState, 0 );
@@ -147,7 +147,7 @@ void Mode1WinSequences::p2TBSetWinSequence() {  // for entering set t/b
 
 
 ////////////////////////// SET TIE BREAKER WIN SEQUENCES //////////////////////////////////////////
-void Mode1WinSequences::p1SetTBWinSequence() {  // for winning set t/b
+void WinSequences::p1SetTBWinSequence() {  // for winning set t/b
     _undo.memory();                               
 
     for ( int currentPulseCount = 0; currentPulseCount < SET_WIN_PULSE_COUNT; currentPulseCount++ ) {
@@ -158,7 +158,7 @@ void Mode1WinSequences::p1SetTBWinSequence() {  // for winning set t/b
         _setLeds.updateSets();
         GameTimer::gameDelay( _gameState->getFlashDelay());}}
 
-void Mode1WinSequences::p2SetTBWinSequence() {  // for winning set t/b
+void WinSequences::p2SetTBWinSequence() {  // for winning set t/b
     _undo.memory();                               
     for ( int currentPulseCount = 0; currentPulseCount < SET_WIN_PULSE_COUNT; currentPulseCount++ ) {
         _player2->setSets( _gameState, 0 );
@@ -169,7 +169,7 @@ void Mode1WinSequences::p2SetTBWinSequence() {  // for winning set t/b
         GameTimer::gameDelay( _gameState->getFlashDelay());}}
 //////////////////////// END OF SET TIE BREAKER WIN SEQUENCES /////////////////////////////////////
 
-void Mode1WinSequences::p1TBMatchWinSequence() {
+void WinSequences::p1TBMatchWinSequence() {
     _player2->setGames( 99 );
     _gameLeds.updateGames();  
     _undo.memory();           
@@ -177,7 +177,7 @@ void Mode1WinSequences::p1TBMatchWinSequence() {
     MatchWinSequence matchWinSequence; matchWinSequence.run( _player1, _gameState, &_gameLeds, &_setLeds );
     _reset.resetScoreboard();}
 
-void Mode1WinSequences::p2TBMatchWinSequence() {
+void WinSequences::p2TBMatchWinSequence() {
     _player1->setGames( 99 );
     _gameLeds.updateGames();  
     _undo.memory();           
@@ -185,12 +185,12 @@ void Mode1WinSequences::p2TBMatchWinSequence() {
     MatchWinSequence matchWinSequence; matchWinSequence.run( _player2, _gameState, &_gameLeds, &_setLeds );
     _reset.resetScoreboard();}
 
-void Mode1WinSequences::tieLEDsOn() {
+void WinSequences::tieLEDsOn() {
     _gameState->setTieLEDsOn( 1 );  // tieLEDsOn = true;
     _pinInterface->pinDigitalWrite( P1_TIEBREAKER, HIGH );
     _pinInterface->pinDigitalWrite( P2_TIEBREAKER, HIGH );}
 
-void Mode1WinSequences::tieLEDsOff() {
+void WinSequences::tieLEDsOff() {
     _gameState->setTieLEDsOn( 0 );  // tieLEDsOn = false;
     _pinInterface->pinDigitalWrite( P1_TIEBREAKER, LOW );
     _pinInterface->pinDigitalWrite( P2_TIEBREAKER, LOW );}
