@@ -1,27 +1,40 @@
-#include "Mode1Score.h"
 #include <gtest/gtest.h>
+#include "Mode1Score.h"
+#include "../Player/IPlayerMock.cpp" // Assume we have a mock for IPlayer
+#include "GameStateMock.h" // Assume we have a mock for GameState
+#include "HistoryMock.h" // Assume we have a mock for History
 
-// Define a test fixture class template
-class Mode1ScoreTest : public ::testing::Test {
+class Mode1ScoreTest : public testing::Test {
 protected:
-    // Objects declared here can be used by all tests in the test case for Mode1Score
-    Mode1Score* score;
+    IPlayerMock* player1;
+    IPlayerMock* player2;
+    PinInterfaceMock* pinInterface; // Assume we have a mock for PinInterface
+    GameStateMock* gameState;
+    HistoryMock* history;
+    Mode1Score* mode1Score;
 
-    Mode1ScoreTest() {
-        // Initialize the Mode1Score object before each test
-        score = new Mode1Score(nullptr, nullptr, nullptr, nullptr, nullptr);
+    void SetUp() override {
+        player1 = new IPlayerMock();
+        player2 = new IPlayerMock();
+        pinInterface = new PinInterfaceMock();
+        gameState = new GameStateMock();
+        history = new HistoryMock();
+        mode1Score = new Mode1Score(player1, player2, pinInterface, gameState, history);
     }
 
-    virtual ~Mode1ScoreTest() {
-        // Code here will be called immediately after each test (right before the destructor)
-        delete score;
+    void TearDown() override {
+        delete mode1Score;
+        delete history;
+        delete gameState;
+        delete pinInterface;
+        delete player2;
+        delete player1;
     }
 };
 
-// Test case must be called the class, also you can use '_' instead of spaces
-TEST_F(Mode1ScoreTest, Mode1P1ScoreTest) {
-    // You can access data in the test fixture here
-    // ASSERT_NO_THROW(score->mode1P1Score());
+TEST_F(Mode1ScoreTest, UpdateScoreIncreasesPlayerScore) {
+    EXPECT_CALL(*player1, getPoints()).WillOnce(testing::Return(2));
+    EXPECT_CALL(*player1, setPoints(3));
+    
+    mode1Score->updateScore(player1);
 }
-
-// You can add more tests to this test case
