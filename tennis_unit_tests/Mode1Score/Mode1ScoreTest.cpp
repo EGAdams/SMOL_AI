@@ -1,40 +1,49 @@
 #include <gtest/gtest.h>
+#include <gmock/gmock.h>
 #include "Mode1Score.h"
-#include "../Player/IPlayerMock.cpp" // Assume we have a mock for IPlayer
-#include "GameStateMock.h" // Assume we have a mock for GameState
-#include "HistoryMock.h" // Assume we have a mock for History
+#include "../History/IHistoryMock.h"
+#include "../Player/IPlayerMock.h"
+#include "../GameState/IGameStateMock.h"
+#include "../PinInterface/IPinInterfaceMock.h"
 
-class Mode1ScoreTest : public testing::Test {
+class Mode1ScoreTest : public ::testing::Test
+{
 protected:
-    IPlayerMock* player1;
-    IPlayerMock* player2;
-    PinInterfaceMock* pinInterface; // Assume we have a mock for PinInterface
-    GameStateMock* gameState;
-    HistoryMock* history;
-    Mode1Score* mode1Score;
-
     void SetUp() override {
-        player1 = new IPlayerMock();
-        player2 = new IPlayerMock();
-        pinInterface = new PinInterfaceMock();
-        gameState = new GameStateMock();
-        history = new HistoryMock();
-        mode1Score = new Mode1Score(player1, player2, pinInterface, gameState, history);
+        IPlayerMock mockPlayer1;
+        IPlayerMock mockPlayer2;
+        IPinInterfaceMock mockPinInterface;  // Hypothetical mock object
+        IGameStateMock mockGameState;       // Hypothetical mock object
+        auto historyMock = std::make_shared<IHistoryMock>();
+        mode1Score = std::make_shared<Mode1Score>(std::make_shared<IHistoryMock>());
     }
 
-    void TearDown() override {
-        delete mode1Score;
-        delete history;
-        delete gameState;
-        delete pinInterface;
-        delete player2;
-        delete player1;
-    }
+    std::shared_ptr<Mode1Score> mode1Score;
 };
 
-TEST_F(Mode1ScoreTest, UpdateScoreIncreasesPlayerScore) {
-    EXPECT_CALL(*player1, getPoints()).WillOnce(testing::Return(2));
-    EXPECT_CALL(*player1, setPoints(3));
-    
-    mode1Score->updateScore(player1);
+TEST_F(Mode1ScoreTest, TestCalculateScore)
+{
+    // Replace this with your actual test
+    // Here's an example:
+    // EXPECT_EQ(mode1Score->calculateScore(), expectedScore);
 }
+
+int main(int argc, char** argv)
+{
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
+}
+
+
+TEST_F(Mode1ScoreTest, UpdateScoreIncreasesPlayerScore) {
+    IPlayerMock mockPlayer1; 
+    EXPECT_CALL(mockPlayer1, getPoints()).WillOnce(testing::Return(2));
+    EXPECT_CALL(mockPlayer1, setPoints(3));
+
+    mode1Score->updateScore(&mockPlayer1);
+}
+
+// TEST_F(Mode1ScoreTest, TestUpdateScore) {
+//     IPlayerMock mockPlayer; // Create a mock player  
+//     EXPECT_CALL(mockPlayer, getHistory()).Times(1); // Set expectations on the mock player
+//     mode1Score->updateScore(&mockPlayer); } // Call the method under test
