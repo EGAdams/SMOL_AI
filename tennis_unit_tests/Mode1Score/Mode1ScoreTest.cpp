@@ -15,7 +15,8 @@ protected:
         IPinInterfaceMock mockPinInterface;  // Hypothetical mock object
         IGameStateMock mockGameState;       // Hypothetical mock object
         auto historyMock = std::make_shared<IHistoryMock>();
-        mode1Score = std::make_shared<Mode1Score>(std::make_shared<IHistoryMock>());
+        mode1Score = std::make_shared<Mode1Score>(&mockPlayer1, &mockPlayer2, &mockPinInterface, &mockGameState, historyMock.get());
+
     }
 
     std::shared_ptr<Mode1Score> mode1Score;

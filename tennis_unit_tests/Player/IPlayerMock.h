@@ -1,3 +1,5 @@
+#ifndef IPlayerMock_h
+#define IPlayerMock_h
 #include <gmock/gmock.h>
 #include "IPlayer.h"
 
@@ -38,3 +40,4 @@ public:
     // MOCK_METHOD(void, setOpponent, (IPlayer* opponent), (override));
     // ... and so on for other methods
 };
+#endif

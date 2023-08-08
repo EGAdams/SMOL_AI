@@ -8,20 +8,22 @@
 #include "../Mode1TieBreaker/Mode1TieBreaker.h"
 #include "../WinSequences/WinSequences.h"
 #include "../PointLeds/PointLeds.h"
-#include "../PinInterface/PinInterface.h"
+#include "../PinInterface/IPinInterface.h"
 #include "../Player/Player.h"
 #include "../SetLeds/SetLeds.h"
 #include "../Undo/Undo.h"
 #include "../TennisConstants/TennisConstants.h"
+#include "../History/IHistory.h"
+
 #include <iostream>
 
 class Mode1Score {
  public:
     Mode1Score( IPlayer* player1,
                 IPlayer* player2,
-                PinInterface* pinInterface,
-                GameState* gameState,
-                History* history );
+                IPinInterface* pinInterface,
+                IGameState* gameState,
+                IHistory* history );
     ~Mode1Score();
     void mode1P1Score();
     void mode1P1Games();
@@ -38,8 +40,8 @@ class Mode1Score {
     void _resetGame();
     IPlayer* _player1;
     IPlayer* _player2;
-    GameState* _gameState;
-    History* _history;
+    IGameState* _gameState;
+    IHistory* _history;
     Mode1TieBreaker _Mode1TieBreaker;
     PointLeds _pointLeds;
     GameLeds _gameLeds;

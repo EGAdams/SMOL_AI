@@ -6,21 +6,22 @@
 #include "../GameTimer/GameTimer.h"
 #include "../PointLeds/PointLeds.h"
 #include "../PinInterface/PinInterface.h"
-#include "../Player/Player.h"
+#include "../Player/IPlayer.h"
 #include "../ServeLeds/ServeLeds.h"
 #include "../SetLeds/SetLeds.h"
 #include "../WatchTimer/WatchTimer.h"
 #include "../WinSequences/WinSequences.h"
 #include "../Undo/Undo.h"
 #include "../Inputs/Inputs.h"
+#include "../History/IHistory.h"
 
 class Mode1TieBreaker {
  public:
   Mode1TieBreaker( IPlayer* player1,
                    IPlayer* player2,
-                   PinInterface* pinInterface,
-                   GameState* gameState,
-                   History* history );
+                   IPinInterface* pinInterface,
+                   IGameState* gameState,
+                   IHistory* history );
   ~Mode1TieBreaker();
   void tieBreaker();
   void setTieBreaker();

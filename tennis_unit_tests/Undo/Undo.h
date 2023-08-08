@@ -15,7 +15,7 @@
 
 class Undo {
  public:
-    Undo( IPlayer* player1, IPlayer* player2, PinInterface* pinInterface, GameState* gameState );
+    Undo( IPlayer* player1, IPlayer* player2, IPinInterface* pinInterface, IGameState* gameState );
     ~Undo();
     void setMode1Undo( History* history );
     void memory();

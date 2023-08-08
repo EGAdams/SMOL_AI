@@ -2,14 +2,14 @@
 #define PointLeds_h
 
 #include "../GameState/GameState.h"
-#include "../PinInterface/PinInterface.h"
+#include "../PinInterface/IPinInterface.h"
 #include "../Player/Player.h"
 #include "../Arduino/Arduino.h"
 #include "../ScoreBoard/ScoreBoard.h"
 
 class PointLeds {
  public:
-  PointLeds( IPlayer* player1, IPlayer* player2, PinInterface* pinInterface );
+  PointLeds( IPlayer* player1, IPlayer* player2, IPinInterface* pinInterface );
   PointLeds( IPlayer* player1, IPlayer* player2, ScoreBoard*   scoreBoard   );
   ~PointLeds();
   void updatePoints();
