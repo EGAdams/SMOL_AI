@@ -9,27 +9,7 @@ LDFLAGS = -L$(GTEST_DIR)/lib -lgtest -lgtest_main -pthread
 TARGET = run_tests
 
 # Define our source and object files
-SOURCES = Mode1Score.cpp 					\
-		  ../Mode1ScoreTest.cpp 			\
-		  ../PointLeds/PointLeds.cpp		\
-		  ../PinState/PinState.cpp			\
-		  ../SetLeds/SetLeds.cpp			\
-		  ../GameLeds/GameLeds.cpp			\
-		  ../ServeLeds/ServeLeds.cpp		\
-		  ../FontLoader/FontLoader.cpp		\
-		  ../SetDrawer/SetDrawer.cpp		\
-		  ../ScoreBoard/ScoreBoard.cpp		\
-		  ../WinSequences/WinSequences.cpp	\
-		  ../GameState/GameState.cpp		\
-		  ../Mode1TieBreaker/Mode1TieBreaker.cpp	\
-		  ../Player/Player.cpp				\
-		  ../TranslateConstant/TranslateConstant.cpp \
-		  ../Undo/Undo.cpp					\
-		  ../GameTimer/GameTimer.cpp		\
-		  ../GameLedTranslator/GameLedTranslator.cpp \
-		  ../MatchWinSequence/MatchWinSequence.cpp \
-		  ../Reset/Reset.cpp				\
-		  ../WatchTimer/WatchTimer.cpp		\
+SOURCES = Mode1Score.cpp Mode1ScoreTest.cpp
 
 OBJECTS = $(SOURCES:.cpp=.o)
 
