@@ -1,4 +1,6 @@
 #include "Mode1Score.h"
+#include <gtest/gtest.h>
+#include <gmock/gmock.h>
 
 Mode1Score::Mode1Score( IPlayer* player1, IPlayer* player2,
     IPinInterface* pinInterface, IGameState* gameState, IHistory* history ) :

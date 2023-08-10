@@ -5,11 +5,13 @@ GMOCK_DIR := /home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/googletest/build/l
 
 CXX = g++
 CXXFLAGS = -Wall -Wextra -g -I$(GTEST_DIR)/include
-LDFLAGS = -L$(GTEST_DIR)/lib -lgtest -lgtest_main -pthread
+LDFLAGS = -L$(GTEST_DIR)/lib -lgtest -lgtest_main -lgmock -lgmock_main -pthread
 TARGET = run_tests
 
 # Define our source and object files
-SOURCES = Mode1Score.cpp Mode1ScoreTest.cpp
+SOURCES = Mode1Score.cpp Mode1ScoreTest.cpp      \
+		  ../Mode1TieBreaker/Mode1TieBreaker.cpp \
+		  
 
 OBJECTS = $(SOURCES:.cpp=.o)
 
