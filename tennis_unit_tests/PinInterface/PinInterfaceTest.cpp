@@ -1,41 +1,62 @@
-#include "PinInterface.h"
 #include <gtest/gtest.h>
+#include <gmock/gmock.h>
+#include "IPinInterfaceMock.h"
+#include "../PinState/IPinStateMock.h"
 
 class PinInterfaceTest : public ::testing::Test {  // Define a test fixture
 protected:
-    PinState*                   pinState;
-    std::map<std::string, int>  pinMap;
-    PinInterface*               pinInterface;
+    IPinInterfaceMock* mockPinInterface;
+    IPinStateMock*     mockPinState;
 
     void SetUp() override {
-        pinState         = new PinState( pinMap );
-        pinInterface     = new PinInterface( pinState ); }
+        mockPinState = new IPinStateMock();
+        mockPinInterface = new IPinInterfaceMock();
+    }
 
     void TearDown() override {
-        delete pinInterface;
-        delete pinState; }};
+        delete mockPinInterface;
+        delete mockPinState;
+    }
+};
 
-TEST_F( PinInterfaceTest, TestAnalogRead ) {  // Define tests
+TEST_F(PinInterfaceTest, TestAnalogRead) {  // Define tests
     int pin = 5;
     int value = 1;
-    pinInterface->pinAnalogWrite( pin, value );
-    EXPECT_EQ( pinInterface->pinAnalogRead( pin ), value );}
 
-TEST_F( PinInterfaceTest, TestDigitalRead ) {
+    // Set expectation for the mock objects
+    EXPECT_CALL(*mockPinInterface, pinAnalogWrite(pin, value));
+    EXPECT_CALL(*mockPinState, getPinState(std::to_string(pin))).WillOnce(::testing::Return(value));
+
+    mockPinInterface->pinAnalogWrite(pin, value);
+    EXPECT_EQ(mockPinInterface->pinAnalogRead(pin), value);
+}
+
+TEST_F(PinInterfaceTest, TestDigitalRead) {
     int pin = 5;
-    int value = 1; // Digital pins can only be HIGH ( 1 ) or LOW (0)
-    pinInterface->pinDigitalWrite( pin, value );
+    int value = 1; // Digital pins can only be HIGH (1) or LOW (0)
 
-    EXPECT_EQ( pinInterface->pinDigitalRead( pin ), value );}
+    // Set expectation for the mock objects
+    EXPECT_CALL(*mockPinInterface, pinDigitalWrite(pin, value));
+    EXPECT_CALL(*mockPinState, getPinState(std::to_string(pin))).WillOnce(::testing::Return(value));
 
-TEST_F( PinInterfaceTest, TestAnalogWrite ) {
+    mockPinInterface->pinDigitalWrite(pin, value);
+    EXPECT_EQ(mockPinInterface->pinDigitalRead(pin), value);
+}
+
+TEST_F(PinInterfaceTest, TestAnalogWrite) {
     int pin = 5;
     int value = 1;
-    pinInterface->pinAnalogWrite( pin, value );
-    EXPECT_EQ( pinState->getPinState(std::to_string( pin )), value );}
 
-TEST_F( PinInterfaceTest, TestDigitalWrite ) {
+    // Set expectation for the mock objects
+    EXPECT_CALL(*mockPinState, setPinState(std::to_string(pin), value));
+    mockPinInterface->pinAnalogWrite(pin, value);
+}
+
+TEST_F(PinInterfaceTest, TestDigitalWrite) {
     int pin = 5;
-    int value = 1; // Digital pins can only be HIGH ( 1 ) or LOW (0)
-    pinInterface->pinDigitalWrite( pin, value );
-    EXPECT_EQ( pinState->getPinState(std::to_string( pin )), value );}
+    int value = 1; // Digital pins can only be HIGH (1) or LOW (0)
+
+    // Set expectation for the mock objects
+    EXPECT_CALL(*mockPinState, setPinState(std::to_string(pin), value));
+    mockPinInterface->pinDigitalWrite(pin, value);
+}

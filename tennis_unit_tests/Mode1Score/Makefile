@@ -11,7 +11,16 @@ TARGET = run_tests
 # Define our source and object files
 SOURCES = Mode1Score.cpp Mode1ScoreTest.cpp      \
 		  ../Mode1TieBreaker/Mode1TieBreaker.cpp \
-		  
+		  ../GameLeds/GameLeds.cpp			     \
+		  ../GameTimer/GameTimer.cpp		 	 \
+		  ../WinSequences/WinSequences.cpp	     \
+		  ../PointLeds/PointLeds.cpp			 \
+		  ../PinInterface/PinInterface.cpp		 \
+		  ../Player/Player.cpp					 \
+		  ../SetLeds/SetLeds.cpp				 \
+		  ../Undo/Undo.cpp						 \
+		  ../TennisConstants/TennisConstants.cpp \
+		  ../History/History.cpp				 \
 
 OBJECTS = $(SOURCES:.cpp=.o)
 

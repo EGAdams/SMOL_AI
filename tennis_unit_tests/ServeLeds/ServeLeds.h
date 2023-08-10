@@ -14,8 +14,8 @@ class ServeLeds {
   void serveSwitch();
 
  private:
-  PinInterface* _pinInterface;
-  GameState* _gameState;
+  IPinInterface* _pinInterface;
+  IGameState* _gameState;
 };
 
 #endif

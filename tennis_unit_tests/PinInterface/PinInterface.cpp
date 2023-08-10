@@ -1,7 +1,7 @@
 #include "PinInterface.h"
 #include <string>
 
-PinInterface::PinInterface( PinState* pinState ) : _pinState( pinState ) {}
+PinInterface::PinInterface( IPinState* pinState ) : _pinState( pinState ) {}
 PinInterface::~PinInterface() {}
 
 int PinInterface::pinAnalogRead( int pin ) {
