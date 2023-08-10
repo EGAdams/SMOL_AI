@@ -19,7 +19,7 @@ class PointLeds {
  private:
   IPlayer* _player1;
   IPlayer* _player2;
-  PinInterface* _pinInterface;
+  IPinInterface* _pinInterface;
   ScoreBoard* _scoreBoard;
 };
 

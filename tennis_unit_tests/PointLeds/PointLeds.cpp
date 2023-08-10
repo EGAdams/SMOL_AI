@@ -2,7 +2,7 @@
 
 PointLeds::PointLeds( IPlayer* player1,
     IPlayer* player2,
-    PinInterface* pinInterface )
+    IPinInterface* pinInterface )
     : _player1( player1 ), _player2( player2 ), _pinInterface( pinInterface ) {}
 
 PointLeds::PointLeds( IPlayer* player1,

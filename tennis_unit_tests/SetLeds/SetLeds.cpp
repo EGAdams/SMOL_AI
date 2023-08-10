@@ -2,7 +2,7 @@
 #include "../Arduino/Arduino.h"
 #include "../TennisConstants/TennisConstants.h"
 
-SetLeds::SetLeds( IPlayer* player1, IPlayer* player2, PinInterface* pinInterface )
+SetLeds::SetLeds( IPlayer* player1, IPlayer* player2, IPinInterface* pinInterface )
     : _player1( player1 ), _player2( player2 ), _pinInterface( pinInterface) {}
 
 SetLeds::~SetLeds(){}

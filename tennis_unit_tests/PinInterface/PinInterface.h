@@ -1,6 +1,7 @@
 #ifndef PININTERFACE_H
 #define PININTERFACE_H
 
+#include "IPinInterface.h"
 #include "../PinState/PinState.h"
 #include "../Arduino/Arduino.h"
 #include <map>

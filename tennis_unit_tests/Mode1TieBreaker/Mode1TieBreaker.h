@@ -47,9 +47,9 @@ class Mode1TieBreaker {
  private:
   IPlayer* _player1;
   IPlayer* _player2;
-  PinInterface* _pinInterface;
-  GameState* _gameState;
-  History* _history;
+  IPinInterface* _pinInterface;
+  IGameState* _gameState;
+  IHistory* _history;
   PointLeds _pointLeds;
   GameLeds _gameLeds;
   ServeLeds _serveLeds;
