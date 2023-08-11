@@ -1,6 +1,6 @@
 #include "ScoreBoard.h"
 
-ScoreBoard::ScoreBoard( IPlayer* player1, IPlayer* player2, GameState* gameState ): 
+ScoreBoard::ScoreBoard( IPlayer* player1, IPlayer* player2, IGameState gameState ): 
     _player1( player1 ), _player2( player2 ), _gameState( gameState ) {
     printf( "Constructing ScoreBoard...\n" );
     if ( MATRIX_DISABLED == 1 ) { 

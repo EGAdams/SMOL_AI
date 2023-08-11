@@ -19,7 +19,7 @@
 
 class ScoreBoard {
 public:
-    ScoreBoard( IPlayer* player1, IPlayer* player2, GameState* gameState );       
+    ScoreBoard( IPlayer* player1, IPlayer* player2, IGameState gameState );       
     ~ScoreBoard();
     void update();
     bool hasCanvas();
@@ -29,7 +29,7 @@ public:
 private:
     IPlayer*                        _player1;
     IPlayer*                        _player2;
-    GameState*                     _gameState;
+    IGameState                     _gameState;
     rgb_matrix::Font               _big_number_font;
     std::unique_ptr<NumberDrawer>  _smallNumberDrawer;
     std::unique_ptr<NumberDrawer>  _playerOneScoreDrawer;

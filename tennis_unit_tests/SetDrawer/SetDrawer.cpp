@@ -1,6 +1,6 @@
 #include "SetDrawer.h"
 
-SetDrawer::SetDrawer( RGBMatrix* canvas, GameState* gameState ) : 
+SetDrawer::SetDrawer( RGBMatrix* canvas, IGameState gameState ) : 
     _canvas( canvas ), _gameState( gameState ), _setHistoryText( gameState ) {
     FontLoader smallNumberFontLoader( LITTLE_FONT );
     rgb_matrix::Font smallNumberFont;

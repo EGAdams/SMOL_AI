@@ -10,21 +10,21 @@
 class History;
 class Mode1Functions {
  public:
-  Mode1Functions(Player* player1,
-                 Player* player2,
-                 PinInterface* pinInterface,
-                 GameState* gameState,
-                 History* history);
+  Mode1Functions( IPlayer* player1,
+                  IPlayer* player2,
+                  IPinInterface* pinInterface,
+                  IGameState* gameState,
+                  IHistory* history);
   ~Mode1Functions();
   void mode1ButtonFunction();
   void mode1ServeFunction();
   void pointFlash();
 
  private:
-  Player* _player1;
-  Player* _player2;
-  GameState* _gameState;
-  History* _history;
+  IPlayer* _player1;
+  IPlayer* _player2;
+  IGameState* _gameState;
+  IHistory* _history;
   Undo _undo;
   PointLeds _pointLeds;
   Mode1Score _mode1Score;

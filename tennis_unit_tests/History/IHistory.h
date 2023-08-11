@@ -9,7 +9,7 @@
 class IHistory {
 public:
     virtual ~IHistory() {}
-    virtual void push( GameState gameState );
-    virtual GameState pop();
+    virtual void push( GameState gameState ) = 0;
+    virtual GameState pop() = 0;
     virtual int size() = 0; };
 #endif // IHISTORY_H

@@ -6,8 +6,8 @@
 
 Inputs::Inputs( IPlayer* player1,
     IPlayer* player2,
-    PinInterface* pinInterface,
-    GameState* gameState )
+    IPinInterface* pinInterface,
+    IGameState* gameState )
     : _player1( player1 ),
     _player2( player2 ),
     _pinInterface( pinInterface ),

@@ -1,6 +1,6 @@
 #include "SetHistoryText.h"
 
-SetHistoryText::SetHistoryText( GameState* gameState ) : _gameState( gameState ) {}
+SetHistoryText::SetHistoryText( IGameState gameState ) : _gameState( gameState ) {}
 SetHistoryText::~SetHistoryText() { std::cout << "destructing SetHistoryText..." << std::endl; }
 
 std::string SetHistoryText::getSetHistoryText( int player ) {  
