@@ -10,7 +10,7 @@ Undo::Undo( IPlayer* player1, IPlayer* player2, IPinInterface* pinInterface, IGa
     _tieLeds( pinInterface ) {
         _logger = new Logger( "Undo" ); };
 Undo::~Undo(){
-    std::cout << "*** Undo destructor called. ***" << std::endl;
+    // std::cout << "*** Undo destructor called. ***" << std::endl;
     delete _logger; };
 
 void Undo::memory() {

@@ -18,6 +18,9 @@ void PointLeds::setScoreBoard( ScoreBoard* scoreBoard ) {
     _scoreBoard = scoreBoard; }
 
 void PointLeds::updatePoints() {
+    if ( !_scoreBoard ) {
+        std::cerr << "Error: ScoreBoard object is not initialized in PointLeds." << std::endl; return; }
+        
     // std::cout << "calling _scoreBoard->update() from inside PointLeds... " << std::endl;
     _scoreBoard->update();
     // std::cout << "done calling _scoreBoard->update()... \n\n" << std::endl;
