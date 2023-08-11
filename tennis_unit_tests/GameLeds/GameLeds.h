@@ -1,7 +1,7 @@
 #ifndef GAME_LED_HEADER_H
 #define GAME_LED_HEADER_H
 
-#include "../PinInterface/PinInterface.h"
+#include "../PinInterface/IPinInterface.h"
 #include "../Player/Player.h"
 #include "../Arduino/Arduino.h"
 #include "../TennisConstants/TennisConstants.h"

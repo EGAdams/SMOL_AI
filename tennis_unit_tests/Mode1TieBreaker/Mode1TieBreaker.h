@@ -2,10 +2,9 @@
 #define Mode1TieBreaker_h
 #include "../Arduino/Arduino.h"
 #include "../GameLeds/GameLeds.h"
-#include "../GameLeds/GameLeds.h"
 #include "../GameTimer/GameTimer.h"
 #include "../PointLeds/PointLeds.h"
-#include "../PinInterface/PinInterface.h"
+#include "../PinInterface/IPinInterface.h"
 #include "../Player/Player.h"
 #include "../ServeLeds/ServeLeds.h"
 #include "../SetLeds/SetLeds.h"
@@ -13,6 +12,7 @@
 #include "../WinSequences/WinSequences.h"
 #include "../Undo/Undo.h"
 #include "../Inputs/Inputs.h"
+#include "../History/History.h"
 
 class Mode1TieBreaker {
  public:
@@ -20,7 +20,7 @@ class Mode1TieBreaker {
                    IPlayer* player2,
                    IPinInterface* pinInterface,
                    IGameState* gameState,
-                   History* history );
+                   IHistory* history );
   ~Mode1TieBreaker();
   void tieBreaker();
   void setTieBreaker();
@@ -49,7 +49,7 @@ class Mode1TieBreaker {
   IPlayer* _player2;
   IPinInterface* _pinInterface;
   IGameState* _gameState;
-  History* _history;
+  IHistory* _history;
   PointLeds _pointLeds;
   GameLeds _gameLeds;
   ServeLeds _serveLeds;

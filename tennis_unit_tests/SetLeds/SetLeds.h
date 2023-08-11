@@ -2,7 +2,7 @@
 #define SetLeds_h
 
 #include "../Arduino/Arduino.h"
-#include "../PinInterface/PinInterface.h"
+#include "../PinInterface/IPinInterface.h"
 #include "../Player/Player.h"
 #include "../ScoreBoard/ScoreBoard.h"
 

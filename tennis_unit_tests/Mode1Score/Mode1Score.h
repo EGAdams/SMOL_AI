@@ -13,6 +13,8 @@
 #include "../SetLeds/SetLeds.h"
 #include "../Undo/Undo.h"
 #include "../TennisConstants/TennisConstants.h"
+#include "../History/History.h"
+
 #include <iostream>
 
 class Mode1Score {
@@ -21,7 +23,7 @@ class Mode1Score {
                 IPlayer* player2,
                 IPinInterface* pinInterface,
                 IGameState* gameState,
-                History* history );
+                IHistory* history );
     ~Mode1Score();
     void mode1P1Score();
     void mode1P1Games();
@@ -39,7 +41,7 @@ class Mode1Score {
     IPlayer* _player1;
     IPlayer* _player2;
     IGameState* _gameState;
-    History* _history;
+    IHistory* _history;
     Mode1TieBreaker _Mode1TieBreaker;
     PointLeds _pointLeds;
     GameLeds _gameLeds;

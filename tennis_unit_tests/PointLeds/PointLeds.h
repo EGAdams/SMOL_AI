@@ -2,7 +2,7 @@
 #define PointLeds_h
 
 #include "../GameState/GameState.h"
-#include "../PinInterface/PinInterface.h"
+#include "../PinInterface/IPinInterface.h"
 #include "../Player/Player.h"
 #include "../Arduino/Arduino.h"
 #include "../ScoreBoard/ScoreBoard.h"
