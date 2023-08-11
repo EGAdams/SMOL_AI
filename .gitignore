@@ -23,3 +23,5 @@ tennis_unit_tests/TranslateConstant/*.o
 tennis_unit_tests/SetWin.o
 tennis_unit_tests/GameLedTranslator.o
 tennis_unit_tests/*.o
+lib/*.o
+tennis_unit_tests/**/*.o

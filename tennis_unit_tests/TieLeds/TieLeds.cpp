@@ -1,6 +1,6 @@
 #include "TieLeds.h"
 
-TieLeds::TieLeds(PinInterface* pinInterface) : _pinInterface(pinInterface) {}
+TieLeds::TieLeds( IPinInterface* pinInterface) : _pinInterface( pinInterface ) {}
 TieLeds::~TieLeds() {}
 
 void TieLeds::turnOff() {

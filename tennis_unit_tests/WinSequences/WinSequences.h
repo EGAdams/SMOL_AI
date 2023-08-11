@@ -20,9 +20,9 @@
 class WinSequences {
  public:
     WinSequences(  IPlayer* player1,
-                        IPlayer* player2,
-                        IPinInterface* pinInterface,
-                        IGameState* gameState);
+                   IPlayer* player2,
+                   IPinInterface* pinInterface,
+                   IGameState* gameState);
     ~WinSequences();
     void setScoreBoards( ScoreBoard* scoreBoard );
     void p1GameWinSequence();

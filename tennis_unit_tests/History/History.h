@@ -3,6 +3,7 @@
 
 #include "IHistory.h"
 #include <stack>
+#include "IHistory.h"
 #include "../GameState/GameState.h"
 #include "../Logger/Logger.h"
 
