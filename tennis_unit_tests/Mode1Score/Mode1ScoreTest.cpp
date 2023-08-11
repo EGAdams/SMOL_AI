@@ -9,8 +9,12 @@
 class Mode1ScoreTest : public ::testing::Test
 {
 protected:
+    IPlayerMock mockPlayer1;
+    IPlayerMock mockPlayer2;
+    IPinInterfaceMock mockPinInterface;
+    IGameStateMock mockGameState;
+
     void SetUp() override {
-        IPlayerMock mockPlayer1;
         IPlayerMock mockPlayer2;
         IPinInterfaceMock mockPinInterface;  // Hypothetical mock object
         IGameStateMock mockGameState;        // Hypothetical mock object
@@ -21,6 +25,12 @@ protected:
     std::shared_ptr<Mode1Score> mode1Score;
 };
 
+TEST_F( Mode1ScoreTest, TestCalculateScore ) {
+    // Replace this with your actual test
+    // Here's an example:
+    // EXPECT_EQ(mode1Score->calculateScore(), expectedScore);
+}
+
 int main(int argc, char** argv)
 {
     ::testing::InitGoogleTest(&argc, argv);
@@ -29,7 +39,6 @@ int main(int argc, char** argv)
 
 
 TEST_F(Mode1ScoreTest, UpdateScoreIncreasesPlayerScore) {
-    IPlayerMock mockPlayer1; 
     EXPECT_CALL(mockPlayer1, getPoints()).WillOnce(testing::Return(2));
     EXPECT_CALL(mockPlayer1, setPoints(3));
 
