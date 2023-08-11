@@ -1,6 +1,6 @@
 #include "Undo.h"
 
-Undo::Undo( IPlayer* player1, IPlayer* player2, PinInterface* pinInterface, GameState* gameState ): 
+Undo::Undo( IPlayer* player1, IPlayer* player2, IPinInterface* pinInterface, IGameState* gameState ): 
     _player1( player1 ), _player2( player2 ),
     _gameState( gameState ),
     _pointLeds( player1, player2, pinInterface ),
@@ -22,7 +22,7 @@ void Undo::memory() {
     _gameState->setPlayer1SetHistory( _player1->getSetHistory());
     _gameState->setPlayer2SetHistory( _player2->getSetHistory()); }
 
-void Undo::setMode1Undo( History* history ) {
+void Undo::setMode1Undo( IHistory* history ) {
     GameState gameState;
     gameState.setPlayer1Points( _player1->getPoints()); gameState.setP1PointsMem( _gameState->getP1PointsMem());
     gameState.setPlayer2Points( _player2->getPoints()); gameState.setP2PointsMem( _gameState->getP2PointsMem());
@@ -66,7 +66,7 @@ void Undo::setMode1Undo( History* history ) {
     // std::cout << "done pushing gamestate to history." << std::endl; 
 }
 
-void Undo::mode1Undo( History* history ) {
+void Undo::mode1Undo( IHistory* history ) {
     GameTimer::gameDelay( 100 );
     if ( history->size() == 0 ) { return; }
     // std::cout << "inside mode1Undo.  history->size()==" << history->size() << std::endl;

@@ -19,8 +19,8 @@ class Mode1Score {
  public:
     Mode1Score( IPlayer* player1,
                 IPlayer* player2,
-                PinInterface* pinInterface,
-                GameState* gameState,
+                IPinInterface* pinInterface,
+                IGameState* gameState,
                 History* history );
     ~Mode1Score();
     void mode1P1Score();
@@ -38,7 +38,7 @@ class Mode1Score {
     void _resetGame();
     IPlayer* _player1;
     IPlayer* _player2;
-    GameState* _gameState;
+    IGameState* _gameState;
     History* _history;
     Mode1TieBreaker _Mode1TieBreaker;
     PointLeds _pointLeds;

@@ -13,8 +13,8 @@ class Inputs {
  public:
   Inputs( IPlayer* player1,
           IPlayer* player2,
-         PinInterface* pinInterface,
-         GameState* gameState);
+          IPinInterface* pinInterface,
+          IGameState* gameState);
   ~Inputs();
   void readReset();
   void readUndoButton();
@@ -24,8 +24,8 @@ class Inputs {
  private:
   IPlayer* _player1;
   IPlayer* _player2;
-  PinInterface* _pinInterface;
-  GameState* _gameState;
+  IPinInterface* _pinInterface;
+  IGameState* _gameState;
   Reset _reset;
   Logger* _logger;
 };

@@ -1,11 +1,12 @@
 #ifndef History_h
 #define History_h
 
+#include "IHistory.h"
 #include <stack>
 #include "../GameState/GameState.h"
 #include "../Logger/Logger.h"
 
-class History {
+class History : public IHistory {
  public:
     History();
     ~History();

@@ -8,14 +8,14 @@
 
 class ServeLeds {
  public:
-  ServeLeds(PinInterface* pinInterface, GameState* gameState);
+  ServeLeds( IPinInterface* pinInterface, IGameState* gameState);
   ~ServeLeds();
   void updateServeLED();
   void serveSwitch();
 
  private:
-  PinInterface* _pinInterface;
-  GameState* _gameState;
+  IPinInterface* _pinInterface;
+  IGameState* _gameState;
 };
 
 #endif

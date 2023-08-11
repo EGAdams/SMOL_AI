@@ -14,7 +14,7 @@ class MatchWinSequence {
  public:
   MatchWinSequence();
   ~MatchWinSequence();
-  void run( IPlayer* player, GameState* gameState, GameLeds* gameLeds, SetLeds* setLeds );
+  void run( IPlayer* player, IGameState* gameState, GameLeds* gameLeds, SetLeds* setLeds );
 
  private:
 

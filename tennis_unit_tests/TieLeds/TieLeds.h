@@ -16,7 +16,7 @@ class TieLeds {
   void turnOn();
 
  private:
-  PinInterface* _pinInterface;
+  IPinInterface* _pinInterface;
 };
 
 #endif

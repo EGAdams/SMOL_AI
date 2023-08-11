@@ -5,7 +5,7 @@ class PinInterfaceTest : public ::testing::Test {  // Define a test fixture
 protected:
     PinState*                   pinState;
     std::map<std::string, int>  pinMap;
-    PinInterface*               pinInterface;
+    IPinInterface*               pinInterface;
 
     void SetUp() override {
         pinState         = new PinState( pinMap );

@@ -27,6 +27,10 @@ $(BUILD_DIR)/%.o: %.cpp # Compile the unit test source file
 	@mkdir -p $(@D)
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
+$(BUILD_DIR)/GameLedTranslator.o: ../GameLedTranslator/GameLedTranslator.cpp
+	@mkdir -p $(@D)
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
 $(BUILD_DIR)/FontLoader.o: ../FontLoader/FontLoader.cpp
 	@mkdir -p $(@D)
 	$(CXX) $(CXXFLAGS) -c -o $@ $<

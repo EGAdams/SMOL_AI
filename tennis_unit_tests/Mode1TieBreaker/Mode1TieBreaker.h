@@ -18,8 +18,8 @@ class Mode1TieBreaker {
  public:
   Mode1TieBreaker( IPlayer* player1,
                    IPlayer* player2,
-                   PinInterface* pinInterface,
-                   GameState* gameState,
+                   IPinInterface* pinInterface,
+                   IGameState* gameState,
                    History* history );
   ~Mode1TieBreaker();
   void tieBreaker();
@@ -47,8 +47,8 @@ class Mode1TieBreaker {
  private:
   IPlayer* _player1;
   IPlayer* _player2;
-  PinInterface* _pinInterface;
-  GameState* _gameState;
+  IPinInterface* _pinInterface;
+  IGameState* _gameState;
   History* _history;
   PointLeds _pointLeds;
   GameLeds _gameLeds;

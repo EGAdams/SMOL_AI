@@ -13,8 +13,8 @@ class Reset {
  public:
   Reset( IPlayer*       player1,
          IPlayer*       player2,
-         PinInterface*  pinInterface,
-         GameState*     gameState );
+         IPinInterface*  pinInterface,
+         IGameState*     gameState );
   ~Reset();
   void resetScoreboard();
   void zeroPlayerValues();
@@ -25,8 +25,8 @@ class Reset {
  private:
   IPlayer* _player1;
   IPlayer* _player2;
-  PinInterface* _pinInterface;
-  GameState* _gameState;
+  IPinInterface* _pinInterface;
+  IGameState* _gameState;
   Logger* _logger;
 };
 

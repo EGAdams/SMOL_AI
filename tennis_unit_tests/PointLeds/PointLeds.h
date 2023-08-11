@@ -9,7 +9,7 @@
 
 class PointLeds {
  public:
-  PointLeds( IPlayer* player1, IPlayer* player2, PinInterface* pinInterface );
+  PointLeds( IPlayer* player1, IPlayer* player2, IPinInterface* pinInterface );
   PointLeds( IPlayer* player1, IPlayer* player2, ScoreBoard*   scoreBoard   );
   ~PointLeds();
   void updatePoints();
@@ -19,7 +19,7 @@ class PointLeds {
  private:
   IPlayer* _player1;
   IPlayer* _player2;
-  PinInterface* _pinInterface;
+  IPinInterface* _pinInterface;
   ScoreBoard* _scoreBoard;
 };
 

@@ -10,7 +10,7 @@
 
 class GameLeds {
  public:
-  GameLeds( IPlayer* player1, IPlayer* player2, PinInterface* pinInterface );
+  GameLeds( IPlayer* player1, IPlayer* player2, IPinInterface* pinInterface );
   ~GameLeds();
   void updateGames();
   void setScoreBoard( ScoreBoard* scoreBoard );
@@ -18,7 +18,7 @@ class GameLeds {
  private:
   IPlayer*            _player1;
   IPlayer*            _player2;
-  PinInterface*      _pinInterface;
+  IPinInterface*      _pinInterface;
   ScoreBoard*        _scoreBoard;
   GameLedTranslator* _gameLedTranslator;
 };

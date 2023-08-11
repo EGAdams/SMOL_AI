@@ -9,7 +9,7 @@
 
 class GameLedTranslator {
  public:
-  GameLedTranslator( IPlayer* player1, IPlayer* player2, PinInterface* pinInterface );
+  GameLedTranslator( IPlayer* player1, IPlayer* player2, IPinInterface* pinInterface );
   ~GameLedTranslator();
   void drawGameLeds();
   void setScoreBoard( ScoreBoard* scoreBoard );
@@ -17,7 +17,7 @@ class GameLedTranslator {
  private:
   IPlayer* _player1;
   IPlayer* _player2;
-  PinInterface* _pinInterface;
+  IPinInterface* _pinInterface;
   ScoreBoard* _scoreBoard;
 };
 

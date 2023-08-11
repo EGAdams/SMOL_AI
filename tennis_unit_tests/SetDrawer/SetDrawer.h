@@ -18,7 +18,7 @@
 
 class SetDrawer {
  public:
-    SetDrawer( RGBMatrix* canvas, GameState* gameState );
+    SetDrawer( RGBMatrix* canvas, IGameState* gameState );
     SetDrawer();
     ~SetDrawer();
     std::string  cloaker( std::string stringToCloak, int sectionToCloak );
@@ -29,6 +29,6 @@ class SetDrawer {
  private: 
     rgb_matrix::Font    _little_font;
     RGBMatrix*          _canvas;
-    GameState*          _gameState; 
+    IGameState*          _gameState; 
     SetHistoryText      _setHistoryText; };
 #endif

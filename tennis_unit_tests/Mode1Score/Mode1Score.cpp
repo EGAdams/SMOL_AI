@@ -1,7 +1,7 @@
 #include "Mode1Score.h"
 
 Mode1Score::Mode1Score( IPlayer* player1, IPlayer* player2,
-    PinInterface* pinInterface, GameState* gameState, History* history ) :
+    IPinInterface* pinInterface, IGameState* gameState, History* history ) :
     _player1( player1 ),
     _player2( player2 ),
     _gameState( gameState ),
