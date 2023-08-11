@@ -1,7 +1,7 @@
 #include "GameLeds.h"
 
 GameLeds::~GameLeds() {
-    std::cout << "*** GameLeds destructor called. ***" << std::endl;
+    // std::cout << "*** GameLeds destructor called. ***" << std::endl;
     delete _gameLedTranslator; }
 
 GameLeds::GameLeds( IPlayer* player1, IPlayer* player2, IPinInterface* pinInterface )
