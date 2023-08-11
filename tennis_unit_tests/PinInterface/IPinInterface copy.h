@@ -2,7 +2,6 @@
 
 #include <map>
 #include <string>
-#include "../PinState/PinState.h"
 
 class IPinInterface {
 public:

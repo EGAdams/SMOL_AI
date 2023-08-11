@@ -1,6 +1,7 @@
 #ifndef History_h
 #define History_h
 
+#include "IHistory.h"
 #include <stack>
 #include "IHistory.h"
 #include "../GameState/GameState.h"

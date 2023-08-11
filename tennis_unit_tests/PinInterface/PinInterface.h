@@ -6,7 +6,7 @@
 #include "../Arduino/Arduino.h"
 #include <map>
 
-class PinInterface {
+class PinInterface : public IPinInterface {
   public:
     PinInterface( IPinState* pinState );
     virtual ~PinInterface();

@@ -25,7 +25,7 @@
 
 //     IPlayer*         player_1;
 //     IPlayer*         player_2;
-//     IGameState*      gameState;
+//     IGameState      gameState;
 //     SetHistoryText* setHistoryText; 
 //     ScoreBoard*     scoreboard; 
 //     GameTimer       gameTimer; };

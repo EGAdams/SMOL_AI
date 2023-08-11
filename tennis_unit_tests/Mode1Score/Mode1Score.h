@@ -8,12 +8,12 @@
 #include "../Mode1TieBreaker/Mode1TieBreaker.h"
 #include "../WinSequences/WinSequences.h"
 #include "../PointLeds/PointLeds.h"
-#include "../PinInterface/IPinInterface.h"
+#include "../PinInterface/PinInterface.h"
 #include "../Player/Player.h"
 #include "../SetLeds/SetLeds.h"
 #include "../Undo/Undo.h"
 #include "../TennisConstants/TennisConstants.h"
-#include "../History/IHistory.h"
+#include "../History/History.h"
 
 #include <iostream>
 

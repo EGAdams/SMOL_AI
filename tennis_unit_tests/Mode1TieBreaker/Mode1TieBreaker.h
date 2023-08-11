@@ -5,14 +5,14 @@
 #include "../GameTimer/GameTimer.h"
 #include "../PointLeds/PointLeds.h"
 #include "../PinInterface/IPinInterface.h"
-#include "../Player/IPlayer.h"
+#include "../Player/Player.h"
 #include "../ServeLeds/ServeLeds.h"
 #include "../SetLeds/SetLeds.h"
 #include "../WatchTimer/WatchTimer.h"
 #include "../WinSequences/WinSequences.h"
 #include "../Undo/Undo.h"
 #include "../Inputs/Inputs.h"
-#include "../History/IHistory.h"
+#include "../History/History.h"
 
 class Mode1TieBreaker {
  public:
