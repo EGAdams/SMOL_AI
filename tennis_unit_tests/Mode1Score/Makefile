@@ -9,25 +9,32 @@ LDFLAGS = -L$(GTEST_DIR)/lib -lgtest -lgtest_main -lgmock -lgmock_main -pthread
 TARGET = run_tests
 
 # Define our source and object files
-SOURCES = Mode1Score.cpp Mode1ScoreTest.cpp        \
-		  ../Mode1TieBreaker/Mode1TieBreaker.cpp   \
-		  ../GameLeds/GameLeds.cpp			       \
-		  ../GameTimer/GameTimer.cpp		 	   \
-		  ../GameState/GameState.cpp			   \
-		  ../GameWinSequence/GameWinSequence.cpp   \
-		  ../MatchWinSequence/MatchWinSequence.cpp \
-		  ../Inputs/Inputs.cpp					   \
-		  ../WinSequences/WinSequences.cpp	       \
-		  ../PointLeds/PointLeds.cpp			   \
-		  ../PinInterface/PinInterface.cpp		   \
-		  ../Player/Player.cpp					   \
-		  ../SetLeds/SetLeds.cpp				   \
-		  ../ServeLeds/ServeLeds.cpp			   \
-		  ../Undo/Undo.cpp						   \
-		  ../TennisConstants/TennisConstants.cpp   \
-		  ../History/History.cpp				   \
-		  ../WatchTimer/WatchTimer.cpp			   \
-		  ../WinSequences/WinSequences.cpp		   \
+SOURCES = Mode1Score.cpp Mode1ScoreTest.cpp          \
+		  ../Mode1TieBreaker/Mode1TieBreaker.cpp     \
+		  ../GameLeds/GameLeds.cpp			         \
+		  ../GameTimer/GameTimer.cpp		 	     \
+		  ../GameState/GameState.cpp			     \
+		  ../GameWinSequence/GameWinSequence.cpp     \
+		  ../GameLedTranslator/GameLedTranslator.cpp \
+		  ../MatchWinSequence/MatchWinSequence.cpp 	 \
+		  ../Inputs/Inputs.cpp					     \
+		  ../Logger/Logger.cpp	   				     \
+		  ../PointLeds/PointLeds.cpp			     \
+		  ../PinInterface/PinInterface.cpp		     \
+		  ../Player/Player.cpp					     \
+		  ../Reset/Reset.cpp					     \
+		  ../ScoreBoard/ScoreBoard.cpp			     \
+		  ../SetHistoryText/SetHistoryText.cpp	     \
+		  ../SetLeds/SetLeds.cpp				     \
+		  ../ServeLeds/ServeLeds.cpp			     \
+		  ../SetWin/SetWin.cpp					     \
+		  ../SetDrawer/SetDrawer.cpp			     \
+		  ../Undo/Undo.cpp						     \
+		  ../TennisConstants/TennisConstants.cpp     \
+		  ../TieLeds/TieLeds.cpp				     \
+		  ../History/History.cpp				     \
+		  ../WatchTimer/WatchTimer.cpp			     \
+		  ../WinSequences/WinSequences.cpp		     \
 
 OBJECTS = $(SOURCES:.cpp=.o)
 
