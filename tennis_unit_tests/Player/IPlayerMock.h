@@ -25,6 +25,8 @@ public:
     MOCK_METHOD(int, getSetting, (), (override));
     MOCK_METHOD(int, incrementSetting, (), (override));
     MOCK_METHOD(int, number, (), (override));
+    MOCK_METHOD(int,  getServe , (), (override));
+    MOCK_METHOD(void, setServe, (int serve), (override));
     MOCK_METHOD(void, setServeSwitch, (int serve_switch), (override));
     MOCK_METHOD(int, getServeSwitch, (), (override));
 
