@@ -17,14 +17,13 @@ protected:
     std::unique_ptr<ScoreBoard> scoreBoard;
 
     void SetUp() override {
-        // Set expectations to suppress warnings
         EXPECT_CALL(mockPlayer1, setOpponent(testing::_)).Times(1);
         EXPECT_CALL(mockPlayer2, setOpponent(testing::_)).Times(1);
         EXPECT_CALL(mockPlayer1, getPoints()).Times(testing::AnyNumber());
-        EXPECT_CALL(mockPlayer1, getServe()).Times(testing::AnyNumber());
+        EXPECT_CALL(mockPlayer1, getServe()).Times(testing::AnyNumber()); // Added this line
         EXPECT_CALL(mockPlayer1, number()).Times(testing::AnyNumber());
         EXPECT_CALL(mockPlayer2, getPoints()).Times(testing::AnyNumber());
-        EXPECT_CALL(mockPlayer2, getServe()).Times(testing::AnyNumber());
+        EXPECT_CALL(mockPlayer2, getServe()).Times(testing::AnyNumber()); // Added this line
         EXPECT_CALL(mockPlayer2, number()).Times(testing::AnyNumber());
         EXPECT_CALL(mockGameState, getCurrentAction()).Times(testing::AnyNumber());
 
