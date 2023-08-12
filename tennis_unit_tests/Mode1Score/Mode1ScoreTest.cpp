@@ -20,29 +20,26 @@ protected:
         IGameStateMock mockGameState;        // Hypothetical mock object
         auto historyMock = std::make_shared<IHistoryMock>();
         mode1Score = std::make_shared<Mode1Score>( &mockPlayer1, &mockPlayer2, &mockPinInterface, &mockGameState, historyMock.get());
-    }
+        ScoreBoard scoreBoard( &mockPlayer1, &mockPlayer2, &mockGameState );
+        mode1Score->setScoreBoard( &scoreBoard );
+ }
 
     std::shared_ptr<Mode1Score> mode1Score;
 };
 
-TEST_F( Mode1ScoreTest, TestCalculateScore ) {
-    // Replace this with your actual test
-    // Here's an example:
-    // EXPECT_EQ(mode1Score->calculateScore(), expectedScore);
-}
 
-int main(int argc, char** argv)
-{
-    ::testing::InitGoogleTest(&argc, argv);
+int main( int argc, char** argv ) {
+    ::testing::InitGoogleTest( &argc, argv );
     return RUN_ALL_TESTS();
 }
 
 
-TEST_F(Mode1ScoreTest, UpdateScoreIncreasesPlayerScore) {
-    EXPECT_CALL(mockPlayer1, getPoints()).WillOnce(testing::Return(2));
-    EXPECT_CALL(mockPlayer1, setPoints(3));
-
-    mode1Score->updateScore(&mockPlayer1);
+TEST_F( Mode1ScoreTest, UpdateScoreIncreasesPlayerScore ) {
+    EXPECT_CALL(mockPlayer1, getPoints()).WillOnce( testing::Return( 2 ));
+    EXPECT_CALL(mockPlayer1, setPoints( 3 ));
+    mode1Score->updateScore( &mockPlayer1 );
+    std::cout << "mockPlayer1.getPoints(): " << mockPlayer1.getPoints() << std::endl;
+    EXPECT_EQ( 1, mockPlayer1.getPoints());
 }
 
 TEST_F(Mode1ScoreTest, TestCalculateScore)

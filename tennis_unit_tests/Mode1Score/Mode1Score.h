@@ -14,6 +14,7 @@
 #include "../Undo/Undo.h"
 #include "../TennisConstants/TennisConstants.h"
 #include "../History/History.h"
+#include "../ScoreBoard/ScoreBoard.h"
 
 #include <iostream>
 
