@@ -17,24 +17,32 @@ protected:
     std::unique_ptr<ScoreBoard> scoreBoard;
 
     void SetUp() override {
-        EXPECT_CALL(mockPlayer1, setOpponent(testing::_)).Times(1);
-        EXPECT_CALL(mockPlayer2, setOpponent(testing::_)).Times(1);
-        EXPECT_CALL(mockPlayer1, getPoints()).Times(testing::AnyNumber());
-        EXPECT_CALL(mockPlayer1, getServe()).Times(testing::AnyNumber()); // Added this line
-        EXPECT_CALL(mockPlayer1, number()).Times(testing::AnyNumber());
-        EXPECT_CALL(mockPlayer2, getPoints()).Times(testing::AnyNumber());
-        EXPECT_CALL(mockPlayer2, getServe()).Times(testing::AnyNumber()); // Added this line
-        EXPECT_CALL(mockPlayer2, number()).Times(testing::AnyNumber());
-        EXPECT_CALL(mockGameState, getCurrentAction()).Times(testing::AnyNumber());
+        mockPlayer1.setOpponent( &mockPlayer2 );
+        mockPlayer2.setOpponent( &mockPlayer1 );
 
-        mockPlayer1.setOpponent(&mockPlayer2);
-        mockPlayer2.setOpponent(&mockPlayer1);
+        // Add the ON_CALL statements here
+        ON_CALL( mockPlayer1, getPoints()).WillByDefault( testing::Return( 0 ));
+        ON_CALL( mockPlayer1, getServe()).WillByDefault( testing::Return( 0 ));
+        ON_CALL( mockPlayer1, setOpponent( testing::_ )).WillByDefault( testing::Return());
+        ON_CALL( mockPlayer1, number()).WillByDefault( testing::Return( 0 ));
+
+        ON_CALL( mockPlayer2, getPoints()).WillByDefault( testing::Return( 0 ));
+        ON_CALL( mockPlayer2, getServe()).WillByDefault( testing::Return( 0 ));
+        ON_CALL( mockPlayer2, setOpponent( testing::_ )).WillByDefault( testing::Return());
+        ON_CALL( mockPlayer2, number()).WillByDefault( testing::Return( 0 ));
+
+        ON_CALL(mockGameState, getCurrentAction()).WillByDefault( testing::Return( "" ));
+
+        // Setting expectations
+        EXPECT_CALL(mockPlayer1, getServe()).Times(testing::AnyNumber());
+        EXPECT_CALL(mockPlayer2, getServe()).Times(testing::AnyNumber());
 
         historyMock = std::make_shared<IHistoryMock>();
-        mode1Score  = std::make_shared<Mode1Score>(&mockPlayer1, &mockPlayer2, &mockPinInterface, &mockGameState, historyMock.get());
+        mode1Score  = std::make_shared<Mode1Score>( &mockPlayer1, &mockPlayer2, &mockPinInterface, &mockGameState, historyMock.get());
         scoreBoard  = std::make_unique<ScoreBoard>(&mockPlayer1, &mockPlayer2, &mockGameState);
-        mode1Score->setScoreBoard(scoreBoard.get()); 
+        mode1Score->setScoreBoard( scoreBoard.get()); 
     }
+
 };
 
 TEST_F(Mode1ScoreTest, TestPlayerPointsEqualOpponentPoints) {
