@@ -14,7 +14,7 @@ PointLeds::PointLeds( IPlayer* player1,
 PointLeds::~PointLeds() {}
 
 void PointLeds::setScoreBoard( ScoreBoard* scoreBoard ) { 
-    std::cout << "*** setting _scoreBoard in PointLeds object ... ***" << std::endl;
+    // std::cout << "*** setting _scoreBoard in PointLeds object ... ***" << std::endl;
     _scoreBoard = scoreBoard; }
 
 void PointLeds::updatePoints() {

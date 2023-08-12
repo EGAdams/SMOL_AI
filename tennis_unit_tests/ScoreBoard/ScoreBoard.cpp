@@ -4,7 +4,7 @@ ScoreBoard::ScoreBoard( IPlayer* player1, IPlayer* player2, IGameState* gameStat
     _player1( player1 ), _player2( player2 ), _gameState( gameState ) {
     printf( "Constructing ScoreBoard...\n" );
     if ( MATRIX_DISABLED == 1 ) { 
-        printf( "MATRIX_DISABLED == 1 is true.  Skipping matrix setup...\n" );
+        // printf( "MATRIX_DISABLED == 1 is true.  Skipping matrix setup...\n" );
     } else {
         printf( "MATRIX_DISABLED == 1 is false.  Setting up matrix...\n" );
         Color pipe_color( 255, 255, 0 ); // yellow
@@ -65,11 +65,11 @@ ScoreBoard::ScoreBoard( IPlayer* player1, IPlayer* player2, IGameState* gameStat
 }
 
 ScoreBoard::~ScoreBoard() {
-    std::cout << "destroying ScoreBoard..." << std::endl;
+    // std::cout << "destroying ScoreBoard..." << std::endl;
     if ( _canvas != NULL ) {
         std::cout << "NOT deleting _canvas..." << std::endl;
         // delete _canvas.get(); // this causes some error.  only one scoreBoard is created anyway.
-    } else { std::cout << "*** WARNING: _canvas == NULL, not deleting. ***" << std::endl; }}
+    } else { /* std::cout << "*** WARNING: _canvas == NULL, not deleting. ***" << std::endl; */ }}
 
 void ScoreBoard::drawGames() {  std::cout << "inside ScoreBoard::drawGames()" << std::endl; }
 
@@ -78,10 +78,10 @@ bool ScoreBoard::hasCanvas() {
     } else { std::cout << "*** WARNING: canvas is NULL ***" << std::endl; return false; }}
 
 void ScoreBoard::update() {
-    std::cout << "gamestate current action: " << _gameState->getCurrentAction() << std::endl;
+    // std::cout << "gamestate current action: " << _gameState->getCurrentAction() << std::endl;
     clearScreen();
-    std::cout << "inside ScoreBoard::update()  player1 points: " << _player1->getPoints() << std::endl;
-    std::cout << "inside ScoreBoard::update()  player2 points: " << _player2->getPoints() << std::endl;
+    // std::cout << "inside ScoreBoard::update()  player1 points: " << _player1->getPoints() << std::endl;
+    // std::cout << "inside ScoreBoard::update()  player2 points: " << _player2->getPoints() << std::endl;
     _drawPlayerScore( _player1 ); _drawPlayerScore( _player2 );
     
     if ( MATRIX_DISABLED == 1 ) {
