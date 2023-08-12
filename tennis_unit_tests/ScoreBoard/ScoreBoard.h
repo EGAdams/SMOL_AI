@@ -25,6 +25,7 @@ public:
     bool hasCanvas();
     void clearScreen();
     void drawGames();
+    std::string drawPlayerScore(  IPlayer* player );
     
 private:
     IPlayer*                        _player1;
@@ -38,7 +39,6 @@ private:
     std::unique_ptr<SetDrawer>     _setDrawer;
     std::unique_ptr<RGBMatrix>     _canvas;
 
-    void _drawPlayerScore(  IPlayer* player        );
     int  _characterOffset(  std::string character );
     std::string _translate( int raw_score         ); };
 #endif

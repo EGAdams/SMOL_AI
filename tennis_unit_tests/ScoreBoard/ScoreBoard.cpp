@@ -82,7 +82,7 @@ void ScoreBoard::update() {
     clearScreen();
     // std::cout << "inside ScoreBoard::update()  player1 points: " << _player1->getPoints() << std::endl;
     // std::cout << "inside ScoreBoard::update()  player2 points: " << _player2->getPoints() << std::endl;
-    _drawPlayerScore( _player1 ); _drawPlayerScore( _player2 );
+    drawPlayerScore( _player1 ); drawPlayerScore( _player2 );
     
     if ( MATRIX_DISABLED == 1 ) {
         // std::cout << "MATRIX_DISABLED == 1 is true.  skipping blink..." << std::endl;
@@ -102,13 +102,16 @@ void ScoreBoard::clearScreen() {
         if ( !hasCanvas()) { std::cout << "*** ERROR: canvas == NULL.  exiting... ***" << std::endl; exit( 1 ); }
         Color flood_color( 0, 0, 0 ); _canvas->Fill( flood_color.r, flood_color.g, flood_color.b ); }}
 
-void ScoreBoard::_drawPlayerScore( IPlayer* player ) {
+std::string ScoreBoard::drawPlayerScore( IPlayer* player ) {
     std::string serve_bar = _gameState->getServe() == player->number() ? "I" : " "; // or p1 serve and swap
     std::string score = _translate( player->getPoints());
-    if( MATRIX_DISABLED == 1 ) {
-        player->number() == PLAYER_1_INITIALIZED ?  // type player 1 score, else type player 2 score
-        std::cout << "PLAYER 1: ////// " << serve_bar << " " << score << " ////// " << std::endl :
-        std::cout << "PLAYER 2: ////// " << serve_bar << " " << score << " ////// " << std::endl;
+    if( MATRIX_DISABLED == 1 ) {  // type player 1 score, else type player 2 score
+        std::string player1_score = "PLAYER 1: ////// " + serve_bar + " " + score + " ////// ";
+        std::string player2_score = "PLAYER 2: ////// " + serve_bar + " " + score + " ////// ";
+        std::string scoreboard_output = player->number() == PLAYER_1_INITIALIZED ?  // type player 1 score, else type player 2 score
+            player1_score : player2_score;
+        std::cout << scoreboard_output << std::endl;
+        return scoreboard_output;
     } else {
         int vertical_offset = player->number() == 0 ? 0 : _big_number_font.height();
         _pipeDrawer->DrawNumber(serve_bar, 1, _big_number_font.baseline() + vertical_offset ); // draw pipe
