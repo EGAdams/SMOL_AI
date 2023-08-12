@@ -51,29 +51,25 @@ protected:
     }
 };
 
-TEST_F( Mode1ScoreTest, TestPlayerPointsEqualOpponentPoints ) {
-    // Arrange
-    testing::NiceMock< IPlayerMock > mockPlayer1;
-    testing::NiceMock< IPlayerMock > mockPlayer2;
+TEST_F(Mode1ScoreTest, TestPlayerPointsEqualOpponentPoints) {
+    std::cout << "Constructing Mode1Score..." << std::endl;
+    Mode1Score mode1Score( &mockPlayer1, &mockPlayer2, &mockPinInterface, &mockGameState, historyMock.get());
 
+    // Set up the initial scenario using the mock players
     ON_CALL(mockPlayer1, getPoints()).WillByDefault( testing::Return( 3 ));
     ON_CALL(mockPlayer2, getPoints()).WillByDefault( testing::Return( 3 ));
 
-    // Print out mock player points
+    EXPECT_CALL(mockPlayer1, setPoints( 3 )).Times( 1 );
+    EXPECT_CALL(mockPlayer2, setPoints( 3 )).Times( 1 );
+
     std::cout << "Mock player1 points: " << mockPlayer1.getPoints() << std::endl;
     std::cout << "Mock player2 points: " << mockPlayer2.getPoints() << std::endl;
 
-    ON_CALL(mockPlayer1, getOpponent()).WillByDefault(Return( &mockPlayer2 ));
-    ON_CALL(mockPlayer2, getOpponent()).WillByDefault(Return( &mockPlayer1 ));
-
-    // Act
-    std::cout << "About to call scoreBoard->update() in test..." << std::endl;
-    scoreBoard->update();
-
-    // Assert
-    EXPECT_CALL( mockPlayer1, setPoints( 3 )).Times( 1 );
-    EXPECT_CALL( mockPlayer2, setPoints( 3 )).Times( 1 );
+    std::cout << "About to call mode1Score.updateScore() in test..." << std::endl;
+    mode1Score.updateScore(&mockPlayer1);
 }
+
+
 
 
 TEST_F(Mode1ScoreTest, TestPlayerWinsGame) {
