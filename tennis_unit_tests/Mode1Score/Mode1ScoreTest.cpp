@@ -31,86 +31,39 @@ protected:
 };
 
 TEST_F( Mode1ScoreTest, TestPlayerPointsEqualOpponentPoints) {
-    std::cout << "Constructing Mode1Score..." << std::endl;
-    // Mode1Score mode1Score( &mockPlayer1, &mockPlayer2, &mockPinInterface, &mockGameState, historyMock.get());
-
-    // Set up the initial scenario using the mock players
-    ON_CALL( mockPlayer1, getPoints()).WillByDefault( testing::Return( 3 ));
+    std::cout << "TestPlayerPointsEqualOpponentPoints..." << std::endl;
+    ON_CALL( mockPlayer1, getPoints()).WillByDefault( testing::Return( 3 ));    // arange
     ON_CALL( mockPlayer2, getPoints()).WillByDefault( testing::Return( 3 ));
-
-    EXPECT_CALL( mockPlayer1, setPoints( 3 )).Times( 1 );
+    EXPECT_CALL( mockPlayer1, setPoints( 3 )).Times( 1 );           
     EXPECT_CALL( mockPlayer2, setPoints( 3 )).Times( 1 );
-
-    std::cout << "Mock player1 points: " << mockPlayer1.getPoints() << std::endl;
-    std::cout << "Mock player2 points: " << mockPlayer2.getPoints() << std::endl;
-
-    std::cout << "About to call mode1Score.updateScore() in test..." << std::endl;
-    mode1Score->updateScore( &mockPlayer1 );
+    mode1Score->updateScore( &mockPlayer1 );                                    // act            
+    std::cout << " finished TestPlayerPointsEqualOpponentPoints." << std::endl;
+    ASSERT_EQ( 3, mockPlayer1.getPoints());                                     // assert
+    ASSERT_EQ( 3, mockPlayer2.getPoints());           
 }
 
 TEST_F( Mode1ScoreTest, TestPlayerWinsGame ) {
-    // Mock expectations and test logic for the scenario where 
-    // player's points are equal to opponent's points.
-
-    // ON_CALL( mockPlayer1, getServe()).WillByDefault( testing::Return( 0 ));
-    // ON_CALL( mockPlayer2, getServe()).WillByDefault( testing::Return( 0 ));
-    // ON_CALL( mockGameState, getServe()).WillByDefault(testing::Return( 0 ));
+    // arange
+    ON_CALL( mockPlayer1, getPoints()).WillByDefault( testing::Return( 4 ));
+    ON_CALL( mockPlayer2, getPoints()).WillByDefault( testing::Return( 3 ));
     
-    // // Specify the expectation for the getServe() method
-    // EXPECT_CALL( mockPlayer1, getServe()).Times( testing::AnyNumber());
-    // EXPECT_CALL( mockPlayer2, getServe()).Times( testing::AnyNumber());
-    // EXPECT_CALL( mockGameState, getServe()).Times( testing::AnyNumber());
+    // act
+    mode1Score->updateScore( &mockPlayer1 );
 
-    // Rest of your test case...
+    // assert
+    ASSERT_EQ( 1, mockPlayer1.getGames());
+    ASSERT_EQ( 0, mockPlayer2.getGames());
 }
 
 TEST_F( Mode1ScoreTest, TestPlayerReaches4Points) {
     // Mock expectations and test logic for the scenario where the player's points reach 4.
-    // Mock expectations and test logic for the scenario where 
-    // player's points are equal to opponent's points.
 
-    // ON_CALL( mockPlayer1, getServe()).WillByDefault( testing::Return( 0 ));
-    // ON_CALL( mockPlayer2, getServe()).WillByDefault( testing::Return( 0 ));
-    // ON_CALL( mockGameState, getServe()).WillByDefault(testing::Return( 0 ));
-    
-    // // Specify the expectation for the getServe() method
-    // EXPECT_CALL( mockPlayer1, getServe()).Times( testing::AnyNumber());
-    // EXPECT_CALL( mockPlayer2, getServe()).Times( testing::AnyNumber());
-    // EXPECT_CALL( mockGameState, getServe()).Times( testing::AnyNumber());
-
-    // Rest of your test case...
 }
 
 TEST_F( Mode1ScoreTest, TestUpdateServeSwitch) {
-    // Mock expectations and test logic related to updating the serve switch.
-    // Mock expectations and test logic for the scenario where 
-    // player's points are equal to opponent's points.
-
-    // ON_CALL( mockPlayer1, getServe()).WillByDefault( testing::Return( 0 ));
-    // ON_CALL( mockPlayer2, getServe()).WillByDefault( testing::Return( 0 ));
-    // ON_CALL( mockGameState, getServe()).WillByDefault(testing::Return( 0 ));
-    
-    // // Specify the expectation for the getServe() method
-    // EXPECT_CALL( mockPlayer1, getServe()).Times( testing::AnyNumber());
-    // EXPECT_CALL( mockPlayer2, getServe()).Times( testing::AnyNumber());
-    // EXPECT_CALL( mockGameState, getServe()).Times( testing::AnyNumber());
-
     // Rest of your test case...
 }
 
 TEST_F( Mode1ScoreTest, TestUpdateSetHistory) {
-    // Mock expectations and test logic for updating the set history.
-    // Mock expectations and test logic for the scenario where 
-    // player's points are equal to opponent's points.
-
-    // ON_CALL( mockPlayer1, getServe()).WillByDefault( testing::Return( 0 ));
-    // ON_CALL( mockPlayer2, getServe()).WillByDefault( testing::Return( 0 ));
-    // ON_CALL( mockGameState, getServe()).WillByDefault(testing::Return( 0 ));
-    
-    // // Specify the expectation for the getServe() method
-    // EXPECT_CALL( mockPlayer1, getServe()).Times( testing::AnyNumber());
-    // EXPECT_CALL( mockPlayer2, getServe()).Times( testing::AnyNumber());
-    // EXPECT_CALL( mockGameState, getServe()).Times( testing::AnyNumber());
-
     // Rest of your test case...
 }
