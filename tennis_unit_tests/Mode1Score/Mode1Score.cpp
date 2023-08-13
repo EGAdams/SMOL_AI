@@ -36,24 +36,24 @@ void Mode1Score::updateScore(IPlayer* currentPlayer) {
     std::cout << "Current Player Points: " << currentPlayer->getPoints() << std::endl;
     std::cout << "Other Player Points: " << otherPlayer->getPoints() << std::endl;
 
-    if (currentPlayer->getPoints() >= 3) {
+    if ( currentPlayer->getPoints() >= 3) {
         std::cout << "Player points >= 3" << std::endl;  // Debug
 
-        if (currentPlayer->getPoints() == otherPlayer->getPoints()) {
+        if ( currentPlayer->getPoints() == otherPlayer->getPoints()) {
             std::cout << "Player points == Opponent points" << std::endl;  // Debug
             
-            currentPlayer->setPoints(3);
-            otherPlayer->setPoints(3);
-        } else if (currentPlayer->getPoints() > 3 && (currentPlayer->getPoints() - otherPlayer->getPoints()) > 1) {
-            currentPlayer->setGames(currentPlayer->getGames() + 1);
+            currentPlayer->setPoints( 3 );
+            otherPlayer->setPoints( 3 );
+        } else if ( currentPlayer->getPoints() > 3 && ( currentPlayer->getPoints() - otherPlayer->getPoints()) > 1) {
+            currentPlayer->setGames( currentPlayer->getGames() + 1 );
             _undo.memory();
             currentPlayer->number() == 1 ? mode1P1Games() : mode1P2Games();
         }
         
-        if (currentPlayer->getPoints() == 4) {
-            _gameState->setPointFlash(1);
+        if ( currentPlayer->getPoints() == 4) {
+            _gameState->setPointFlash( 1 );
             _gameState->setPreviousTime(GameTimer::gameMillis());
-            _gameState->setToggle(0);
+            _gameState->setToggle( 0 );
         }
     }
     _pointLeds.updatePoints();

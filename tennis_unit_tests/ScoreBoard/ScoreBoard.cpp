@@ -80,8 +80,8 @@ bool ScoreBoard::hasCanvas() {
 void ScoreBoard::update() {
     // std::cout << "gamestate current action: " << _gameState->getCurrentAction() << std::endl;
     clearScreen();
-    // std::cout << "inside ScoreBoard::update()  player1 points: " << _player1->getPoints() << std::endl;
-    // std::cout << "inside ScoreBoard::update()  player2 points: " << _player2->getPoints() << std::endl;
+    std::cout << "inside ScoreBoard::update()  player1 points: " << _player1->getPoints() << std::endl;
+    std::cout << "inside ScoreBoard::update()  player2 points: " << _player2->getPoints() << std::endl;
     drawPlayerScore( _player1 ); drawPlayerScore( _player2 );
     
     if ( MATRIX_DISABLED == 1 ) {
@@ -103,6 +103,7 @@ void ScoreBoard::clearScreen() {
         Color flood_color( 0, 0, 0 ); _canvas->Fill( flood_color.r, flood_color.g, flood_color.b ); }}
 
 std::string ScoreBoard::drawPlayerScore( IPlayer* player ) {
+    std::cout << "player->number(): " << player->number() << std::endl;
     std::string serve_bar = _gameState->getServe() == player->number() ? "I" : " "; // or p1 serve and swap
     std::string score = _translate( player->getPoints());
     if( MATRIX_DISABLED == 1 ) {  // type player 1 score, else type player 2 score
