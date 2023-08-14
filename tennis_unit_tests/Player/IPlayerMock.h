@@ -15,8 +15,6 @@ public:
     MOCK_METHOD(IPlayer*, getOpponent, (), (override));
     MOCK_METHOD(void, setSets, (IGameState* gameState, int sets), (override));
     MOCK_METHOD(int, getSets, (), (override));
-    MOCK_METHOD(void, setGames, (int games), (override));
-    MOCK_METHOD(int, getGames, (), (override));
     MOCK_METHOD(void, setMatches, (int matches), (override));
     MOCK_METHOD(int, getMatches, (), (override));
     MOCK_METHOD(void, setMode, (int mode), (override));
@@ -35,11 +33,10 @@ public:
     MOCK_METHOD((std::map<int, int>), getGameHistory, (), (override));
     MOCK_METHOD(void, setGameHistory, (int game, int score), (override));
 
+    void setGames(int newGames) override { games = newGames; }
+    int getGames() override { return games; }
 
-    
-    // Add mock methods for other IPlayer methods as needed
-    // For example:
-    // MOCK_METHOD(void, setOpponent, (IPlayer* opponent), (override));
-    // ... and so on for other methods
+  private:
+      int games = 0;
 };
 #endif

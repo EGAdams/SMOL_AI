@@ -43,27 +43,27 @@ TEST_F( Mode1ScoreTest, TestPlayerPointsEqualOpponentPoints) {
 }
 
 TEST_F( Mode1ScoreTest, TestPlayerWinsGame ) {
-    // arange
-    ON_CALL( mockPlayer1, getPoints()).WillByDefault( testing::Return( 4 ));
-    ON_CALL( mockPlayer2, getPoints()).WillByDefault( testing::Return( 3 ));
+    // arrange
+    EXPECT_CALL( mockPlayer1, getPoints()).Times(testing::AnyNumber()).WillRepeatedly(testing::Return( 5 ));
+    EXPECT_CALL( mockPlayer2, getPoints()).Times(testing::AnyNumber()).WillRepeatedly(testing::Return( 3 ));
     
     // act
     mode1Score->updateScore( &mockPlayer1 );
 
     // assert
     ASSERT_EQ( 1, mockPlayer1.getGames());
-    ASSERT_EQ( 0, mockPlayer2.getGames());
-}
+    ASSERT_EQ( 0, mockPlayer2.getGames());}
 
-TEST_F( Mode1ScoreTest, TestPlayerReaches4Points) {
-    // Mock expectations and test logic for the scenario where the player's points reach 4.
 
-}
+// TEST_F( Mode1ScoreTest, TestPlayerReaches4Points) {
+//     // Mock expectations and test logic for the scenario where the player's points reach 4.
 
-TEST_F( Mode1ScoreTest, TestUpdateServeSwitch) {
-    // Rest of your test case...
-}
+// }
 
-TEST_F( Mode1ScoreTest, TestUpdateSetHistory) {
-    // Rest of your test case...
-}
+// TEST_F( Mode1ScoreTest, TestUpdateServeSwitch) {
+//     // Rest of your test case...
+// }
+
+// TEST_F( Mode1ScoreTest, TestUpdateSetHistory) {
+//     // Rest of your test case...
+// }
