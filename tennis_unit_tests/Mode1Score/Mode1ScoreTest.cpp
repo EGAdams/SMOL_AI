@@ -15,19 +15,23 @@ protected:
     IPlayer* player1;
     IPlayer* player2;
     IGameState* gameState;
+    IPinInterface* pinInterface;
+    IPinState* pinState;
+    std::map< std::string, int > pin_map;
 
     void SetUp() override {
         std::cout << "Setting up Mode1ScoreTest..." << std::endl;
-        IGameState*     gameState = new GameState();
-        IPlayer*        player1   = new Player( gameState, PLAYER_1_INITIALIZED );
-        IPlayer*        player2   = new Player( gameState, PLAYER_2_INITIALIZED );
-        IHistory*       history   = new History();
-        std::map< std::string, int > pinMap = {{ "pin", 0 }};
-        IPinState*      pinState  = new PinState( pinMap );
-        IPinInterface*  pinInterface = new PinInterface( pinState );
+        gameState = new GameState();
+        player1 = new Player( gameState, PLAYER_1_INITIALIZED );
+        player2 = new Player( gameState, PLAYER_2_INITIALIZED ); 
+        player1->setOpponent( player1 ); player2->setOpponent( player1 );
+        history = new History();
+        pin_map = {{ "pin", 0 }};
+        pinState = new PinState( pin_map );
+        pinInterface = new PinInterface( pinState );
 
-        Mode1Score* mode1Score = new Mode1Score( player1, player2, pinInterface, gameState, history );
-        ScoreBoard* scoreBoard = new ScoreBoard( player1, player2, gameState );
+        mode1Score = new Mode1Score( player1, player2, pinInterface, gameState, history );
+        scoreBoard = new ScoreBoard( player1, player2, gameState );
         mode1Score->setScoreBoard( scoreBoard ); 
     }
 
@@ -38,7 +42,9 @@ protected:
         delete player1;
         delete player2;
         delete gameState;
-        delete history; }
+        delete history; 
+        delete pinInterface;
+        delete pinState; }
 };
 
 TEST_F( Mode1ScoreTest, TestFirstScore ) {   
@@ -52,7 +58,7 @@ TEST_F( Mode1ScoreTest, TestFirstScore ) {
     mode1Score->updateScore( player1 );
 
     ASSERT_EQ( "PLAYER 1: ////// I 15 //////", scoreBoard->drawPlayerScore( player1 ));
-    ASSERT_EQ( "PLAYER 2: ////// I 00 //////", scoreBoard->drawPlayerScore( player2 ));
+    ASSERT_EQ( "PLAYER 2: //////   00 //////", scoreBoard->drawPlayerScore( player2 ));
 }
 
 
@@ -86,3 +92,13 @@ TEST_F(Mode1ScoreTest, TestMode1P1Score_4Points) {
     EXPECT_EQ( player1->getPoints(), 4);
     EXPECT_EQ( player2->getPoints(), 2);
 }
+
+
+
+// TEST_F( Mode1ScoreTest, TestUpdateServeSwitch) {
+//     // Rest of your test case...
+// }
+
+// TEST_F( Mode1ScoreTest, TestUpdateSetHistory) {
+//     // Rest of your test case...
+// }
