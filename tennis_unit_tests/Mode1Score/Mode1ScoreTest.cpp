@@ -43,22 +43,35 @@ TEST_F( Mode1ScoreTest, TestPlayerPointsEqualOpponentPoints) {
 }
 
 TEST_F( Mode1ScoreTest, TestPlayerWinsGame ) {
-    // arrange
+    // arrange ( set up initial values )
     EXPECT_CALL( mockPlayer1, getPoints()).Times(testing::AnyNumber()).WillRepeatedly(testing::Return( 5 ));
     EXPECT_CALL( mockPlayer2, getPoints()).Times(testing::AnyNumber()).WillRepeatedly(testing::Return( 3 ));
     
-    // act
-    mode1Score->updateScore( &mockPlayer1 );
+    mode1Score->updateScore( &mockPlayer1 );    // act ( call the method that should change things )
 
-    // assert
-    ASSERT_EQ( 1, mockPlayer1.getGames());
+    ASSERT_EQ( 1, mockPlayer1.getGames());      // assert ( changed what it was supposed to? )
     ASSERT_EQ( 0, mockPlayer2.getGames());}
 
 
-// TEST_F( Mode1ScoreTest, TestPlayerReaches4Points) {
-//     // Mock expectations and test logic for the scenario where the player's points reach 4.
+TEST_F(Mode1ScoreTest, TestMode1P1Score_4Points) {
+    // Arrange
+    ON_CALL(mockPlayer1, getPoints()).WillByDefault(testing::Return(4));
+    ON_CALL(mockPlayer2, getPoints()).WillByDefault(testing::Return(2));
 
-// }
+    // The exact number of times these methods are called will depend on the
+    // implementation of `updateScore`. Adjust the numbers as needed.
+    EXPECT_CALL(mockPlayer1, getPoints()).Times(testing::AnyNumber());  // allow any number of calls
+    EXPECT_CALL(mockPlayer2, getPoints()).Times(testing::AnyNumber());  // allow any number of calls
+
+    // Act
+    mode1Score->updateScore(&mockPlayer1);
+
+    // Assert
+    EXPECT_EQ(mockPlayer1.getPoints(), 4);
+    EXPECT_EQ(mockPlayer2.getPoints(), 2);
+}
+
+
 
 // TEST_F( Mode1ScoreTest, TestUpdateServeSwitch) {
 //     // Rest of your test case...
