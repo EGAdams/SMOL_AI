@@ -31,25 +31,25 @@ void Mode1Score::_resetGame() {
     _pointLeds.updatePoints(); }
 
 void Mode1Score::updateScore(IPlayer* currentPlayer) {
-    std::cout << "Entering updateScore method..." << std::endl;
+    // std::cout << "Entering updateScore method..." << std::endl;
     IPlayer* otherPlayer = currentPlayer->getOpponent();
     std::cout << "Current Player Points: " << currentPlayer->getPoints() << std::endl;
     std::cout << "Other Player Points: " << otherPlayer->getPoints() << std::endl;
 
     if ( currentPlayer->getPoints() >= 3 ) {
-        std::cout << "Player points >= 3" << std::endl;  // Debug
+        // std::cout << "Player points >= 3" << std::endl;  // Debug
         int delta_score = currentPlayer->getPoints() - otherPlayer->getPoints();
-        std::cout << "delta_score: " << delta_score << std::endl;  // Debug
+        // std::cout << "delta_score: " << delta_score << std::endl;  // Debug
         if ( currentPlayer->getPoints() == otherPlayer->getPoints()) {
-            std::cout << "Player points == Opponent points" << std::endl;  // Debug
+            // std::cout << "Player points == Opponent points" << std::endl;  // Debug
             currentPlayer->setPoints( 3 );
             otherPlayer->setPoints( 3 );
         } else if ( delta_score > 1 ) {
-            std::cout << "current player games: " << currentPlayer->getGames() << std::endl;
+            // std::cout << "current player games: " << currentPlayer->getGames() << std::endl;
             currentPlayer->setGames( currentPlayer->getGames() + 1 );
-            std::cout << "current player games + 1: " << currentPlayer->getGames() << std::endl;
+            // std::cout << "current player games + 1: " << currentPlayer->getGames() << std::endl;
             _undo.memory();
-            std::cout << "current player number: " << currentPlayer->number() << std::endl;
+            // std::cout << "current player number: " << currentPlayer->number() << std::endl;
             currentPlayer->number() == 0 ? mode1P1Games() : mode1P2Games();
         }  else if ( currentPlayer->getPoints() == 4) {
             _gameState->setPointFlash( 1 );
@@ -102,7 +102,7 @@ void Mode1Score::mode1P1Games() {
                     _player1->setGames( 0 );
                     _player2->setGames( 0 );
             } else {    // no set win, no match win, no tie break. just a regular game win.
-                std::cout << "*** calling p1GameWinSequence() ***" << std::endl;
+                // std::cout << "*** calling p1GameWinSequence() ***" << std::endl;
                 _gameLeds.updateGames();
                 _gameState->setPlayer1SetHistory( _player1->getSetHistory());
                 _gameState->setPlayer2SetHistory( _player2->getSetHistory());
@@ -110,7 +110,7 @@ void Mode1Score::mode1P1Games() {
                 _resetGame();
             }}
     } else {
-        std::cout << "*** calling p1GameWinSequence() ***" << std::endl;
+        // std::cout << "*** calling p1GameWinSequence() ***" << std::endl;
         _gameLeds.updateGames();
         _gameState->setPlayer1SetHistory( _player1->getSetHistory());
         _gameState->setPlayer2SetHistory( _player2->getSetHistory());

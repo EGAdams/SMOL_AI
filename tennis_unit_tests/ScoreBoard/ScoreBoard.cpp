@@ -2,7 +2,7 @@
 
 ScoreBoard::ScoreBoard( IPlayer* player1, IPlayer* player2, IGameState* gameState ): 
     _player1( player1 ), _player2( player2 ), _gameState( gameState ) {
-    printf( "Constructing ScoreBoard...\n" );
+    // printf( "Constructing ScoreBoard...\n" );
     if ( MATRIX_DISABLED == 1 ) { 
         // printf( "MATRIX_DISABLED == 1 is true.  Skipping matrix setup...\n" );
     } else {
@@ -75,13 +75,13 @@ void ScoreBoard::drawGames() {  std::cout << "inside ScoreBoard::drawGames()" <<
 
 bool ScoreBoard::hasCanvas() { 
     if ( _canvas != NULL ) { return true;
-    } else { std::cout << "*** WARNING: canvas is NULL ***" << std::endl; return false; }}
+    } else { /* std::cout << "*** WARNING: canvas is NULL ***" << std::endl;*/ return false; }}
 
 void ScoreBoard::update() {
     // std::cout << "gamestate current action: " << _gameState->getCurrentAction() << std::endl;
     clearScreen();
-    std::cout << "inside ScoreBoard::update()  player1 points: " << _player1->getPoints() << std::endl;
-    std::cout << "inside ScoreBoard::update()  player2 points: " << _player2->getPoints() << std::endl;
+    // std::cout << "inside ScoreBoard::update()  player1 points: " << _player1->getPoints() << std::endl;
+    // std::cout << "inside ScoreBoard::update()  player2 points: " << _player2->getPoints() << std::endl;
     drawPlayerScore( _player1 ); drawPlayerScore( _player2 );
     
     if ( MATRIX_DISABLED == 1 ) {

@@ -23,14 +23,14 @@ void WinSequences::setScoreBoards( ScoreBoard* scoreBoard ) {
     _scoreBoard =             scoreBoard; } // set mine too!
 
 void WinSequences::p1GameWinSequence() {
-    std::cout << "//////////////////////// p1GameWinSequence() ////////////////////////" << std::endl;
+    // std::cout << "//////////////////////// p1GameWinSequence() ////////////////////////" << std::endl;
     GameWinSequence gameWinSequence; 
     gameWinSequence.run( _player1, _gameState, &_gameLeds, _scoreBoard, _player1->getGames());
-    std::cout << "*** inside WinSequences class.  p1GameWinSequence() ***" << std::endl;
+    // std::cout << "*** inside WinSequences class.  p1GameWinSequence() ***" << std::endl;
     _undo.memory();
-    std::cout << "*** delaying game after p1GameWinSequence()... ***" << std::endl;
+    // std::cout << "*** delaying game after p1GameWinSequence()... ***" << std::endl;
     GameTimer::gameDelay( 2000 );
-    std::cout << "*** done delaying game after p1GameWinSequence()  setting points to zero... ***" << std::endl;
+    // std::cout << "*** done delaying game after p1GameWinSequence()  setting points to zero... ***" << std::endl;
     _player1->setPoints( 0 );
     _player2->setPoints( 0 );}
 
@@ -52,9 +52,9 @@ void WinSequences::p2GameWinSequence() {
     gameWinSequence.run( _player2, _gameState, &_gameLeds, _scoreBoard, _player2->getGames());
     std::cout << "*** inside WinSequences class.  executing p2GameWinSequence()... ***" << std::endl;
     _undo.memory();  
-    std::cout << "*** delaying game after p2GameWinSequence()... ***" << std::endl;
+    // std::cout << "*** delaying game after p2GameWinSequence()... ***" << std::endl;
     GameTimer::gameDelay( 1000 );
-    std::cout << "*** done delaying game after p2GameWinSequence()  setting points to zero... ***" << std::endl;
+    // std::cout << "*** done delaying game after p2GameWinSequence()  setting points to zero... ***" << std::endl;
     _player1->setPoints( 0 );
     _player2->setPoints( 0 );}
 
