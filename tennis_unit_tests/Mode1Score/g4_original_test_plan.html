@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Edge Case Testing Strategy</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        h2 {
+            margin-top: 30px;
+        }
+
+        h3 {
+            margin-top: 20px;
+        }
+
+        p {
+            margin-top: 10px;
+        }
+
+        ul {
+            margin-top: 10px;
+            margin-left: 20px;
+        }
+
+        li {
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Edge Case Testing Strategy</h1>
+    <h2>Introduction</h2>
+    <p>
+        The following document outlines the edge case testing strategy for the C++ code provided. Edge case testing ensures
+        that software behaves as expected even in extreme or unanticipated situations.
+    </p>
+
+    <h2>Test Scenarios</h2>
+    <h3>1. TestFirstScore:</h3>
+    <ul>
+        <li>Checks the initial scores for both players.</li>
+        <li>Increments the score for player 1 and verifies the updated score on the scoreboard.</li>
+    </ul>
+
+    <h3>2. TestPlayerPointsEqualOpponentPoints:</h3>
+    <ul>
+        <li>Tests behavior when both players have the same score.</li>
+        <li>Both players' scores are set to 3 and the updated scores on the scoreboard are verified.</li>
+    </ul>
+
+    <h3>3. TestPlayerWinsGame:</h3>
+    <ul>
+        <li>Simulates a scenario where player 1 wins a game.</li>
+        <li>Player 1's score is set to 5, and player 2's score is set to 3.</li>
+        <li>Verifies that the game count for player 1 is incremented.</li>
+    </ul>
+
+    <h3>4. TestMode1P1Score_3Points:</h3>
+    <ul>
+        <li>Checks the behavior when player 1 has a score of 3 and player 2 has a score of 2.</li>
+        <li>Verifies the scores on the scoreboard and ensures they match the expected format.</li>
+    </ul>
+
+    <h3>5. TestDeuceScenario:</h3>
+    <ul>
+        <li>Simulates the scenario when both players have a score leading to "deuce".</li>
+        <li>Both players' scores are set to 3 and the scoreboard is verified to reflect the deuce.</li>
+    </ul>
+
+    <h3>6. TestWinAfterAdvantage:</h3>
+    <ul>
+        <li>Verifies the scenario when a player wins after gaining an advantage following a deuce.</li>
+        <li>Player 1 is given the advantage and then scores another point to win the game.</li>
+    </ul>
+
+    <h2>Conclusion</h2>
+    <p>
+        This testing strategy aims to cover all potential edge cases in the game scoring system. By ensuring thorough
+        testing, we can confidently present to investors that our software is robust, reliable, and handles all possible
+        game scenarios appropriately.
+    </p>
+
+</body>
+
+</html>

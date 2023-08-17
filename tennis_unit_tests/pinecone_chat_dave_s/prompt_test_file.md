@@ -1,8 +1,8 @@
 Act as a world-class C++ developer, my helpfull assistant, and a my expert teacher.
 Here is the C++ test file that I have so far:
 
-```
-[#include <gtest/gtest.h>
+```cpp
+#include <gtest/gtest.h>
 #include <gmock/gmock.h>
 #include "Mode1Score.h"
 #include "../History/IHistoryMock.h"
@@ -148,7 +148,7 @@ TEST_F( Mode1ScoreTest, TestWinAfterAdvantage ) {
 
 // TEST_F( Mode1ScoreTest, TestTiebreakScenarios ) {
 //     // Mock a situation where both players have 6 games each in a set, leading to a tiebreak
-//     // ... \[This might involve some additional mocking based on the implementation details\]
+//     // ... [This might involve some additional mocking based on the implementation details]
     
 //     // Simulate the progression of points in the tiebreak
 //     for (int i = 0; i < 6; i++) {
@@ -163,7 +163,7 @@ TEST_F( Mode1ScoreTest, TestWinAfterAdvantage ) {
 //     player1->setPoints(7);
 //     mode1Score->updateScore(player1);
 //     // Verify that player1 has won the tiebreak
-// }](prompt.md)
+// }
 ```
 
 Also act an expert unit tester that specialized in using the C++ Google test framework.

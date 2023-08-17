@@ -10,6 +10,7 @@ import datetime
 import pinecone
 
 TURBO_16K_MODEL     = "gpt-3.5-turbo-16k"
+TURBO_MODEL         = "gpt-3.5-turbo"
 CURRENT_DIRECTORY   = "/home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests/pinecone_chat_dave_s/"
 
 def open_file(filepath):
@@ -44,10 +45,10 @@ def gpt3_embedding(content, engine='text-embedding-ada-002' ):
 
 
 
-def ai_completion(prompt, engine=TURBO_16K_MODEL, temp=0.0, top_p=1.0, tokens=400, freq_pen=0.0, pres_pen=0.0):
+def ai_completion(prompt, engine=TURBO_MODEL, temp=0.0, top_p=1.0, tokens=400, freq_pen=0.0, pres_pen=0.0):
     max_retry = 5
     retry = 0
-    prompt = prompt.encode(encoding='ASCII', errors='ignore').decode()  # fix any UNICODE errors
+    prompt = prompt.encode( encoding='ASCII', errors='ignore').decode()  # fix any UNICODE errors
     
     # Constructing the messages list for the chat API based on the prompt.
     # This is a basic example; you might need to adjust the list depending on your specific requirements.
@@ -57,7 +58,6 @@ def ai_completion(prompt, engine=TURBO_16K_MODEL, temp=0.0, top_p=1.0, tokens=40
     ]
     
     print( 'messages:', messages )
-    #enter to continue, x to exit
     answ = input( "press enter to continue, x to exit: $" )
     if answ == "x":
         exit()
