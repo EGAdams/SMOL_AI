@@ -102,11 +102,15 @@ void Mode1TieBreaker::setTieBreaker() { _undo.memory(); mode1SetTBButtonFunction
 
 void Mode1TieBreaker::tieBreakEnable() {
     std::cout << "*** tieBreakEnable() called. ***" << std::endl;
-    _player1->setPoints( 5 );
-    _player2->setPoints( 5 );
+    
+    // Resetting points for both players to start the tiebreak
+    _player1->setPoints( 0 );  // was setting to 5 for some reason
+    _player2->setPoints( 0 );  // was setting to 5 for some reason
+    
     std::cout << "*** calling _pointLeds.updatePoints() from inside tieBreakEnable()... ***" << std::endl;
     _pointLeds.updatePoints();
     std::cout << "*** after update points in tie breaker!!! *** " << std::endl;
+    
     _gameState->setServeSwitch( 1 );
     _gameState->setServe( 0 );
     _serveLeds.serveSwitch();

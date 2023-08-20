@@ -20,7 +20,6 @@ protected:
     std::map< std::string, int > pin_map;
 
     void SetUp() override {
-        // std::cout << "Setting up Mode1ScoreTest..." << std::endl;
         gameState = new GameState();
         player1 = new Player( gameState, PLAYER_1_INITIALIZED );
         player2 = new Player( gameState, PLAYER_2_INITIALIZED ); 
@@ -29,7 +28,6 @@ protected:
         pin_map = {{ "pin", 0 }};
         pinState = new PinState( pin_map );
         pinInterface = new PinInterface( pinState );
-
         mode1Score = new Mode1Score( player1, player2, pinInterface, gameState, history );
         scoreBoard = new ScoreBoard( player1, player2, gameState );
         mode1Score->setScoreBoard( scoreBoard ); 
@@ -142,22 +140,51 @@ TEST_F( Mode1ScoreTest, TestWinAfterAdvantage ) {
     ASSERT_EQ( 0, player2->getGames());
 }
 
-// TEST_F( Mode1ScoreTest, TestTiebreakScenarios ) {
-//     // Mock a situation where both players have 6 games each in a set, leading to a tiebreak
-//     // ... [This might involve some additional mocking based on the implementation details]
+TEST_F( Mode1ScoreTest, TestTiebreakScenarios ) {
+    // Mock a situation where both players have 6 games each in a set, leading to a tiebreak
+    player1->setGames(  5 );
+    player2->setGames(  6 );
     
-//     // Simulate the progression of points in the tiebreak
-//     for (int i = 0; i < 6; i++) {
-//         player1->setPoints(i + 1);
-//         player2->setPoints(i + 1);
-//         mode1Score->updateScore(player1);
-//         mode1Score->updateScore(player2);
-//     }
-//     // At this point, the score should be "six all"
+    // Verify that we are setting up a tiebreak for when player 1 wins the next game
+    ASSERT_EQ( 5, player1->getGames());
+    ASSERT_EQ( 6, player2->getGames());
 
-//     // Player1 scores the next point and wins the tiebreak
-//     player1->setPoints(7);
-//     mode1Score->updateScore(player1);
-//     // Verify that player1 has won the tiebreak
-// }
+    player1->setPoints( 5 );
+    player2->setPoints( 3 );
+
+    // Verify player 1 is one point away from winning the game
+    ASSERT_EQ( 5, player1->getPoints());
+    ASSERT_EQ( 3, player2->getPoints());
+
+    // This game win should trigger the tie break
+    mode1Score->updateScore(player1);
+
+    // Simulate the progression of points in the tiebreak
+    for (int i = 0; i < 6; i++) {
+        player1->setPoints(i + 1);
+        mode1Score->updateScore(player1);
+        player2->setPoints(i + 1);
+        mode1Score->updateScore(player2);
+    }
+    // At this point, the score should be "six all"
+    ASSERT_EQ(6, player1->getPoints());
+    ASSERT_EQ(6, player2->getPoints());
+
+    // Player1 scores the next point
+    player1->setPoints(7);
+    mode1Score->updateScore(player1);
+    
+    // Verify that the tiebreak hasn't been won yet since there isn't a 2 point lead
+    ASSERT_EQ(6, player2->getPoints());
+    ASSERT_EQ(6, player1->getGames());
+    ASSERT_EQ(6, player2->getGames());
+
+    // Player1 scores one more point and wins the tiebreak
+    player1->setPoints(8);
+    mode1Score->updateScore(player1);
+    
+    // Verify that player1 has won the tiebreak and the set
+    ASSERT_EQ(7, player1->getGames());
+    ASSERT_EQ(6, player2->getGames());
+}
 
