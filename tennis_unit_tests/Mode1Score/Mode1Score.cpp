@@ -63,7 +63,9 @@ void Mode1Score::mode1P1Games() {
     _gameState->setServeSwitch( _gameState->getServeSwitch() + 1 );
     if ( _player1->getGames() >= GAMES_TO_WIN_SET ) {
         if ( _player1->getGames() == GAMES_TO_WIN_SET && _player2->getGames() == GAMES_TO_WIN_SET ) {
+            std::cout << "*** setting tie break to 1 ***" << std::endl;
             _gameState->setTieBreak( 1 );
+            std::cout << "*** calling tieBreakEnable() from inside Mode1Score::mode1P1Games()... ***" << std::endl;
             _Mode1TieBreaker.tieBreakEnable(); }
         if ( _gameState->getTieBreak() == 0 ) {
             std::cout << "*** tie break is zero.  checking if p1 games - p2 games > 1... ***" << std::endl;

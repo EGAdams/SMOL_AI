@@ -159,7 +159,8 @@ TEST_F( Mode1ScoreTest, TestTiebreakScenarios ) {
     // This game win should trigger the tie break
     mode1Score->updateScore( player1 );
 
-    // Simulate the progression of points in the tiebreak
+    std::cout << "simulating the progression of points in the tiebreak... " << std::endl;
+    std::cout << "tiebreak flag: " << gameState->getTieBreak() << std::endl;
     for ( int i = 0; i < 6; i++ ) {
         player1->setPoints( i + 1 );
         mode1Score->updateScore( player1 );
