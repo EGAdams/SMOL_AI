@@ -7,7 +7,8 @@ void GameWinSequence::run( IPlayer* player, IGameState* gameState,
                            GameLeds* gameLeds, ScoreBoard* scoreBoard, int games_in_memory ) {
     
     if ( MATRIX_DISABLED == 1 ) { 
-        std::cout << "GameWinSequence::run() MATRIX_DISABLED == 1, returning... " << std::endl; return; }
+        /*std::cout << "GameWinSequence::run() MATRIX_DISABLED == 1, returning... " << std::endl;*/
+        return; }
     if ( scoreBoard->hasCanvas()) {
         std::cout << "GameWinSequence::run() hasCanvas() == true" << std::endl;
         for ( int blink_sequence_count = 0; blink_sequence_count < LOOP_GAME_LAMP_WIN; blink_sequence_count++ ) {
