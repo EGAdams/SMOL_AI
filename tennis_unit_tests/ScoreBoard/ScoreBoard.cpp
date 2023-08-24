@@ -2,9 +2,9 @@
 
 ScoreBoard::ScoreBoard( IPlayer* player1, IPlayer* player2, IGameState* gameState ): 
     _player1( player1 ), _player2( player2 ), _gameState( gameState ) {
-    printf( "Constructing ScoreBoard...\n" );
+    // printf( "Constructing ScoreBoard...\n" );
     if ( MATRIX_DISABLED == 1 ) { 
-        printf( "MATRIX_DISABLED == 1 is true.  Skipping matrix setup...\n" );
+        // printf( "MATRIX_DISABLED == 1 is true.  Skipping matrix setup...\n" );
     } else {
         printf( "MATRIX_DISABLED == 1 is false.  Setting up matrix...\n" );
         Color pipe_color( 255, 255, 0 ); // yellow
@@ -65,24 +65,24 @@ ScoreBoard::ScoreBoard( IPlayer* player1, IPlayer* player2, IGameState* gameStat
 }
 
 ScoreBoard::~ScoreBoard() {
-    std::cout << "destroying ScoreBoard..." << std::endl;
+    // std::cout << "destroying ScoreBoard..." << std::endl;
     if ( _canvas != NULL ) {
         std::cout << "NOT deleting _canvas..." << std::endl;
         // delete _canvas.get(); // this causes some error.  only one scoreBoard is created anyway.
-    } else { std::cout << "*** WARNING: _canvas == NULL, not deleting. ***" << std::endl; }}
+    } else { /* std::cout << "*** WARNING: _canvas == NULL, not deleting. ***" << std::endl; */ }}
 
 void ScoreBoard::drawGames() {  std::cout << "inside ScoreBoard::drawGames()" << std::endl; }
 
 bool ScoreBoard::hasCanvas() { 
     if ( _canvas != NULL ) { return true;
-    } else { std::cout << "*** WARNING: canvas is NULL ***" << std::endl; return false; }}
+    } else { /* std::cout << "*** WARNING: canvas is NULL ***" << std::endl;*/ return false; }}
 
 void ScoreBoard::update() {
-    std::cout << "gamestate current action: " << _gameState->getCurrentAction() << std::endl;
+    // std::cout << "gamestate current action: " << _gameState->getCurrentAction() << std::endl;
     clearScreen();
-    std::cout << "inside ScoreBoard::update()  player1 points: " << _player1->getPoints() << std::endl;
-    std::cout << "inside ScoreBoard::update()  player2 points: " << _player2->getPoints() << std::endl;
-    _drawPlayerScore( _player1 ); _drawPlayerScore( _player2 );
+    // std::cout << "inside ScoreBoard::update()  player1 points: " << _player1->getPoints() << std::endl;
+    // std::cout << "inside ScoreBoard::update()  player2 points: " << _player2->getPoints() << std::endl;
+    drawPlayerScore( _player1 ); drawPlayerScore( _player2 );
     
     if ( MATRIX_DISABLED == 1 ) {
         // std::cout << "MATRIX_DISABLED == 1 is true.  skipping blink..." << std::endl;
@@ -102,13 +102,16 @@ void ScoreBoard::clearScreen() {
         if ( !hasCanvas()) { std::cout << "*** ERROR: canvas == NULL.  exiting... ***" << std::endl; exit( 1 ); }
         Color flood_color( 0, 0, 0 ); _canvas->Fill( flood_color.r, flood_color.g, flood_color.b ); }}
 
-void ScoreBoard::_drawPlayerScore( IPlayer* player ) {
+std::string ScoreBoard::drawPlayerScore( IPlayer* player ) {
     std::string serve_bar = _gameState->getServe() == player->number() ? "I" : " "; // or p1 serve and swap
     std::string score = _translate( player->getPoints());
-    if( MATRIX_DISABLED == 1 ) {
-        player->number() == PLAYER_1_INITIALIZED ?  // type player 1 score, else type player 2 score
-        std::cout << "PLAYER 1: ////// " << serve_bar << " " << score << " ////// " << std::endl :
-        std::cout << "PLAYER 2: ////// " << serve_bar << " " << score << " ////// " << std::endl;
+    if( MATRIX_DISABLED == 1 ) {  // type player 1 score, else type player 2 score
+        std::string player1_score = "PLAYER 1: ////// " + serve_bar + " " + score + " //////";
+        std::string player2_score = "PLAYER 2: ////// " + serve_bar + " " + score + " //////";
+        std::string scoreboard_output = player->number() == PLAYER_1_INITIALIZED ?  // type player 1 score, else type player 2 score
+            player1_score : player2_score;
+        std::cout << scoreboard_output << std::endl;
+        return scoreboard_output;
     } else {
         int vertical_offset = player->number() == 0 ? 0 : _big_number_font.height();
         _pipeDrawer->DrawNumber(serve_bar, 1, _big_number_font.baseline() + vertical_offset ); // draw pipe
@@ -142,7 +145,7 @@ std::string ScoreBoard::_translate( int raw_score ) {
     case 1:               return "15";
     case 2:               return "30";
     case 3:               return "40";
-    case SCORE_CASE_4:    return "Ad"; // jul20 TODO: just a test!
+    case SCORE_CASE_4:    return "Ad";
     case SCORE_CASE_5:    return "Ad";
     case UNDEFINED_SCORE: return "99";
     default:              return "00"; }}

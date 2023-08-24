@@ -25,3 +25,4 @@ tennis_unit_tests/GameLedTranslator.o
 tennis_unit_tests/*.o
 lib/*.o
 tennis_unit_tests/**/*.o
+tennis_unit_tests/Mode1Score/run_tests

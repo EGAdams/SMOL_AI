@@ -20,6 +20,7 @@ SOURCES = Mode1Score.cpp Mode1ScoreTest.cpp          \
 		  ../Inputs/Inputs.cpp					     \
 		  ../Logger/Logger.cpp	   				     \
 		  ../PointLeds/PointLeds.cpp			     \
+		  ../PinState/PinState.cpp				     \
 		  ../PinInterface/PinInterface.cpp		     \
 		  ../Player/Player.cpp					     \
 		  ../Reset/Reset.cpp					     \
@@ -36,6 +37,7 @@ SOURCES = Mode1Score.cpp Mode1ScoreTest.cpp          \
 		  ../WatchTimer/WatchTimer.cpp			     \
 		  ../FontLoader/FontLoader.cpp			     \
 		  ../WinSequences/WinSequences.cpp		     \
+		  ../TranslateConstant/TranslateConstant.cpp \
 
 OBJECTS = $(SOURCES:.cpp=.o)
 

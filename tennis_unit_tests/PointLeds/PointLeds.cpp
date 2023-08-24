@@ -14,12 +14,15 @@ PointLeds::PointLeds( IPlayer* player1,
 PointLeds::~PointLeds() {}
 
 void PointLeds::setScoreBoard( ScoreBoard* scoreBoard ) { 
-    std::cout << "*** setting _scoreBoard in PointLeds object ... ***" << std::endl;
+    // std::cout << "*** setting _scoreBoard in PointLeds object ... ***" << std::endl;
     _scoreBoard = scoreBoard; }
 
 void PointLeds::updatePoints() {
+    if ( !_scoreBoard ) {
+        std::cerr << "Warning: ScoreBoard object is not initialized in PointLeds." << std::endl; return; }
+        
     // std::cout << "calling _scoreBoard->update() from inside PointLeds... " << std::endl;
-    _scoreBoard->update();
+    return _scoreBoard->update();
     // std::cout << "done calling _scoreBoard->update()... \n\n" << std::endl;
     return;
     

@@ -35,12 +35,15 @@ void Player::setSetting(int setting) { _setting = setting; } int Player::getSett
 int Player::incrementSetting() { return ++_setting; }
 int Player::number() { return _playerNumber; }
 
+int Player::getServe() { return _serve; }
+void Player::setServe( int serve ) { _serve = serve; }
+
 void Player::setSetHistory( int set, int games ) {
     _set_history[  set ] = games; 
     number() == PLAYER_1_INITIALIZED ? 
         _gameState->setPlayer1SetHistory( _set_history ) : _gameState->setPlayer2SetHistory( _set_history ); } 
-std::map< int, int> Player::getSetHistory() { 
+std::map<int, int> Player::getSetHistory() { 
     return _set_history; }
 
 void Player::setGameHistory( int game, int score ) { _game_history[ game ] = score; } 
-std::map< int, int> Player::getGameHistory() { return _game_history;}
+std::map<int, int> Player::getGameHistory() { return _game_history;}

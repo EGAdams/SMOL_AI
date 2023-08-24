@@ -14,6 +14,7 @@
 #include "../Undo/Undo.h"
 #include "../TennisConstants/TennisConstants.h"
 #include "../History/History.h"
+#include "../ScoreBoard/ScoreBoard.h"
 
 #include <iostream>
 
@@ -42,7 +43,7 @@ class Mode1Score {
     IPlayer* _player2;
     IGameState* _gameState;
     IHistory* _history;
-    Mode1TieBreaker _Mode1TieBreaker;
+    Mode1TieBreaker _mode1TieBreaker;
     PointLeds _pointLeds;
     GameLeds _gameLeds;
     SetLeds _setLeds;

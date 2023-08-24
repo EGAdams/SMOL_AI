@@ -40,6 +40,9 @@ public:
     void setGameHistory( int game, int score              ) override;
     std::map<int, int> getGameHistory() override;
 
+    int getServe() override;
+    void setServe( int serve ) override;
+
     int incrementSetting() override;
 
     int number() override; // only set during construction
@@ -55,6 +58,7 @@ private:
     int _mode;
     int _setting;
     int _serve_switch;
+    int _serve;
     std::map<int, int> _set_history;
     std::map<int, int> _game_history;
 };

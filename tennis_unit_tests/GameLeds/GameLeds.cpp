@@ -11,7 +11,9 @@ GameLeds::GameLeds( IPlayer* player1, IPlayer* player2, IPinInterface* pinInterf
 void GameLeds::setScoreBoard( ScoreBoard* scoreBoard ) { _scoreBoard = scoreBoard; }
 
 void GameLeds::updateGames() {
-    if ( _scoreBoard        == NULL ) { std::cout << "*** ERROR: scoreBoard is null. ***  exiting... " << std::endl; exit( 1 ); }
+    if ( _scoreBoard        == NULL ) { 
+        std::cout << "*** WARNING: scoreBoard is null. ***  returning to ether... " << std::endl; 
+        return; }
     if ( _gameLedTranslator == NULL ) { std::cout << "*** ERROR: _gameLedTranslator is null. ***  exiting... " << std::endl; exit( 1 ); }   
     if ( _scoreBoard->hasCanvas()) { _scoreBoard->update();
     } else { _gameLedTranslator->drawGameLeds(); }}
