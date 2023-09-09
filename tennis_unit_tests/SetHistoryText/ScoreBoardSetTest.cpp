@@ -23,9 +23,9 @@
 //         delete gameState; 
 //         delete scoreboard; }
 
-//     IPlayer*         player_1;
-//     IPlayer*         player_2;
-//     IGameState      gameState;
+//     Player*         player_1;
+//     Player*         player_2;
+//     GameState      gameState;
 //     SetHistoryText* setHistoryText; 
 //     ScoreBoard*     scoreboard; 
 //     GameTimer       gameTimer; };

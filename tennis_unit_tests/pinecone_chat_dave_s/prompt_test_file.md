@@ -20,7 +20,7 @@ protected:
     IPlayer* player2;
     IGameState* gameState;
     IPinInterface* pinInterface;
-    IPinState* pinState;
+    PinState* pinState;
     std::map< std::string, int > pin_map;
 
     void SetUp() override {

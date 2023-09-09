@@ -3,12 +3,13 @@
 #include "../Logger/Logger.h"
 #include <fstream>
 #include <string>
+#include "../Player/Player.h"
 
 class SubjectManager {
 public:
     SubjectManager();
     ~SubjectManager();
-    void gameStateUpdate( IGameState* gameState, IPlayer* player1, IPlayer* player2 );
+    void gameStateUpdate( GameState* gameState, Player* player1, Player* player2 );
 private:
     Logger* _logger;
 };

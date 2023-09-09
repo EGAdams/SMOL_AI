@@ -4,7 +4,7 @@
 #include "../GameLeds/GameLeds.h"
 #include "../GameTimer/GameTimer.h"
 #include "../PointLeds/PointLeds.h"
-#include "../PinInterface/IPinInterface.h"
+#include "../PinInterface/PinInterface.h"
 #include "../Player/Player.h"
 #include "../ServeLeds/ServeLeds.h"
 #include "../SetLeds/SetLeds.h"
@@ -16,11 +16,11 @@
 
 class Mode1TieBreaker {
  public:
-  Mode1TieBreaker( IPlayer* player1,
-                   IPlayer* player2,
-                   IPinInterface* pinInterface,
-                   IGameState* gameState,
-                   IHistory* history );
+  Mode1TieBreaker( Player* player1,
+                   Player* player2,
+                   PinInterface* pinInterface,
+                   GameState* gameState,
+                   History* history );
   ~Mode1TieBreaker();
   void tieBreaker();
   void setTieBreaker();
@@ -45,11 +45,11 @@ class Mode1TieBreaker {
   // void p2SetWinSequence();
 
  private:
-  IPlayer* _player1;
-  IPlayer* _player2;
-  IPinInterface* _pinInterface;
-  IGameState* _gameState;
-  IHistory* _history;
+  Player* _player1;
+  Player* _player2;
+  PinInterface* _pinInterface;
+  GameState* _gameState;
+  History* _history;
   PointLeds _pointLeds;
   GameLeds _gameLeds;
   ServeLeds _serveLeds;

@@ -1,12 +1,12 @@
 #include "Mode1TieBreaker.h"
 
 Mode1TieBreaker::Mode1TieBreaker( 
-    IPlayer* player1,
-    IPlayer* player2,
-    IPinInterface* pinInterface,
-    IGameState* gameState,
-    IHistory* history )
-    : _player1( player1 ),
+    Player* player1,
+    Player* player2,
+    PinInterface* pinInterface,
+    GameState* gameState,
+    History* history ) : 
+    _player1( player1 ),
     _player2( player2 ),
     _pinInterface( pinInterface ),
     _gameState( gameState ),

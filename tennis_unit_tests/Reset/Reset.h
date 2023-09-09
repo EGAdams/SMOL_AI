@@ -8,13 +8,14 @@
 #include "../Logger/Logger.h"
 #include "../TennisConstants/TennisConstants.h"
 #include "../PinInterface/PinInterface.h"
+#include "../Player/Player.h"
 
 class Reset {
  public:
-  Reset( IPlayer* player1,
-         IPlayer* player2,
-         IPinInterface* pinInterface,
-         IGameState* gameState);
+  Reset( Player* player1,
+         Player* player2,
+         PinInterface* pinInterface,
+         GameState* gameState);
   ~Reset();
   void resetScoreboard();
   void zeroPlayerValues();
@@ -23,10 +24,10 @@ class Reset {
   void tieLEDsOff();
 
  private:
-  IPlayer* _player1;
-  IPlayer* _player2;
-  IPinInterface* _pinInterface;
-  IGameState* _gameState;
+  Player* _player1;
+  Player* _player2;
+  PinInterface* _pinInterface;
+  GameState* _gameState;
   Logger* _logger;
 };
 

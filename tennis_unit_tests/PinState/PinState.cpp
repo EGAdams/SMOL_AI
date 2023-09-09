@@ -4,7 +4,7 @@ PinState::PinState( std::map< std::string, int > pin_map ) : _pin_map( pin_map )
     // std::cout << "pin state constructor" << std::endl;
     // std::cout << "pin map size: " << _pin_map.size() << std::endl;
     for ( auto const& pin : _pin_map ) {
-        std::cout << "pin: " << pin.first << " value: " << pin.second << std::endl;
+        // std::cout << "pin: " << pin.first << " value: " << pin.second << std::endl;
     }
 }
 PinState::~PinState() {}

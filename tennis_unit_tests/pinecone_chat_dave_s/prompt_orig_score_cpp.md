@@ -7,7 +7,7 @@ We are going to examine the folloing C++ file because we need to write unit test
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
 
-Mode1Score::Mode1Score( IPlayer* player1, IPlayer* player2,
+Mode1Score::Mode1Score( Player* player1, IPlayer* player2,
     IPinInterface* pinInterface, IGameState* gameState, IHistory* history ) :
     _player1( player1 ),
     _player2( player2 ),

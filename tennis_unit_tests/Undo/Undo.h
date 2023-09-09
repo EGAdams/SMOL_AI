@@ -15,17 +15,19 @@
 
 class Undo {
  public:
-    Undo( IPlayer* player1, IPlayer* player2, IPinInterface* pinInterface, IGameState* gameState );
+    Undo( Player* player1, Player* player2, PinInterface* pinInterface, GameState* gameState );
     ~Undo();
-    void setMode1Undo( IHistory* history );
+    void setMode1Undo( History* history );
     void memory();
-    void mode1Undo( IHistory* history );
+    void mode1Undo( History* history );
+    void setScoreBoard( ScoreBoard* scoreBoard );
 
  private:
-    IPlayer*       _player1; std::map< std::string, int > _player1_set_history;
-    IPlayer*       _player2; std::map< std::string, int > _player2_set_history;
-    IPinInterface* _pinInterface;
-    IGameState*    _gameState;
+    Player*       _player1; std::map< std::string, int > _player1_set_history;
+    Player*       _player2; std::map< std::string, int > _player2_set_history;
+    bool          _scoreBoardSet;
+    PinInterface* _pinInterface;
+    GameState*    _gameState;
     PointLeds     _pointLeds;
     GameLeds      _gameLeds;
     SetLeds       _setLeds;

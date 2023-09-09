@@ -11,8 +11,8 @@ public:
 
     MOCK_METHOD(void, setPoints, (int points), (override));
     MOCK_METHOD(int, getPoints, (), (override));
-    MOCK_METHOD(void, setOpponent, (IPlayer* opponent), (override));
-    MOCK_METHOD(IPlayer*, getOpponent, (), (override));
+    MOCK_METHOD(void, setOpponent, (Player* opponent), (override));
+    MOCK_METHOD(Player*, getOpponent, (), (override));
     MOCK_METHOD(void, setSets, (IGameState* gameState, int sets), (override));
     MOCK_METHOD(int, getSets, (), (override));
     MOCK_METHOD(void, setMatches, (int matches), (override));

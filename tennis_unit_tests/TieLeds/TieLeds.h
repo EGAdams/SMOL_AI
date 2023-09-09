@@ -10,13 +10,13 @@
 
 class TieLeds {
  public:
-  TieLeds( IPinInterface* pinInterface );
+  TieLeds( PinInterface* pinInterface );
   ~TieLeds();
   void turnOff();
   void turnOn();
 
  private:
-  IPinInterface* _pinInterface;
+  PinInterface* _pinInterface;
 };
 
 #endif

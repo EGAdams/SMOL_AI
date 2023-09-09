@@ -19,18 +19,19 @@
 
 class ScoreBoard {
 public:
-    ScoreBoard( IPlayer* player1, IPlayer* player2, IGameState* gameState );       
+    ScoreBoard( Player* player1, Player* player2, GameState* gameState );
     ~ScoreBoard();
     void update();
     bool hasCanvas();
     void clearScreen();
     void drawGames();
-    std::string drawPlayerScore(  IPlayer* player );
-    
+    void writeMessage( std::string message );
+    std::string drawPlayerScore(  Player* player );
+
 private:
-    IPlayer*                        _player1;
-    IPlayer*                        _player2;
-    IGameState*                     _gameState;
+    Player*                        _player1;
+    Player*                        _player2;
+    GameState*                     _gameState;
     rgb_matrix::Font               _big_number_font;
     std::unique_ptr<NumberDrawer>  _smallNumberDrawer;
     std::unique_ptr<NumberDrawer>  _playerOneScoreDrawer;

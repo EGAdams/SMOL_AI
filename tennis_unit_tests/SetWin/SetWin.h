@@ -12,12 +12,12 @@
 class SetWin {
 
  public:
-  SetWin( Undo* undo, IGameState* gameState, SetLeds* setLeds );
+  SetWin( Undo* undo, GameState* gameState, SetLeds* setLeds );
   ~SetWin();
-  void execute( IPlayer* player );
+  void execute( Player* player );
 
  private:
      Undo*      _undo; 
-     IGameState* _gameState; 
+     GameState* _gameState; 
      SetLeds*   _setLeds; };
 #endif

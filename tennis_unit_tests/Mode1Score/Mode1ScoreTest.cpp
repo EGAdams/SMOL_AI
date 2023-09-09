@@ -1,22 +1,20 @@
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
 #include "Mode1Score.h"
-#include "../History/IHistoryMock.h"
-#include "../Player/IPlayerMock.h"
-#include "../GameState/IGameStateMock.h"
-#include "../PinInterface/IPinInterfaceMock.h"
+#include "../History/History.h"
+#include "../Player/Player.h"
 
 class Mode1ScoreTest : public ::testing::Test {
 protected:
-    IPinInterface* inInterface; 
-    IHistory* history;
+    PinInterface* inInterface; 
+    History* history;
     Mode1Score* mode1Score;
     ScoreBoard* scoreBoard;
-    IPlayer* player1;
-    IPlayer* player2;
-    IGameState* gameState;
-    IPinInterface* pinInterface;
-    IPinState* pinState;
+    Player* player1;
+    Player* player2;
+    GameState* gameState;
+    PinInterface* pinInterface;
+    PinState* pinState;
     std::map< std::string, int > pin_map;
 
     void SetUp() override {

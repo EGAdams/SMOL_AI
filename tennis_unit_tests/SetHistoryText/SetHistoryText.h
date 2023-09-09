@@ -8,11 +8,11 @@
 
 class SetHistoryText {
  public:
-    SetHistoryText( IGameState* gameState );
+    SetHistoryText( GameState* gameState );
     ~SetHistoryText();
     std::string getSetHistoryText( int player );
     std::string _buildString(      int player );
 
  private: 
-    IGameState* _gameState; };
+    GameState* _gameState; };
 #endif

@@ -1,6 +1,6 @@
 #include "Player.h"
 
-Player::Player( IGameState* gamestate, int playerNumber ) : _gameState( gamestate ), _playerNumber( playerNumber ) {
+Player::Player( GameState* gamestate, int playerNumber ) : _gameState( gamestate ), _playerNumber( playerNumber ) {
         _points = 0; _games = 0; _sets = 0; _matches = 0; _mode = 0; _setting = 0; 
         _game_history[ 1 ] = 0; _game_history[ 2 ] = 0; _game_history[ 3 ] = 0;     // initialize game history
         _set_history[  1 ] = 0;  _set_history[ 2 ] = 0; _set_history[  3 ] = 0; }   // initialize set history
@@ -8,9 +8,9 @@ Player::~Player() {}
 
 void Player::setServeSwitch( int serve_switch ) { _serve_switch = serve_switch; } 
 int Player::getServeSwitch() { return _serve_switch; }
-void Player::setOpponent( IPlayer* opponent ) { _opponent = opponent; }                                  
-IPlayer* Player::getOpponent() { return _opponent; }
-void Player::setSets( IGameState* gameState, int sets ) {                         // sets this player's sets
+void Player::setOpponent( Player* opponent ) { _opponent = opponent; }                                  
+Player* Player::getOpponent() { return _opponent; }
+void Player::setSets( GameState* gameState, int sets ) {                         // sets this player's sets
     this->setSetHistory(      gameState->getCurrentSet(), _games               ); // and set history for both
     _opponent->setSetHistory( gameState->getCurrentSet(), _opponent->getGames()); // players
     gameState->setPlayer1SetHistory( this->getSetHistory());

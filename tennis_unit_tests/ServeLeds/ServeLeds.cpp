@@ -1,6 +1,6 @@
 #include "ServeLeds.h"
 
-ServeLeds::ServeLeds( IPinInterface* pinInterface, IGameState* gameState)
+ServeLeds::ServeLeds( PinInterface* pinInterface, GameState* gameState)
     : _pinInterface(pinInterface), _gameState(gameState) {}
 ServeLeds::~ServeLeds() {}
 

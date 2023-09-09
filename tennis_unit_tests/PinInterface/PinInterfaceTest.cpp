@@ -1,11 +1,11 @@
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
-#include "IPinInterfaceMock.h"
+#include "PinInterfaceMock.h"
 #include "../PinState/IPinStateMock.h"
 
 class PinInterfaceTest : public ::testing::Test {  // Define a test fixture
 protected:
-    IPinInterfaceMock* mockPinInterface;
+    PinInterfaceMock* mockPinInterface;
     IPinStateMock*     mockPinState;
 
     void SetUp() override {

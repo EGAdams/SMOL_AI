@@ -2,8 +2,8 @@
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
 
-Mode1Score::Mode1Score( IPlayer* player1, IPlayer* player2,
-    IPinInterface* pinInterface, IGameState* gameState, IHistory* history ) :
+Mode1Score::Mode1Score( Player* player1, Player* player2,
+    PinInterface* pinInterface, GameState* gameState, History* history ) :
     _player1( player1 ),
     _player2( player2 ),
     _gameState( gameState ),
@@ -30,8 +30,8 @@ void Mode1Score::_resetGame() {
     _gameState->setServe( 0 );
     _pointLeds.updatePoints(); }
 
-void Mode1Score::updateScore(IPlayer* currentPlayer) {
-    IPlayer* otherPlayer = currentPlayer->getOpponent();
+void Mode1Score::updateScore(Player* currentPlayer) {
+    Player* otherPlayer = currentPlayer->getOpponent();
     std::cout << "Current Player Points: " << currentPlayer->getPoints() << std::endl;
     std::cout << "Other Player Points: " << otherPlayer->getPoints() << std::endl;
 

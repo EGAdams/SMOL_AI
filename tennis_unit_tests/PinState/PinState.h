@@ -5,9 +5,8 @@
 #include <map>
 #include <fstream>
 #include "../TranslateConstant/TranslateConstant.h"
-#include "IPinState.h"
 
-class PinState : public IPinState {
+class PinState {
 public:
     PinState( std::map< std::string, int > pinMap );
     ~PinState();

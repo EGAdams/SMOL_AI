@@ -1,14 +1,14 @@
 #ifndef PININTERFACE_H
 #define PININTERFACE_H
 
-#include "IPinInterface.h"
+#include "PinInterface.h"
 #include "../PinState/PinState.h"
 #include "../Arduino/Arduino.h"
 #include <map>
 
-class PinInterface : public IPinInterface {
+class PinInterface {
   public:
-    PinInterface( IPinState* pinState );
+    PinInterface( PinState* pinState );
     virtual ~PinInterface();
     virtual void pinAnalogWrite(int pin, int value);
     virtual void pinDigitalWrite(int pin, int value);
@@ -18,5 +18,5 @@ class PinInterface : public IPinInterface {
 
   private:
     std::map<std::string, int> _pin_map;
-    IPinState* _pinState; };
+    PinState* _pinState; };
 #endif
