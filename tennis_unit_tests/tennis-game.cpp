@@ -210,5 +210,4 @@ int main( int argc, char *argv[]) {
     writeMessage( gameObject, "t " + std::to_string( ++test_count ));
     std::cout << "calling test_03()..." << std::endl;
     test_03( gameObject, gameState, &loop_count );
-
 }

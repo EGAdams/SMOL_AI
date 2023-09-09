@@ -48,7 +48,8 @@ void GameState::setWinDelay( int winDelay ) { _winDelay = winDelay; }
 int GameState::getWinDelay() { return _winDelay; }
 void GameState::setPointFlash( int pointFlash ) { _pointFlash = pointFlash; }
 int GameState::getPointFlash() { return _pointFlash; }
-void GameState::setServe( int serve ) { /* std::cout << "setting serve in GameState: " << serve << std::endl; */ _serve = serve; }
+void GameState::setServe( int serve ) { /* std::cout << "setting serve in GameState: " << serve << std::endl; */    _serve = serve; 
+}
 int GameState::getServe() { /*std::cout << "getting serve in GameState: " << _serve << std::endl;*/ return _serve; }
 void GameState::setTieBreak( int tieBreak ) { _tieBreak = tieBreak; }
 int GameState::getTieBreak() { return _tieBreak; }

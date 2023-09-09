@@ -11,7 +11,7 @@ Undo::Undo( Player* player1, Player* player2, PinInterface* pinInterface, GameSt
         _logger = new Logger( "Undo" ); 
         _scoreBoardSet = false; };
 Undo::~Undo(){
-    std::cout << "*** Undo destructor called. ***" << std::endl;
+    // std::cout << "*** Undo destructor called. ***" << std::endl;
     delete _logger; };
 
 void Undo::setScoreBoard( ScoreBoard* scoreBoard ) {
@@ -80,7 +80,7 @@ void Undo::mode1Undo( History* history ) {
     GameTimer::gameDelay( 100 );
     if ( history->size() == 0 ) { return; }
     // std::cout << "inside mode1Undo.  history->size()==" << history->size() << std::endl;
-    if ( _scoreBoardSet == false ) { std::cout << "*** ERROR: trying to call undo when _scoreBoardSet == false exiting process... *** " << std::endl; exit( 1 ); }
+    if ( _scoreBoardSet == false ) { std::cout << "*** ERROR: trying to call undo when _scoreBoardSet == false exiting process... *** \nMake sure to call undo->setScoreBoard before trying to use the Undo object." << std::endl; exit( 1 ); }
     GameState gameState = ( history->pop());
     _player1->setPoints( gameState.getPlayer1Points());
     _gameState->setP1PointsMem( gameState.getP1PointsMem());

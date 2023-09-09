@@ -4,7 +4,7 @@ ScoreBoard::ScoreBoard( Player* player1, Player* player2, GameState* gameState )
     _player1( player1 ), _player2( player2 ), _gameState( gameState ) {
     printf( "Constructing ScoreBoard...\n" );
     if ( MATRIX_DISABLED == 1 ) {
-        printf( "MATRIX_DISABLED == 1 is true.  Skipping matrix setup...\n" );
+        // printf( "MATRIX_DISABLED == 1 is true.  Skipping matrix setup...\n" );
     } else {
         printf( "MATRIX_DISABLED == 1 is false.  Setting up matrix...\n" );
         Color pipe_color( 255, 255, 0 ); // yellow
@@ -89,11 +89,14 @@ void ScoreBoard::writeMessage( std::string message ) {
 void ScoreBoard::drawGames() {  std::cout << "inside ScoreBoard::drawGames()" << std::endl; }
 
 bool ScoreBoard::hasCanvas() {
-    if ( _canvas != NULL ) { return true;
-    } else { std::cout << "*** WARNING: canvas is NULL ***" << std::endl; return false; }}
+    if ( _canvas != NULL ) {
+        return true;
+    } else { 
+        // std::cout << "*** WARNING: canvas is NULL ***" << std::endl; return false; 
+    }}
 
 void ScoreBoard::update() {
-    std::cout << "inside ScoreBoard::update() ... " << std::endl;
+    // std::cout << "inside ScoreBoard::update() ... " << std::endl;
     if ( _player1 == nullptr ) {
         std::cout << "*** ERROR: _player1 == NULL ***" << std::endl; 
         exit( 1 ); }
@@ -102,13 +105,13 @@ void ScoreBoard::update() {
         exit( 1 ); }
     // std::cout << "gamestate current action: " << _gameState->getCurrentAction() << std::endl;
     clearScreen();
-    std::cout << "inside ScoreBoard::update()  player1 points: " << _player1->getPoints() << std::endl;
-    std::cout << "inside ScoreBoard::update()  player2 points: " << _player2->getPoints() << std::endl;
+    // std::cout << "inside ScoreBoard::update()  player1 points: " << _player1->getPoints() << std::endl;
+    // std::cout << "inside ScoreBoard::update()  player2 points: " << _player2->getPoints() << std::endl;
     drawPlayerScore( _player1 ); drawPlayerScore( _player2 );
     // _setDrawer->drawSets();
 
     if ( MATRIX_DISABLED == 1 ) {
-        std::cout << "MATRIX_DISABLED == 1 is true.  skipping blink..." << std::endl;
+        // std::cout << "MATRIX_DISABLED == 1 is true.  skipping blink..." << std::endl;
     } else {
         std::cout << "MATRIX_DISABLED == 1 is false.  checking for blink in action..." << std::endl;
         bool blink = _gameState->getCurrentAction().find( "blink" ) != std::string::npos;
@@ -133,8 +136,8 @@ std::string ScoreBoard::drawPlayerScore( Player* player ) {
     std::string score = _translate( player->getPoints());
     if( MATRIX_DISABLED == 1 ) {
         player->number() == PLAYER_1_INITIALIZED ?  // type player 1 score, else type player 2 score
-        std::cout << "PLAYER 1: ////// " << serve_bar << " " << score << " ////// " << std::endl :
-        std::cout << "PLAYER 2: ////// " << serve_bar << " " << score << " ////// " << std::endl;
+        std::cout << "PLAYER 1: ////// " << serve_bar << " " << score << " //////" << std::endl :
+        std::cout << "PLAYER 2: ////// " << serve_bar << " " << score << " //////" << std::endl;
     } else {
         int vertical_offset = player->number() == 0 ? 0 : _big_number_font.height();
         _pipeDrawer->DrawNumber(serve_bar, 1, _big_number_font.baseline() + vertical_offset ); // draw pipe
@@ -146,8 +149,16 @@ std::string ScoreBoard::drawPlayerScore( Player* player ) {
             _playerOneScoreDrawer->DrawNumber( score.substr( 1, 1 ), second_offset + 38, baseline + vertical_offset );
         } else {
             _playerTwoScoreDrawer->DrawNumber( score.substr( 0, 1 ), first_offset  + 16, baseline + vertical_offset );
-            _playerTwoScoreDrawer->DrawNumber( score.substr( 1, 1 ), second_offset + 38, baseline + vertical_offset ); }}
-    return score; }
+            _playerTwoScoreDrawer->DrawNumber( score.substr( 1, 1 ), second_offset + 38, baseline + vertical_offset ); }}               // return player 1 score, else type player 2 score
+        // created a concatenated string with "PLAYER 1: ////// " + serve_bar
+        std::string returnString = "*** WARNING: return string is not set. this is not normal ***";
+        std::string player1ScoreString = "PLAYER 1: ////// " + serve_bar + " " + score + " //////";
+        std::string player2ScoreString = "PLAYER 2: ////// " + serve_bar + " " + score + " //////";
+        player->number() == PLAYER_1_INITIALIZED ? 
+        returnString = player1ScoreString : returnString = player2ScoreString;
+        return returnString;
+    }
+ 
 
 int ScoreBoard::_characterOffset( std::string character ) {
     int char_offset = 0;

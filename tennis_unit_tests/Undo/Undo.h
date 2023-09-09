@@ -14,8 +14,14 @@
 #include "../TennisConstants/TennisConstants.h"
 
 class Undo {
+    
  public:
-    Undo( Player* player1, Player* player2, PinInterface* pinInterface, GameState* gameState );
+    Undo( 
+        Player*         player1, 
+        Player*         player2, 
+        PinInterface*   pinInterface, 
+        GameState*      gameState );
+
     ~Undo();
     void setMode1Undo( History* history );
     void memory();

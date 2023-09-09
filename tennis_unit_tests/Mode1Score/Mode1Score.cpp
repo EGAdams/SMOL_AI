@@ -47,7 +47,7 @@ void Mode1Score::updateScore(Player* currentPlayer) {
                 otherPlayer->setPoints( 3 );
             } else if ( delta_score > 1 ) {
                 currentPlayer->setGames( currentPlayer->getGames() + 1 );
-                _undo.memory();
+                 _undo.memory();
                 currentPlayer->number() == 0 ? mode1P1Games() : mode1P2Games();
             }  else if ( currentPlayer->getPoints() == 4) {
                 _gameState->setPointFlash( 1 );
