@@ -152,8 +152,8 @@ std::string ScoreBoard::drawPlayerScore( Player* player ) {
             _playerTwoScoreDrawer->DrawNumber( score.substr( 1, 1 ), second_offset + 38, baseline + vertical_offset ); }}               // return player 1 score, else type player 2 score
         // created a concatenated string with "PLAYER 1: ////// " + serve_bar
         std::string returnString = "*** WARNING: return string is not set. this is not normal ***";
-        std::string player1ScoreString = "PLAYER 1: ////// " + serve_bar + " " + score + " //////";
-        std::string player2ScoreString = "PLAYER 2: ////// " + serve_bar + " " + score + " //////";
+        std::string player1ScoreString = "PLAYER 1: ////// " + serve_bar + " " + score + " ////// ";
+        std::string player2ScoreString = "PLAYER 2: ////// " + serve_bar + " " + score + " ////// ";
         player->number() == PLAYER_1_INITIALIZED ? 
         returnString = player1ScoreString : returnString = player2ScoreString;
         return returnString;
