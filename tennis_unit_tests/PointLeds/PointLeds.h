@@ -9,7 +9,7 @@
 
 class PointLeds {
  public:
-  PointLeds( Player* player1, Player*player2, PinInterface* pinInterface );
+  PointLeds( Player* player1, Player* player2, PinInterface* pinInterface );
   PointLeds( Player* player1, Player* player2, ScoreBoard*   scoreBoard   );
   ~PointLeds();
   void updatePoints();
@@ -21,6 +21,7 @@ class PointLeds {
   Player* _player2;
   PinInterface* _pinInterface;
   ScoreBoard* _scoreBoard;
+  bool _scoreBoardSet;
 };
 
 #endif

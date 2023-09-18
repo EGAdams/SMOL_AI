@@ -15,7 +15,7 @@ class GameLedTranslator {
   void setScoreBoard( ScoreBoard* scoreBoard );
 
  private:
-  Player*_player1;
+  Player* _player1;
   Player* _player2;
   PinInterface* _pinInterface;
   ScoreBoard* _scoreBoard;

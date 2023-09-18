@@ -13,8 +13,8 @@ class Inputs {
  public:
   Inputs( Player* player1,
           Player* player2,
-          PinInterface* pinInterface,
-          GameState* gameState);
+         PinInterface* pinInterface,
+         GameState* gameState);
   ~Inputs();
   void readReset();
   void readUndoButton();

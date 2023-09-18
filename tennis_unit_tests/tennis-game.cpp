@@ -37,7 +37,7 @@ void writeMessage( GameObject* gameObject, std::string message ) {
 void score( GameObject* gameObject, GameState* gameState, int player ) {
     std::cout << "\n\n\n\n\n\n\n*** Player " << player << " scored ***\n" << std::endl;
     gameObject->playerScore( player );  // flip the player score flag
-    gameObject->loopGame();  // handle the player score flag
+    gameObject->loopGame();             // handle the player score flag
     std::cout << "player 1 points: " << gameState->getPlayer1Points();
     std::cout << "player 2 points: " << gameState->getPlayer2Points() << std::endl;
     std::cout << "player 1 games:  " << gameState->getPlayer1Games();
@@ -89,7 +89,6 @@ void test_02( GameObject* gameObject, GameState* gameState, int* loop_count ) {
     playerWin( gameObject, gameState, 2 );
     playerWin( gameObject, gameState, 1 );
     playerWin( gameObject, gameState, 2 );
-    // sleep( 1 );
     score( gameObject, gameState, 1 );
     score( gameObject, gameState, 2 );
     score( gameObject, gameState, 2 );
@@ -101,12 +100,10 @@ void test_02( GameObject* gameObject, GameState* gameState, int* loop_count ) {
     score( gameObject, gameState, 1 );    
     score( gameObject, gameState, 1 );
     score( gameObject, gameState, 1 );
-    // sleep( 1 );
     score( gameObject, gameState, 1 );
     score( gameObject, gameState, 1 );
     score( gameObject, gameState, 1 );
     score( gameObject, gameState, 1 );
-    // sleep( 2 );
     playerWin( gameObject, gameState, 1 );
     score(     gameObject, gameState, 2 ); // player 2 needs to bump the serve 1st
     playerWin( gameObject, gameState, 2 );
@@ -114,7 +111,6 @@ void test_02( GameObject* gameObject, GameState* gameState, int* loop_count ) {
     playerWin( gameObject, gameState, 2 );
     score(     gameObject, gameState, 2 );
     playerWin( gameObject, gameState, 2 );
-    // sleep( 2 );
     std::cout << " ready for player 1 set win..." << std::endl;
     playerWin( gameObject, gameState, 1 );
     std::cout << "player 1 won the set!" << std::endl;
@@ -123,20 +119,41 @@ void test_02( GameObject* gameObject, GameState* gameState, int* loop_count ) {
 
 void test_03( GameObject* gameObject, GameState* gameState, int* loop_count ) {
     gameObject->getScoreBoard()->clearScreen();
-    //undo
-    Undo* undo = gameObject->createUndo();
-    undo->setScoreBoard( gameObject->getScoreBoard());
-    sleep( 1 );
-    undo->mode1Undo( gameObject->getHistory());
-    sleep( 1 );
     playerWin( gameObject, gameState, 2 );
     playerWin( gameObject, gameState, 2 );
     playerWin( gameObject, gameState, 2 );
     playerWin( gameObject, gameState, 2 );
-    sleep( 2 );
-    std::cout << " ready for player 1 set win..." << std::endl;
+    playerWin( gameObject, gameState, 2 );
+    playerWin( gameObject, gameState, 2 );
+    score(     gameObject, gameState, 2 );
     playerWin( gameObject, gameState, 1 );
-    std::cout << "player 1 won the set!" << std::endl;
+    playerWin( gameObject, gameState, 1 );
+    playerWin( gameObject, gameState, 1 );
+    playerWin( gameObject, gameState, 1 );
+    playerWin( gameObject, gameState, 1 );
+    playerWin( gameObject, gameState, 1 );
+    playerWin( gameObject, gameState, 1 );
+    sleep( 4 ); }
+
+void test_04( GameObject* gameObject, GameState* gameState, int* loop_count ) {
+    gameObject->getScoreBoard()->clearScreen();
+    playerWin( gameObject, gameState, 2 );
+    playerWin( gameObject, gameState, 2 );
+    playerWin( gameObject, gameState, 2 );
+    playerWin( gameObject, gameState, 2 );
+    playerWin( gameObject, gameState, 2 );
+    playerWin( gameObject, gameState, 2 );
+    score(     gameObject, gameState, 2 );
+    playerWin( gameObject, gameState, 1 );
+    playerWin( gameObject, gameState, 1 );
+    playerWin( gameObject, gameState, 1 );
+    playerWin( gameObject, gameState, 1 );
+    playerWin( gameObject, gameState, 1 );
+    playerWin( gameObject, gameState, 1 );
+    playerWin( gameObject, gameState, 2 );
+   
+    score(     gameObject, gameState, 2 ); // now to trigger the tie break...
+    score(     gameObject, gameState, 2 );
     sleep( 4 ); }
 
 void run_manual_game( GameObject* gameObject, GameState* gameState, int player ) {
@@ -161,7 +178,7 @@ void run_manual_game( GameObject* gameObject, GameState* gameState, int player )
         std::cout << "     current set: "     << gameState->getCurrentSet()      << std::endl;
         std::map<int, int> _player1_set_history = gameState->getPlayer1SetHistory();
         std::map<int, int> _player2_set_history = gameState->getPlayer2SetHistory();
-        std::cout << "end of game loop.  loop_count: " << loop_count << std::endl;
+        // std::cout << "end of game loop.  loop_count: " << loop_count << std::endl;
     } ///////// End Game Loop /////////
     std::cout << "game loop exited.  loop_count: " << loop_count << std::endl;
     if ( loop_count > MAX_LOOP_COUNT ) {
@@ -198,16 +215,25 @@ int main( int argc, char *argv[]) {
     if ( manual == 1 ) { run_manual_game( gameObject, gameState, 1 ); return 0; } 
 
     ///// run tests /////
-    int test_count = 0;
-    writeMessage( gameObject, "t " + std::to_string( ++test_count ));
-    std::cout << "calling test_01()..." << std::endl;
-    test_01( gameObject, gameState, &loop_count );
+    int test_count = 1;
+    // writeMessage( gameObject, "t " + std::to_string( test_count ));
+    // std::cout << "calling test_01()..." << std::endl;
+    // test_01( gameObject, gameState, &loop_count );
+    test_count++;
 
-    writeMessage( gameObject, "t " + std::to_string( ++test_count ));
-    std::cout << "calling test_02()..." << std::endl;
-    test_02( gameObject, gameState, &loop_count );
+    // writeMessage( gameObject, "t " + std::to_string( test_count ));
+    // std::cout << "calling test_02()..." << std::endl;
+    // test_02( gameObject, gameState, &loop_count );
+    test_count++;
 
-    writeMessage( gameObject, "t " + std::to_string( ++test_count ));
-    std::cout << "calling test_03()..." << std::endl;
-    test_03( gameObject, gameState, &loop_count );
+    // writeMessage( gameObject, "t " + std::to_string( test_count ));
+    // std::cout << "calling test_03()..." << std::endl;
+    // test_03( gameObject, gameState, &loop_count );
+    test_count++;
+
+    writeMessage( gameObject, "t " + std::to_string( test_count ));
+    std::cout << "calling test_04()..." << std::endl;
+    sleep( 1 );
+    test_04( gameObject, gameState, &loop_count );
+    test_count++;
 }

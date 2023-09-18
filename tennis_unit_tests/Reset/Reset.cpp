@@ -11,7 +11,7 @@ Reset::Reset( Player* player1,
     _logger = new Logger( "Reset" );
 }
 Reset::~Reset() {
-    // std::cout << "*** Reset destructor called. ***" << std::endl;
+    std::cout << "*** Reset destructor called. ***" << std::endl;
     delete _logger;
 }
 

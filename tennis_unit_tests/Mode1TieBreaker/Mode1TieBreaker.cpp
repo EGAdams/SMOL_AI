@@ -1,12 +1,11 @@
 #include "Mode1TieBreaker.h"
 
-Mode1TieBreaker::Mode1TieBreaker( 
-    Player* player1,
+Mode1TieBreaker::Mode1TieBreaker( Player* player1,
     Player* player2,
     PinInterface* pinInterface,
     GameState* gameState,
-    History* history ) : 
-    _player1( player1 ),
+    History* history )
+    : _player1( player1 ),
     _player2( player2 ),
     _pinInterface( pinInterface ),
     _gameState( gameState ),
@@ -19,6 +18,11 @@ Mode1TieBreaker::Mode1TieBreaker(
     _undo( player1, player2, pinInterface, gameState ) {}
 
 Mode1TieBreaker::~Mode1TieBreaker() {}
+
+void Mode1TieBreaker::setScoreBoards( ScoreBoard* scoreBoard ) {
+    _pointLeds.setScoreBoard( scoreBoard );
+    _setLeds.setScoreBoard( scoreBoard ); 
+    _gameLeds.setScoreBoard( scoreBoard ); }
 
 void Mode1TieBreaker::tieLEDsOn() {
     _gameState->setTieLEDsOn( 1 );
@@ -102,15 +106,11 @@ void Mode1TieBreaker::setTieBreaker() { _undo.memory(); mode1SetTBButtonFunction
 
 void Mode1TieBreaker::tieBreakEnable() {
     std::cout << "*** tieBreakEnable() called. ***" << std::endl;
-    
-    // Resetting points for both players to start the tiebreak
-    _player1->setPoints( 0 );  // was setting to 5 for some reason
-    _player2->setPoints( 0 );  // was setting to 5 for some reason
-    
+    _player1->setPoints( 5 );
+    _player2->setPoints( 5 );
     std::cout << "*** calling _pointLeds.updatePoints() from inside tieBreakEnable()... ***" << std::endl;
     _pointLeds.updatePoints();
     std::cout << "*** after update points in tie breaker!!! *** " << std::endl;
-    
     _gameState->setServeSwitch( 1 );
     _gameState->setServe( 0 );
     _serveLeds.serveSwitch();

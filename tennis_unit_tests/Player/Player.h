@@ -2,53 +2,50 @@
 #define Player_h
 
 #include "Player.h"
+#include "../GameState/IGameState.h"
 #include "../TennisConstants/TennisConstants.h"
-#include "../GameState/GameState.h"
 
 class Player {
 public:
-    Player( GameState* gameState, int player_number );
+    Player( IGameState* gameState, int player_number );
     ~Player();
 
-    void setOpponent( Player* opponent );
+    void setOpponent(    Player* opponent                 );
     Player* getOpponent();
 
-    void setSets( GameState* gameState, int sets );
+    void setSets( IGameState * gameState, int sets );
     int getSets();
 
-    void setPoints( int points );
+    void setPoints(      int points                       );
     int getPoints();
 
-    void setGames( int game_value ); // it knows the current set
+    void setGames( int game_value  ); // it knows the current set
     int getGames();
 
-    void setServeSwitch( int serve_switch );
+    void setServeSwitch( int serve_switch                 );
     int getServeSwitch();
 
-    void setMatches( int matches );
+    void setMatches(     int matches                      );
     int getMatches();
 
-    void setMode( int mode );
+    void setMode(        int mode                         );
     int getMode();
 
-    void setSetting( int setting );
+    void setSetting(     int setting                      );
     int getSetting();
 
-    void setSetHistory( int set, int score );
+    void setSetHistory(  int set, int score               );
     std::map<int, int> getSetHistory();
 
-    void setGameHistory( int game, int score );
+    void setGameHistory( int game, int score              );
     std::map<int, int> getGameHistory();
-
-    int getServe();
-    void setServe( int serve );
 
     int incrementSetting();
 
     int number(); // only set during construction
 
 private:
-    GameState* _gameState;
+    IGameState* _gameState;
     int _playerNumber;
     Player* _opponent;
     int _points;
@@ -58,7 +55,6 @@ private:
     int _mode;
     int _setting;
     int _serve_switch;
-    int _serve;
     std::map<int, int> _set_history;
     std::map<int, int> _game_history;
 };

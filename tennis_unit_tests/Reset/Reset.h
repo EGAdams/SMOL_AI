@@ -8,7 +8,6 @@
 #include "../Logger/Logger.h"
 #include "../TennisConstants/TennisConstants.h"
 #include "../PinInterface/PinInterface.h"
-#include "../Player/Player.h"
 
 class Reset {
  public:

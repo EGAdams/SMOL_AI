@@ -8,15 +8,14 @@
 #include "../Mode1TieBreaker/Mode1TieBreaker.h"
 #include "../WinSequences/WinSequences.h"
 #include "../PointLeds/PointLeds.h"
+#include "../PinState/PinState.h"
 #include "../PinInterface/PinInterface.h"
 #include "../Player/Player.h"
 #include "../SetLeds/SetLeds.h"
 #include "../Undo/Undo.h"
 #include "../TennisConstants/TennisConstants.h"
-#include "../History/History.h"
-#include "../ScoreBoard/ScoreBoard.h"
-
 #include <iostream>
+// #include "../../tennis-game/googletest/googletest/include/gtest/gtest.h" 
 
 class Mode1Score {
  public:
@@ -34,8 +33,9 @@ class Mode1Score {
     void mode1P2Games();
     void mode1TBP2Games();
     void mode1SetTBP2Games();
+    void updateScore(  Player* currentPlayer  );
     void setScoreBoard( ScoreBoard* scoreBoard );
-    void updateScore(   Player* currentPlayer  );
+    ScoreBoard* getScoreBoard();
 
  private:
     void _resetGame();
@@ -47,7 +47,7 @@ class Mode1Score {
     PointLeds _pointLeds;
     GameLeds _gameLeds;
     SetLeds _setLeds;
-    WinSequences _mode1WinSequences;
+    Mode1WinSequences _mode1WinSequences;
     Undo _undo;
     ScoreBoard* _scoreBoard; };
 #endif

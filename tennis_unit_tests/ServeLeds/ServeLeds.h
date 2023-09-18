@@ -8,7 +8,7 @@
 
 class ServeLeds {
  public:
-  ServeLeds( PinInterface* pinInterface, GameState* gameState);
+  ServeLeds(PinInterface* pinInterface, GameState* gameState);
   ~ServeLeds();
   void updateServeLED();
   void serveSwitch();

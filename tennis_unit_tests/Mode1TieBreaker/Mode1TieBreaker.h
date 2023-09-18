@@ -2,6 +2,7 @@
 #define Mode1TieBreaker_h
 #include "../Arduino/Arduino.h"
 #include "../GameLeds/GameLeds.h"
+#include "../GameLeds/GameLeds.h"
 #include "../GameTimer/GameTimer.h"
 #include "../PointLeds/PointLeds.h"
 #include "../PinInterface/PinInterface.h"
@@ -9,10 +10,10 @@
 #include "../ServeLeds/ServeLeds.h"
 #include "../SetLeds/SetLeds.h"
 #include "../WatchTimer/WatchTimer.h"
+#include "../Mode1TieBreaker/Mode1TieBreaker.h"
 #include "../WinSequences/WinSequences.h"
 #include "../Undo/Undo.h"
 #include "../Inputs/Inputs.h"
-#include "../History/History.h"
 
 class Mode1TieBreaker {
  public:
@@ -22,6 +23,7 @@ class Mode1TieBreaker {
                    GameState* gameState,
                    History* history );
   ~Mode1TieBreaker();
+  void setScoreBoards( ScoreBoard* scoreBoard );
   void tieBreaker();
   void setTieBreaker();
   void mode1TBButtonFunction();
@@ -54,7 +56,7 @@ class Mode1TieBreaker {
   GameLeds _gameLeds;
   ServeLeds _serveLeds;
   SetLeds _setLeds;
-  WinSequences _mode1WinSequences;
+  Mode1WinSequences _mode1WinSequences;
   Undo _undo;
 };
 

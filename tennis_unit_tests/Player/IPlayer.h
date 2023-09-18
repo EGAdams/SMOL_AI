@@ -21,9 +21,6 @@ public:
     virtual void setGames( int games                      ) = 0;
     virtual int getGames() = 0;
 
-    virtual void setServe(       int serve                       ) = 0;
-    virtual int getServe() = 0;
-
     virtual void setServeSwitch( int serve_switch                ) = 0;
     virtual int getServeSwitch() = 0;
 

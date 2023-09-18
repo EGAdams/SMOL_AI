@@ -1,6 +1,6 @@
 #include "Player.h"
 
-Player::Player( GameState* gamestate, int playerNumber ) : _gameState( gamestate ), _playerNumber( playerNumber ) {
+Player::Player( IGameState* gamestate, int playerNumber ) : _gameState( gamestate ), _playerNumber( playerNumber ) {
         _points = 0; _games = 0; _sets = 0; _matches = 0; _mode = 0; _setting = 0; 
         _game_history[ 1 ] = 0; _game_history[ 2 ] = 0; _game_history[ 3 ] = 0;     // initialize game history
         _set_history[  1 ] = 0;  _set_history[ 2 ] = 0; _set_history[  3 ] = 0; }   // initialize set history
@@ -10,11 +10,15 @@ void Player::setServeSwitch( int serve_switch ) { _serve_switch = serve_switch; 
 int Player::getServeSwitch() { return _serve_switch; }
 void Player::setOpponent( Player* opponent ) { _opponent = opponent; }                                  
 Player* Player::getOpponent() { return _opponent; }
-void Player::setSets( GameState* gameState, int sets ) {                         // sets this player's sets
+void Player::setSets( IGameState* gameState, int sets ) {                         // sets this player's sets
     this->setSetHistory(      gameState->getCurrentSet(), _games               ); // and set history for both
     _opponent->setSetHistory( gameState->getCurrentSet(), _opponent->getGames()); // players
-    gameState->setPlayer1SetHistory( this->getSetHistory());
-    gameState->setPlayer2SetHistory( _opponent->getSetHistory());
+    if( _playerNumber == PLAYER_1_INITIALIZED ) { 
+        gameState->setPlayer1SetHistory( this->getSetHistory());
+        gameState->setPlayer2SetHistory( _opponent->getSetHistory()); }
+    else {
+        gameState->setPlayer1SetHistory( _opponent->getSetHistory());
+        gameState->setPlayer2SetHistory( this->getSetHistory()); }
     _sets = sets; }                                          
 int Player::getSets() { return _sets; }
 
@@ -35,15 +39,13 @@ void Player::setSetting(int setting) { _setting = setting; } int Player::getSett
 int Player::incrementSetting() { return ++_setting; }
 int Player::number() { return _playerNumber; }
 
-int Player::getServe() { return _serve; }
-void Player::setServe( int serve ) { _serve = serve; }
-
 void Player::setSetHistory( int set, int games ) {
+    std::cout << "setting set history for player " << number() << " set " << set << " to " << games << std::endl;
     _set_history[  set ] = games; 
     number() == PLAYER_1_INITIALIZED ? 
         _gameState->setPlayer1SetHistory( _set_history ) : _gameState->setPlayer2SetHistory( _set_history ); } 
-std::map<int, int> Player::getSetHistory() { 
+std::map< int, int> Player::getSetHistory() { 
     return _set_history; }
 
 void Player::setGameHistory( int game, int score ) { _game_history[ game ] = score; } 
-std::map<int, int> Player::getGameHistory() { return _game_history;}
+std::map< int, int> Player::getGameHistory() { return _game_history;}

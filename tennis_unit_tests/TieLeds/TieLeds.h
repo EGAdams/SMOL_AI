@@ -10,7 +10,7 @@
 
 class TieLeds {
  public:
-  TieLeds( PinInterface* pinInterface );
+  TieLeds(PinInterface* pinInterface);
   ~TieLeds();
   void turnOff();
   void turnOn();

@@ -4,7 +4,7 @@ ScoreBoard::ScoreBoard( Player* player1, Player* player2, GameState* gameState )
     _player1( player1 ), _player2( player2 ), _gameState( gameState ) {
     printf( "Constructing ScoreBoard...\n" );
     if ( MATRIX_DISABLED == 1 ) {
-        // printf( "MATRIX_DISABLED == 1 is true.  Skipping matrix setup...\n" );
+        printf( "MATRIX_DISABLED == 1 is true.  Skipping matrix setup...\n" );
     } else {
         printf( "MATRIX_DISABLED == 1 is false.  Setting up matrix...\n" );
         Color pipe_color( 255, 255, 0 ); // yellow
@@ -35,7 +35,7 @@ ScoreBoard::ScoreBoard( Player* player1, Player* player2, GameState* gameState )
         printf( "  parallel: %d\n", matrix_options.parallel );
         printf( "  pwm_bits: %d\n", matrix_options.pwm_bits );
         printf( "  pwm_lsb_nanoseconds: %d\n", matrix_options.pwm_lsb_nanoseconds );
-        printf( "Runtime options:\n" );
+        printf( "  Runtime options:\n" );
         printf( "  daemon: %d\n", runtime_opt.daemon );
         printf( "  do_gpio_init: %d\n", runtime_opt.do_gpio_init );
         printf( "  drop_privileges: %d\n", runtime_opt.drop_privileges );
@@ -52,6 +52,7 @@ ScoreBoard::ScoreBoard( Player* player1, Player* player2, GameState* gameState )
             fprintf( stderr, "Couldn't load font '%s'\n", BIG_NUMBER_FONT ); exit( 1 );}
         Color color( 255, 255, 0 );
         Color bg_color( 0, 0, 0 );
+        Color blue_color( 0, 0, 255 );
         _playerOneScoreDrawer   = std::make_unique<NumberDrawer>(
             _canvas.get(), &_big_number_font, NumberDrawer::BIG, player_one_score_color, bg_color );
         _playerTwoScoreDrawer   = std::make_unique<NumberDrawer>(
@@ -59,6 +60,7 @@ ScoreBoard::ScoreBoard( Player* player1, Player* player2, GameState* gameState )
 
         _smallNumberDrawer = std::make_unique<NumberDrawer>( _canvas.get(), &_big_number_font, NumberDrawer::SMALL, color, bg_color );
         _pipeDrawer        = std::make_unique<NumberDrawer>( _canvas.get(), &_big_number_font, NumberDrawer::BIG, color, bg_color   );
+        _bluePipeDrawer   = std::make_unique<NumberDrawer>( _canvas.get(), &_big_number_font, NumberDrawer::BIG, blue_color, bg_color );
         _setDrawer         = std::make_unique<SetDrawer>(    _canvas.get(), _gameState                                              );
         } // fi
     update();
@@ -74,7 +76,7 @@ ScoreBoard::~ScoreBoard() {
 void ScoreBoard::writeMessage( std::string message ) {
     std::cout << "inside ScoreBoard::_writeMessage()..." << std::endl;
     if ( MATRIX_DISABLED == 1 ) {
-        // std::cout << "MATRIX_DISABLED == 1 is true.  skipping message..." << std::endl;
+        std::cout << "MATRIX_DISABLED == 1 is true.  skipping message..." << std::endl;
     } else {
         std::cout << "MATRIX_DISABLED == 1 is false.  writing message..." << std::endl;
         Color color( 255, 255, 0 );
@@ -89,14 +91,12 @@ void ScoreBoard::writeMessage( std::string message ) {
 void ScoreBoard::drawGames() {  std::cout << "inside ScoreBoard::drawGames()" << std::endl; }
 
 bool ScoreBoard::hasCanvas() {
-    if ( _canvas != NULL ) {
-        return true;
-    } else { 
-        // std::cout << "*** WARNING: canvas is NULL ***" << std::endl; return false; 
-    }}
+    if ( _canvas != NULL ) { return true;
+    } else { /* std::cout << "*** WARNING: canvas is NULL ***" << std::endl; */ return false; }}
 
 void ScoreBoard::update() {
-    // std::cout << "inside ScoreBoard::update() ... " << std::endl;
+    std::cout << "inside ScoreBoard::update() ... " << std::endl;
+    std::cout << "checking for _player1 or _player2 null values..." << std::endl;
     if ( _player1 == nullptr ) {
         std::cout << "*** ERROR: _player1 == NULL ***" << std::endl; 
         exit( 1 ); }
@@ -105,9 +105,9 @@ void ScoreBoard::update() {
         exit( 1 ); }
     // std::cout << "gamestate current action: " << _gameState->getCurrentAction() << std::endl;
     clearScreen();
-    // std::cout << "inside ScoreBoard::update()  player1 points: " << _player1->getPoints() << std::endl;
-    // std::cout << "inside ScoreBoard::update()  player2 points: " << _player2->getPoints() << std::endl;
-    drawPlayerScore( _player1 ); drawPlayerScore( _player2 );
+    std::cout << "inside ScoreBoard::update()  player1 points: " << _player1->getPoints() << std::endl;
+    std::cout << "inside ScoreBoard::update()  player2 points: " << _player2->getPoints() << std::endl;
+    _drawPlayerScore( _player1 ); _drawPlayerScore( _player2 );
     // _setDrawer->drawSets();
 
     if ( MATRIX_DISABLED == 1 ) {
@@ -121,7 +121,15 @@ void ScoreBoard::update() {
             int playerToBlink = _gameState->getCurrentAction().find( "player1" ) != std::string::npos ?
                 PLAYER_1_INITIALIZED : PLAYER_2_INITIALIZED;
             _setDrawer->drawBlinkSets( playerToBlink ); // checks current action ignoring playerToBlink
-        } else { _setDrawer->drawSets(); }}}
+        } else { _setDrawer->drawSets(); }
+
+        _drawTieBreakerBar(); // draw tie breaker bar if needed
+    }
+}
+
+void ScoreBoard::_drawTieBreakerBar() {
+    _bluePipeDrawer->DrawNumber( "I", BLUE_BAR_HORIZONTAL_OFFSET, BLUE_BAR_VERTICAL_OFFSET ); // draw pipe
+}
 
 void ScoreBoard::clearScreen() {
     if ( MATRIX_DISABLED == 1 ) {
@@ -131,16 +139,16 @@ void ScoreBoard::clearScreen() {
         std::cout << "clearScreen called, hasCanvas() is good.  clearing matrix...." << std::endl;
         Color flood_color( 0, 0, 0 ); _canvas->Fill( flood_color.r, flood_color.g, flood_color.b ); }}
 
-std::string ScoreBoard::drawPlayerScore( Player* player ) {
+void ScoreBoard::_drawPlayerScore( Player* player ) {
     std::string serve_bar = _gameState->getServe() == player->number() ? "I" : " "; // or p1 serve and swap
     std::string score = _translate( player->getPoints());
     if( MATRIX_DISABLED == 1 ) {
         player->number() == PLAYER_1_INITIALIZED ?  // type player 1 score, else type player 2 score
-        std::cout << "PLAYER 1: ////// " << serve_bar << " " << score << " //////" << std::endl :
-        std::cout << "PLAYER 2: ////// " << serve_bar << " " << score << " //////" << std::endl;
+        std::cout << "PLAYER 1: ////// " << serve_bar << " " << score << " ////// " << std::endl :
+        std::cout << "PLAYER 2: ////// " << serve_bar << " " << score << " ////// " << std::endl;
     } else {
         int vertical_offset = player->number() == 0 ? 0 : _big_number_font.height();
-        _pipeDrawer->DrawNumber(serve_bar, 1, _big_number_font.baseline() + vertical_offset ); // draw pipe
+        _pipeDrawer->DrawNumber( serve_bar, 1, _big_number_font.baseline() + vertical_offset ); // draw pipe
         int baseline = _big_number_font.baseline();                  // set the coordinates for the text
         int first_offset  = _characterOffset( score.substr( 0, 1 ));
         int second_offset = _characterOffset( score.substr( 1, 1 )); // then draw text depending on player
@@ -149,16 +157,7 @@ std::string ScoreBoard::drawPlayerScore( Player* player ) {
             _playerOneScoreDrawer->DrawNumber( score.substr( 1, 1 ), second_offset + 38, baseline + vertical_offset );
         } else {
             _playerTwoScoreDrawer->DrawNumber( score.substr( 0, 1 ), first_offset  + 16, baseline + vertical_offset );
-            _playerTwoScoreDrawer->DrawNumber( score.substr( 1, 1 ), second_offset + 38, baseline + vertical_offset ); }}               // return player 1 score, else type player 2 score
-        // created a concatenated string with "PLAYER 1: ////// " + serve_bar
-        std::string returnString = "*** WARNING: return string is not set. this is not normal ***";
-        std::string player1ScoreString = "PLAYER 1: ////// " + serve_bar + " " + score + " //////";
-        std::string player2ScoreString = "PLAYER 2: ////// " + serve_bar + " " + score + " //////";
-        player->number() == PLAYER_1_INITIALIZED ? 
-        returnString = player1ScoreString : returnString = player2ScoreString;
-        return returnString;
-    }
- 
+            _playerTwoScoreDrawer->DrawNumber( score.substr( 1, 1 ), second_offset + 38, baseline + vertical_offset ); }}}
 
 int ScoreBoard::_characterOffset( std::string character ) {
     int char_offset = 0;

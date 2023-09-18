@@ -26,7 +26,6 @@ public:
     void clearScreen();
     void drawGames();
     void writeMessage( std::string message );
-    std::string drawPlayerScore(  Player* player );
 
 private:
     Player*                        _player1;
@@ -37,9 +36,12 @@ private:
     std::unique_ptr<NumberDrawer>  _playerOneScoreDrawer;
     std::unique_ptr<NumberDrawer>  _playerTwoScoreDrawer;
     std::unique_ptr<NumberDrawer>  _pipeDrawer;
+    std::unique_ptr<NumberDrawer>  _bluePipeDrawer;
     std::unique_ptr<SetDrawer>     _setDrawer;
     std::unique_ptr<RGBMatrix>     _canvas;
 
-    int  _characterOffset(  std::string character );
-    std::string _translate( int raw_score         ); };
+    void _drawTieBreakerBar( /* void */            );
+    void _drawPlayerScore(   Player* player        );
+    int  _characterOffset(   std::string character );
+    std::string _translate(  int raw_score         ); };
 #endif
