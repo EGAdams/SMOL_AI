@@ -162,7 +162,7 @@ int main( int argc, char *argv[]) {
     std::cout << "calling test_03()..." << std::endl;
     test_03( gameObject, gameState, &loop_count ); }
 ```
-    -Create a unit test for test_03.  Remember to put the game into the correct state before running the test.
+    - Create a unit test for test_03.  Remember to put the game into the correct state before running the test.
     - Use the following source code as a template for your unit test:
 ```cpp
 #include <gtest/gtest.h>

@@ -6,7 +6,8 @@ from smol_dev.utils import generate_folder, write_file
 import argparse
 
 # model = "gpt-3.5-turbo-0613"
-defaultmodel = "gpt-4-0613"
+defaultmodel = "gpt-3.5-turbo-0613"
+# defaultmodel = "gpt-4-0613"
 
 def main(prompt, generate_folder_path="generated", debug=False, model: str = defaultmodel):
     # create generateFolder folder if doesnt exist
