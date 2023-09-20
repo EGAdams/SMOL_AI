@@ -21,8 +21,9 @@ Mode1TieBreaker::~Mode1TieBreaker() {}
 
 void Mode1TieBreaker::setScoreBoards( ScoreBoard* scoreBoard ) {
     _pointLeds.setScoreBoard( scoreBoard );
-    _setLeds.setScoreBoard( scoreBoard ); 
-    _gameLeds.setScoreBoard( scoreBoard ); }
+    _setLeds.setScoreBoard(   scoreBoard ); 
+    _gameLeds.setScoreBoard(  scoreBoard ); 
+    _undo.setScoreBoard(      scoreBoard ); }
 
 void Mode1TieBreaker::tieLEDsOn() {
     _gameState->setTieLEDsOn( 1 );
