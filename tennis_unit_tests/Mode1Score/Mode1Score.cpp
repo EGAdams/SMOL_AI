@@ -72,7 +72,6 @@ void Mode1Score::mode1P2Score() { updateScore( _player2 );}
 /////////////////////////////////////// MODE 1 GAMES //////////////////////////////////////////////
 void Mode1Score::mode1P1Games() {
     // _gameLeds.updateGames();
-    // print player1 games
     std::cout << "player 1 games: " << _player1->getGames() << std::endl;
     _gameState->setServeSwitch( _gameState->getServeSwitch() + 1 );
     if ( _player1->getGames() >= GAMES_TO_WIN_SET ) {

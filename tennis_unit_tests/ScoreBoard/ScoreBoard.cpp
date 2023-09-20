@@ -107,7 +107,8 @@ void ScoreBoard::update() {
     clearScreen();
     std::cout << "inside ScoreBoard::update()  player1 points: " << _player1->getPoints() << std::endl;
     std::cout << "inside ScoreBoard::update()  player2 points: " << _player2->getPoints() << std::endl;
-    _drawPlayerScore( _player1 ); _drawPlayerScore( _player2 );
+    drawPlayerScore( _player1 ); 
+    drawPlayerScore( _player2 );
     // _setDrawer->drawSets();
 
     if ( MATRIX_DISABLED == 1 ) {
@@ -139,7 +140,7 @@ void ScoreBoard::clearScreen() {
         std::cout << "clearScreen called, hasCanvas() is good.  clearing matrix...." << std::endl;
         Color flood_color( 0, 0, 0 ); _canvas->Fill( flood_color.r, flood_color.g, flood_color.b ); }}
 
-void ScoreBoard::_drawPlayerScore( Player* player ) {
+std::string ScoreBoard::drawPlayerScore( Player* player ) {
     std::string serve_bar = _gameState->getServe() == player->number() ? "I" : " "; // or p1 serve and swap
     std::string score = _translate( player->getPoints());
     if( MATRIX_DISABLED == 1 ) {
@@ -157,8 +158,18 @@ void ScoreBoard::_drawPlayerScore( Player* player ) {
             _playerOneScoreDrawer->DrawNumber( score.substr( 1, 1 ), second_offset + 38, baseline + vertical_offset );
         } else {
             _playerTwoScoreDrawer->DrawNumber( score.substr( 0, 1 ), first_offset  + 16, baseline + vertical_offset );
-            _playerTwoScoreDrawer->DrawNumber( score.substr( 1, 1 ), second_offset + 38, baseline + vertical_offset ); }}}
-
+                        _playerTwoScoreDrawer->DrawNumber( score.substr( 1, 1 ), second_offset + 38, baseline + vertical_offset ); 
+        } // return player 1 score, else type player 2 score
+    }
+    // created a concatenated string with "PLAYER 1: ////// " + serve_bar
+    std::string returnString = "*** WARNING: return string is not set. this is not normal ***";
+    std::string player1ScoreString = "PLAYER 1: ////// " + serve_bar + " " + score + " //////";
+    std::string player2ScoreString = "PLAYER 2: ////// " + serve_bar + " " + score + " //////";
+    player->number() == PLAYER_1_INITIALIZED ? 
+    returnString = player1ScoreString : returnString = player2ScoreString;
+    return returnString;
+}
+ 
 int ScoreBoard::_characterOffset( std::string character ) {
     int char_offset = 0;
     if ( character == "A" ) {

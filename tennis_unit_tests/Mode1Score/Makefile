@@ -38,6 +38,8 @@ SOURCES = Mode1Score.cpp Mode1ScoreTest.cpp          \
 		  ../FontLoader/FontLoader.cpp			     \
 		  ../WinSequences/WinSequences.cpp		     \
 		  ../TranslateConstant/TranslateConstant.cpp \
+		  ../CanvasCreator/CanvasCreator.cpp		 \
+		  ../NumberDrawer/NumberDrawer.cpp			 \
 
 OBJECTS = $(SOURCES:.cpp=.o)
 
