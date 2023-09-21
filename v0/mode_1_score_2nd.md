@@ -11,7 +11,7 @@
   - history: History* (pointer to the history)
 - Initializes the member variables with the provided parameters.
 - Initializes the following member objects:
-  - _mode1TieBreaker: Mode1TieBreaker (initialized with player1, player2, pinInterface, gameState, and history)
+  - _mode1TieBreaker: TieBreaker (initialized with player1, player2, pinInterface, gameState, and history)
   - _pointLeds: PointLeds (initialized with player1, player2, and pinInterface)
   - _gameLeds: GameLeds (initialized with player1, player2, and pinInterface)
   - _setLeds: SetLeds (initialized with player1, player2, and pinInterface)

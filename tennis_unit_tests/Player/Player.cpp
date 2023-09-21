@@ -22,7 +22,9 @@ void Player::setSets( IGameState* gameState, int sets ) {                       
     _sets = sets; }                                          
 int Player::getSets() { return _sets; }
 
-void Player::setPoints(int points) { _points = points; } 
+void Player::setPoints(int points) { 
+    _points = points; 
+} 
 int Player::getPoints() {  return _points;  }
 
 void Player::setGames( int games ) { 

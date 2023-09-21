@@ -33,7 +33,7 @@ class Undo {
         GameState*      gameState );
 
     ~Undo();
-    void setMode1Undo( History* history );
+    void snapshot( History* history );
     void memory();
     void mode1Undo( History* history );
     void setScoreBoard( ScoreBoard* scoreBoard );
@@ -84,7 +84,7 @@ void Undo::memory() {
     _gameState->setPlayer1SetHistory( _player1->getSetHistory());
     _gameState->setPlayer2SetHistory( _player2->getSetHistory()); }
 
-void Undo::setMode1Undo( History* history ) {
+void Undo::snapshot( History* history ) {
     GameState gameState;
     gameState.setPlayer1Points( _player1->getPoints()); gameState.setP1PointsMem( _gameState->getP1PointsMem());
     gameState.setPlayer2Points( _player2->getPoints()); gameState.setP2PointsMem( _gameState->getP2PointsMem());

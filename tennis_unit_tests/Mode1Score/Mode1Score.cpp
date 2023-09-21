@@ -40,31 +40,33 @@ void Mode1Score::_resetGame() {
     _pointLeds.updatePoints(); }
 
 void Mode1Score::updateScore( Player* currentPlayer ) {
-    if ( _gameState->getTieBreak()    == 1 ) { _mode1TieBreaker.tieBreaker();    } // TieBreaker();
-    if ( _gameState->getSetTieBreak() == 1 ) { _mode1TieBreaker.setTieBreaker(); } // SetTieBreaker();
-    Player* otherPlayer = currentPlayer->getOpponent();
-    if ( currentPlayer->getPoints() >= 3 ) {
-        if ( currentPlayer->getPoints() == otherPlayer->getPoints()) {
-            currentPlayer->setPoints( 3 );
-            otherPlayer->setPoints( 3 );
-        } else if ( currentPlayer->getPoints() > 3 && ( currentPlayer->getPoints() - otherPlayer->getPoints()) > 1 ) {
-            currentPlayer->setGames( currentPlayer->getGames() + 1);
-            _undo.memory();
-            currentPlayer->number() == 0 ? mode1P1Games() : mode1P2Games(); } 
-            // right here is the bug!
-            // this has stumped me for a few days now.  Put these notes somewhere and refactor
-            // this code.  writing a unit test for this right now...
-            // change of plan.  the == 1 ?... should say  == 0 ? ... change this back
-            // make a unit test that fails it is saturday and I desperately need to get the
-            // swift_metagpt project working for the airport project.  I will come back
-            // to this later.
-        if ( currentPlayer->getPoints() == 4 ) {
-            // std::cout << "inside updateScore().  points == 4.  setting point flash to 1..." << std::endl;
-            _gameState->setPointFlash( 1 );
-            _gameState->setPreviousTime( GameTimer::gameMillis());
-            _gameState->setToggle( 0 ); }}
-    // std::cout << "inside updateScore().  updating points..." << std::endl;
-    _pointLeds.updatePoints(); }
+    if ( _gameState->getTieBreak()    == 1 ) {        // Tie Break
+        _mode1TieBreaker.tieBreaker();        
+    } else if ( _gameState->getSetTieBreak() == 1 ) { // Set Tie Break
+        _mode1TieBreaker.setTieBreaker();            
+    } else {                                          // Regular Game
+        Player* otherPlayer = currentPlayer->getOpponent();
+        int current_player_points = currentPlayer->getPoints();
+        int other_player_points   = otherPlayer->getPoints();
+        if ( current_player_points >= 3 ) {
+            if ( current_player_points == other_player_points ) {
+                currentPlayer->setPoints( 3 );
+                otherPlayer->setPoints(   3 );
+            } else if ( current_player_points > 3 
+                && ( current_player_points - other_player_points ) > 1 ) {
+                currentPlayer->setGames( currentPlayer->getGames() + 1);
+                _undo.memory();
+                currentPlayer->number() == 0 ? mode1P1Games() : mode1P2Games(); } 
+
+            if ( currentPlayer->getPoints() == 4 ) {
+                _gameState->setPointFlash( 1 );
+                _gameState->setPreviousTime( GameTimer::gameMillis());
+                _gameState->setToggle( 0 );
+            }
+        }
+        _pointLeds.updatePoints();
+    }
+}
 
 void Mode1Score::mode1P1Score() { updateScore( _player1 );}
 void Mode1Score::mode1P2Score() { updateScore( _player2 );}
@@ -125,7 +127,8 @@ void Mode1Score::mode1P1Games() {
         _gameState->setPlayer1SetHistory( _player1->getSetHistory());
         _gameState->setPlayer2SetHistory( _player2->getSetHistory());
         _mode1WinSequences.p1GameWinSequence();
-        _resetGame(); }}
+        _resetGame(); 
+    }}
 
 void Mode1Score::mode1P2Games() {
     // std::cout << "inside mode1P2Games().  updtating game leds..." << std::endl;

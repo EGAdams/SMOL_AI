@@ -11,7 +11,7 @@
   - history: History*
 - Initializes the member variables with the provided parameters.
 - Initializes the following member objects:
-  - _mode1TieBreaker: Mode1TieBreaker
+  - _mode1TieBreaker: TieBreaker
   - _pointLeds: PointLeds
   - _gameLeds: GameLeds
   - _setLeds: SetLeds

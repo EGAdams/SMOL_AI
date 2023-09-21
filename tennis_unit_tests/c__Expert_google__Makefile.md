@@ -56,7 +56,7 @@ TEST_F( UndoTest, TestSetMode1Undo ) {
     player2->setPoints( 2 );
     
     // Save the game state to history
-    undoObj->setMode1Undo( history );
+    undoObj->snapshot( history );
 
     // Change the game state
     player1->setPoints( 5 );
@@ -89,7 +89,7 @@ TARGET = run_tests
 
 # Define our source and object files
 SOURCES = Mode1Score.cpp Mode1ScoreTest.cpp          \
-		  ../Mode1TieBreaker/Mode1TieBreaker.cpp     \
+		  ../TieBreaker/TieBreaker.cpp     \
 		  ../GameLeds/GameLeds.cpp			         \
 		  ../GameTimer/GameTimer.cpp		 	     \
 		  ../GameState/GameState.cpp			     \

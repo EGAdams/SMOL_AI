@@ -95,8 +95,8 @@ bool ScoreBoard::hasCanvas() {
     } else { /* std::cout << "*** WARNING: canvas is NULL ***" << std::endl; */ return false; }}
 
 void ScoreBoard::update() {
-    std::cout << "inside ScoreBoard::update() ... " << std::endl;
-    std::cout << "checking for _player1 or _player2 null values..." << std::endl;
+    // std::cout << "inside ScoreBoard::update() ... " << std::endl;
+    // std::cout << "checking for _player1 or _player2 null values..." << std::endl;
     if ( _player1 == nullptr ) {
         std::cout << "*** ERROR: _player1 == NULL ***" << std::endl; 
         exit( 1 ); }
@@ -124,7 +124,10 @@ void ScoreBoard::update() {
             _setDrawer->drawBlinkSets( playerToBlink ); // checks current action ignoring playerToBlink
         } else { _setDrawer->drawSets(); }
 
-        _drawTieBreakerBar(); // draw tie breaker bar if needed
+        if ( _gameState->getTieBreak() == true ) {
+            std::cout << "tie break is true, calling _drawTieBreakerBar()..." << std::endl;
+            _drawTieBreakerBar();
+        } else { std::cout << "tie break is false, not calling _drawTieBreakerBar()..." << std::endl; }
     }
 }
 
@@ -134,7 +137,7 @@ void ScoreBoard::_drawTieBreakerBar() {
 
 void ScoreBoard::clearScreen() {
     if ( MATRIX_DISABLED == 1 ) {
-        std::cout << "clearScreen called, no matrix." << std::endl;
+        // std::cout << "clearScreen called, no matrix." << std::endl;
     } else {
         if ( !hasCanvas()) { std::cout << "*** ERROR: canvas == NULL.  exiting... ***" << std::endl; exit( 1 ); }
         std::cout << "clearScreen called, hasCanvas() is good.  clearing matrix...." << std::endl;

@@ -37,7 +37,7 @@ This file contains the implementation of the `Mode1Score` class.
 - `IPlayer* _player2`: Pointer to player 2 object.
 - `GameState* _gameState`: Pointer to the game state object.
 - `History* _history`: Pointer to the history object.
-- `Mode1TieBreaker _mode1TieBreaker`: Instance of the `Mode1TieBreaker` class.
+- `TieBreaker _mode1TieBreaker`: Instance of the `TieBreaker` class.
 - `PointLeds _pointLeds`: Instance of the `PointLeds` class.
 - `GameLeds _gameLeds`: Instance of the `GameLeds` class.
 - `SetLeds _setLeds`: Instance of the `SetLeds` class.
@@ -84,7 +84,7 @@ This file contains the declaration of the `Mode1Score` class.
 - `IPlayer* _player2`: Pointer to player 2 object.
 - `GameState* _gameState`: Pointer to the game state object.
 - `History* _history`: Pointer to the history object.
-- `Mode1TieBreaker _mode1TieBreaker`: Instance of the `Mode1TieBreaker` class.
+- `TieBreaker _mode1TieBreaker`: Instance of the `TieBreaker` class.
 - `PointLeds _pointLeds`: Instance of the `PointLeds` class.
 - `GameLeds _gameLeds`: Instance of the `GameLeds` class.
 - `SetLeds _setLeds`: Instance of the `SetLeds` class.
