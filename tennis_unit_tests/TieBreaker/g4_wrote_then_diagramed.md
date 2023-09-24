@@ -32,3 +32,5 @@ graph TD
     setTieBreak --> theend
     checkGameWin -- No --> theend
 ```
+
+### This is from a file that gpt 4 wrote from the diagram and mode1score exmple.. seems it works better without the example.  the mode1score code is confusing the bot.
