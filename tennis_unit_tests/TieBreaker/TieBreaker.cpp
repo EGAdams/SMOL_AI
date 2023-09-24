@@ -47,14 +47,21 @@ void TieBreaker::run( Player* currentPlayer ) {
     _gameState->setServeSwitch( 1 ); // not sure about this one...
 
     if ( currentPlayer->getPoints() == 15 ) {
+        _undo.snapshot( _history );                                   
+        currentPlayer->setGames( currentPlayer->getGames() + 1 );
         celebrate();    // this is a win no matter what.
+        _gameState->setCurrentSet( _gameState->getCurrentSet() + 1 ); // increment set
         endTieBreak(); }
 
     Player* opponent = currentPlayer->getOpponent();
     if ( currentPlayer->getPoints() >= 10 && 
         ( currentPlayer->getPoints() - opponent->getPoints() >= 2)) {
+        _undo.snapshot( _history );                                   
+        currentPlayer->setGames( currentPlayer->getGames() + 1 );
         celebrate();
-        endTieBreak(); }}
+        _gameState->setCurrentSet( _gameState->getCurrentSet() + 1 ); // increment set
+        endTieBreak(); }
+}
 
 void TieBreaker::mode1SetTBButtonFunction() {
     switch ( _gameState->getPlayerButton()) {

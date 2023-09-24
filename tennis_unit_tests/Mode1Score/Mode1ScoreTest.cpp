@@ -165,7 +165,7 @@ TEST_F( Mode1ScoreTest, TestTiebreakScenarios ) {
     ASSERT_EQ( true, gameState->getTieBreak()); // ASSERT tie break flag is true
 
     std::cout << "simulating the progression of points during the tiebreak... " << std::endl;
-    for ( int i = 0; i < 6; i++ ) {
+    for ( int i = 0; i < 8; i++ ) {
         gameState->setPlayerButton( 1 );
         player1->setPoints( i + 1 );
         mode1Score->updateScore( player1 );
@@ -174,26 +174,26 @@ TEST_F( Mode1ScoreTest, TestTiebreakScenarios ) {
         mode1Score->updateScore( player2 );
     }
     // At this point, the score should be "six all"
-    ASSERT_EQ( 6, player1->getPoints());
-    ASSERT_EQ( 6, player2->getPoints());
+    ASSERT_EQ( 8, player1->getPoints());
+    ASSERT_EQ( 8, player2->getPoints());
 
     // Player1 scores the next point
-    player1->setPoints( 7 );
+    player1->setPoints( 9 );
     mode1Score->updateScore( player1 );
     
     // Verify that the tiebreak hasn't been won yet since there isn't a 2 point lead
-    ASSERT_EQ( 7, player1->getPoints());
-    ASSERT_EQ( 6, player2->getPoints());
+    ASSERT_EQ( 9, player1->getPoints());
+    ASSERT_EQ( 8, player2->getPoints());
     ASSERT_EQ( 6, player1->getGames());
     ASSERT_EQ( 6, player2->getGames());
 
     // Player1 scores one more point and wins the tiebreak
-    player1->setPoints( 8 );
+    player1->setPoints( 10 );
     mode1Score->updateScore( player1 );
     
     // Verify that player1 has won the tiebreak and the set
-    ASSERT_EQ( 7, player1->getGames());
-    ASSERT_EQ( 6, player2->getGames());
+    ASSERT_EQ( 7, player1->getSetHistory()[ 1 ]);
+    ASSERT_EQ( 6, player2->getSetHistory()[ 1 ]);
 
     printBanner( "End of Test #4\n\n" );
 }
