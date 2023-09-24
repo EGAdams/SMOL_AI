@@ -182,6 +182,7 @@ TEST_F( Mode1ScoreTest, TestTiebreakScenarios ) {
     mode1Score->updateScore( player1 );
     
     // Verify that the tiebreak hasn't been won yet since there isn't a 2 point lead
+    ASSERT_EQ( 7, player1->getPoints());
     ASSERT_EQ( 6, player2->getPoints());
     ASSERT_EQ( 6, player1->getGames());
     ASSERT_EQ( 6, player2->getGames());

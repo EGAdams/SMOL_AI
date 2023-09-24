@@ -23,7 +23,9 @@ void TieBreaker::setScoreBoards( ScoreBoard* scoreBoard ) {
     _pointLeds.setScoreBoard( scoreBoard );
     _setLeds.setScoreBoard(   scoreBoard ); 
     _gameLeds.setScoreBoard(  scoreBoard ); 
-    _undo.setScoreBoard(      scoreBoard ); }
+    _undo.setScoreBoard(      scoreBoard ); 
+    _scoreBoard =             scoreBoard; 
+}
 
 void TieBreaker::tieLEDsOn() {
     _gameState->setTieLEDsOn( 1 );
@@ -35,42 +37,24 @@ void TieBreaker::tieLEDsOff() {
     _pinInterface->pinDigitalWrite( P1_TIEBREAKER, LOW );
     _pinInterface->pinDigitalWrite( P2_TIEBREAKER, LOW ); }
 
-void TieBreaker::buttonAction() {
-    switch ( _gameState->getPlayerButton() ) {
-    case 0:
-        break;
-
-    case 1:
-        GameTimer::gameDelay( _gameState->getButtonDelay());
-        _undo.snapshot( _history );                  // SetMode1Undo();
-        _player1->setGames( _player1->getGames() + 1 );  // p1Games++;
-        mode1TBP1Games();                              // Mode1TBP1Games();
-        break;
-
-    case 2:
-        GameTimer::gameDelay( _gameState->getButtonDelay());
-        _undo.mode1Undo( _history );
-        break;
-
-    case 3:
-        GameTimer::gameDelay( _gameState->getButtonDelay());
-        _undo.snapshot( _history );
-        _player2->setGames( _player2->getGames() + 1 );
-        mode1TBP2Games();
-        break;
-
-    case 4:
-        GameTimer::gameDelay( _gameState->getButtonDelay());
-        _undo.mode1Undo( _history );
-        break;
-    }
-    _gameState->setPlayerButton( 0 );
+void TieBreaker::celebrate() {
+    std::cout << "*** celebrateWin() called. ***" << std::endl;
 }
 
-void TieBreaker::tieBreaker() { 
+void TieBreaker::run( Player* currentPlayer ) { 
     _undo.memory(); 
-    buttonAction();
-}
+    _scoreBoard->update();
+    _gameState->setServeSwitch( 1 ); // not sure about this one...
+
+    if ( currentPlayer->getPoints() == 15 ) {
+        celebrate();    // this is a win no matter what.
+        endTieBreak(); }
+
+    Player* opponent = currentPlayer->getOpponent();
+    if ( currentPlayer->getPoints() >= 10 && 
+        ( currentPlayer->getPoints() - opponent->getPoints() >= 2)) {
+        celebrate();
+        endTieBreak(); }}
 
 void TieBreaker::mode1SetTBButtonFunction() {
     switch ( _gameState->getPlayerButton()) {
@@ -164,7 +148,7 @@ void TieBreaker::endTieBreak() {
     tieLEDsOff();
     _player1->setPoints( 0 );
     _player2->setPoints( 0 );
-    _player1->setGames( 0 );
+    _player1->setGames( 0 );  // TODO: set to 7 6 and increment the current serve and 
     _player2->setGames( 0 );
     std::cout << "*** calling _pointLeds.updatePoints() from inside endTieBreak()... ***" << std::endl;
     _pointLeds.updatePoints();

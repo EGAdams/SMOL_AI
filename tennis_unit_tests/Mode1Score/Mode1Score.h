@@ -43,7 +43,7 @@ class Mode1Score {
     Player* _player2;
     GameState* _gameState;
     History* _history;
-    TieBreaker _mode1TieBreaker;
+    TieBreaker _tieBreaker;
     PointLeds _pointLeds;
     GameLeds _gameLeds;
     SetLeds _setLeds;

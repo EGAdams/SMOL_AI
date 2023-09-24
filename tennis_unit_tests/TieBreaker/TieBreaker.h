@@ -23,7 +23,7 @@ class TieBreaker {
                    History* history );
   ~TieBreaker();
   void setScoreBoards( ScoreBoard* scoreBoard );
-  void tieBreaker();
+  void run( Player* currentPlayer );
   void setTieBreaker();
   void buttonAction();
   void mode1SetTBButtonFunction();
@@ -36,6 +36,7 @@ class TieBreaker {
   void mode1TBP2Games();
   void mode1SetTBP2Games();
   void mode1SetTBP1Games();
+  void celebrate();
 
  private:
   Player* _player1;
@@ -49,6 +50,7 @@ class TieBreaker {
   SetLeds _setLeds;
   Mode1WinSequences _mode1WinSequences;
   Undo _undo;
+  ScoreBoard* _scoreBoard;
 };
 
 #endif
