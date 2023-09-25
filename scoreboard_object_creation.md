@@ -5,6 +5,7 @@ The program consists of a ScoreBoard class that takes in two Player objects and 
 The ScoreBoard class has a private _bigNumberDrawer object of class BigNumberDrawer, a _pipeDrawer object (class not specified), a _big_number_font object (type not specified), and a _canvas object (type not specified).
 
 The project structure will be:
+```tree
 .
 ├── ScoreBoard
 │   ├── ScoreBoard.h
@@ -22,6 +23,7 @@ The project structure will be:
 ├── Makefile
 ├── doxygen_config
 └── .gitignore
+```
 
 Each file has a specific function:
 

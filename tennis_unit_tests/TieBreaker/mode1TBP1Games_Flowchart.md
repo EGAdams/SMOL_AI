@@ -90,7 +90,7 @@ public:
 };
 ```
 
-## link to gpt4 chat session
+## link to gpt-4 chat session
 https://chat.openai.com/share/0f0afbb8-82d8-42c3-bb3c-215332395873
 
 ## gpt-3.5 answer
@@ -107,13 +107,13 @@ void TieBreaker::run( Player* currentPlayer ) {
     if ( currentPlayer->getPoints() == 15 ) {
         _undo.snapshot( _history );                                   
         currentPlayer->setGames( currentPlayer->getGames() + 1 );
-        celebrate();    // this is a win no matter what.
+        celebrate();  // Getting to 15 is a win no matter what the score difference is
         _gameState->setCurrentSet( _gameState->getCurrentSet() + 1 ); // increment set
         endTieBreak(); }
 
     Player* opponent = currentPlayer->getOpponent();
     if ( currentPlayer->getPoints() >= 10 && 
-        ( currentPlayer->getPoints() - opponent->getPoints() >= 2)) {
+        ( currentPlayer->getPoints() - opponent->getPoints() >= 2)) { // win by 2?
         _undo.snapshot( _history );                                   
         currentPlayer->setGames( currentPlayer->getGames() + 1 );
         celebrate();

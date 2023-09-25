@@ -45,5 +45,4 @@ sequenceDiagram
             TB->>TB: endTieBreak()
         end
     end
-
 ```
