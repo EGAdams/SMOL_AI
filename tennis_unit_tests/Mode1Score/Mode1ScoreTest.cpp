@@ -245,6 +245,12 @@ TEST_F( Mode1ScoreTest, TestTiebreakScenarios ) {
     ASSERT_EQ( 7, player1->getSetHistory()[ 1 ]);
     ASSERT_EQ( 6, player2->getSetHistory()[ 1 ]);
 
+    // Verify that the tiebreak flag is false
+    ASSERT_EQ( false, gameState->getTieBreak()); // ASSERT tie break flag is false
+    
+    // verify that the tie break iteration is 0
+    ASSERT_EQ( 0, mode1Score->getTieBreaker()->getIteration()); // ASSERT tie break iteration is 0
+
     printBanner( "End of Test #4\n\n" );
 }
 

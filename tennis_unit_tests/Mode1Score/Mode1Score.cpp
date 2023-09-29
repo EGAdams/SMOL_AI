@@ -18,6 +18,8 @@ Mode1Score::Mode1Score(
     _undo( player1, player2, pinInterface, gameState ) {}
 Mode1Score::~Mode1Score() {}
 
+TieBreaker* Mode1Score::getTieBreaker() { return &_tieBreaker; }
+
 void Mode1Score::setScoreBoard( ScoreBoard* scoreBoard ) {
     _scoreBoard = scoreBoard;
     _pointLeds.setScoreBoard(          scoreBoard ); 

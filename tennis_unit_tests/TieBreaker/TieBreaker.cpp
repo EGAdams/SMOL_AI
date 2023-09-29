@@ -82,6 +82,18 @@ int TieBreaker::_getServe() {
         return PLAYER_1_SERVE;
         break;
     
+    case 16:
+        return PLAYER_1_SERVE;
+        break;
+
+    case 17:
+        return PLAYER_2_SERVE;
+        break;
+
+    case 18:
+        return PLAYER_2_SERVE;
+        break;
+    
     default:
         return PLAYER_1_SERVE;
         break;
@@ -124,6 +136,7 @@ void TieBreaker::run( Player* currentPlayer ) {
     _undo.memory(); 
     _gameState->setServe( _getServe()); // set the serve bar depending tie-break iteration
     _scoreBoard->update();
+    Player* opponent = currentPlayer->getOpponent();
 
     if ( currentPlayer->getPoints() == 15 ) {
         _undo.snapshot( _history );                                   
@@ -132,10 +145,8 @@ void TieBreaker::run( Player* currentPlayer ) {
         celebrate();    // this is a win no matter what.
         GameTimer::gameDelay( 3000 );
         endTieBreak(); 
-        incrementSet(); }
-
-    Player* opponent = currentPlayer->getOpponent();
-    if ( currentPlayer->getPoints() >= 10 && 
+        incrementSet();
+    } else if ( currentPlayer->getPoints() >= 10 && 
         ( currentPlayer->getPoints() - opponent->getPoints() >= 2)) {
         _undo.snapshot( _history );                                   
         currentPlayer->setGames( currentPlayer->getGames() + 1 );     // increment games
@@ -144,8 +155,11 @@ void TieBreaker::run( Player* currentPlayer ) {
         GameTimer::gameDelay( 3000 );
         incrementSet(); 
         endTieBreak(); 
+    } else {
+                               // needed to put this here otherwise tie break would
+                               // be incremented even after a win.
+        incrementIteration();  // need this to determine serve bar location
     }
-    incrementIteration();  // need this to determine serve bar
 }
 
 void TieBreaker::mode1SetTBButtonFunction() {
@@ -243,12 +257,12 @@ void TieBreaker::endTieBreak() {
     _iteration = 0;
     _player1->setPoints( 0 );
     _player2->setPoints( 0 );
-    _player1->setGames( 0 );  // TODO: set to 7 6 and increment the current serve and 
-    _player2->setGames( 0 );
+    _player1->setGames(  0 );  // TODO: set to 7 6 and increment the current serve and 
+    _player2->setGames(  0 );
     std::cout << "*** calling _pointLeds.updatePoints() from inside endTieBreak()... ***" << std::endl;
     _pointLeds.updatePoints();
     _gameLeds.updateGames();
-    _gameState->setTieBreak( 0 );
+    _gameState->setTieBreak(    0 );
     _gameState->setSetTieBreak( 0 );
     _scoreBoard->update(); }
 

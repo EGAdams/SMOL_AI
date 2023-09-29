@@ -36,6 +36,7 @@ class Mode1Score {
     void updateScore(  Player* currentPlayer  );
     void setScoreBoard( ScoreBoard* scoreBoard );
     ScoreBoard* getScoreBoard();
+    TieBreaker* getTieBreaker();
 
  private:
     void _resetGame();
