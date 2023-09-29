@@ -1,0 +1,16 @@
+## tie-break serve logic
+- After 1st score: Player 2 serves for 2 more  Player 2 1
+- After 2nd score: Player 2 serves for 1 more  Player 2 2
+- After 3rd score: Player 1 serves for 2 more  Player 1 3
+- After 4th score: Player 1 serves for 1 more  Player 1 4
+- After 5th score: Player 2 serves for 2 more  Player 2 5
+- After 6th score: Player 2 serves for 1 more  Player 2 6
+- After 7th score: Player 1 serves for 2 more  Player 1 7
+- After 8th score: Player 1 serves for 1 more  Player 1 8
+- After 9th score: Player 2 serves for 2 more  Player 2 9
+- After 10th score: Player 2 serves for 1 more  Player 2 10
+- After 11th score: Player 1 serves for 2 more  Player 1 11
+- After 12th score: Player 1 serves for 1 more  Player 1 12
+- After 13th score: Player 2 serves for 2 more  Player 2 13
+- After 14th score: Player 2 serves for 1 more  Player 2 14
+- After 15th score: Player 1 serves for 2 more  Player 1 15

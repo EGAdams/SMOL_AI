@@ -18,8 +18,8 @@ This file contains the implementation of the `Mode1Score` class.
 
 - `void setScoreBoard(ScoreBoard* scoreBoard)`: Sets the score board for the `Mode1Score` object.
 - `void updateScore(IPlayer* currentPlayer)`: Updates the score for the current player.
-- `void mode1P1Score()`: Updates the score for player 1.
-- `void mode1P2Score()`: Updates the score for player 2.
+- `void playerOneScore()`: Updates the score for player 1.
+- `void playerTwoScore()`: Updates the score for player 2.
 - `void mode1P1Games()`: Updates the games for player 1.
 - `void mode1P2Games()`: Updates the games for player 2.
 - `void mode1TBP1Games()`: Updates the games for player 1 in tie-break mode.
@@ -65,8 +65,8 @@ This file contains the declaration of the `Mode1Score` class.
 
 - `void setScoreBoard(ScoreBoard* scoreBoard)`: Sets the score board for the `Mode1Score` object.
 - `void updateScore(IPlayer* currentPlayer)`: Updates the score for the current player.
-- `void mode1P1Score()`: Updates the score for player 1.
-- `void mode1P2Score()`: Updates the score for player 2.
+- `void playerOneScore()`: Updates the score for player 1.
+- `void playerTwoScore()`: Updates the score for player 2.
 - `void mode1P1Games()`: Updates the games for player 1.
 - `void mode1P2Games()`: Updates the games for player 2.
 - `void mode1TBP1Games()`: Updates the games for player 1 in tie-break mode.
@@ -124,7 +124,7 @@ This file contains the unit tests for the `Mode1Score` class.
 
 #### Description
 
-This test case verifies that the `mode1P1Score` method correctly updates the score for player 1.
+This test case verifies that the `playerOneScore` method correctly updates the score for player 1.
 
 ### `TestMode1P1Score_LessThan3Points`
 
@@ -134,7 +134,7 @@ This test case verifies that the `mode1P1Score` method correctly updates the sco
 
 #### Description
 
-This test case verifies that the `mode1P1Score` method does not update the score if the current player has less than 3 points.
+This test case verifies that the `playerOneScore` method does not update the score if the current player has less than 3 points.
 
 ### `TestMode1P1Score_3Points_LessThan3PointsP2`
 
@@ -144,7 +144,7 @@ This test case verifies that the `mode1P1Score` method does not update the score
 
 #### Description
 
-This test case verifies that the `mode1P1Score` method updates the score for player 1 and player 2 if both players have 3 points.
+This test case verifies that the `playerOneScore` method updates the score for player 1 and player 2 if both players have 3 points.
 
 ### `TestMode1P1Score_3Points_EqualPoints`
 
@@ -154,7 +154,7 @@ This test case verifies that the `mode1P1Score` method updates the score for pla
 
 #### Description
 
-This test case verifies that the `mode1P1Score` method updates the score for player 1 and player 2 if both players have 3 points.
+This test case verifies that the `playerOneScore` method updates the score for player 1 and player 2 if both players have 3 points.
 
 ### `TestMode1P1Score_MoreThan3Points_DifferenceMoreThan1`
 
@@ -164,7 +164,7 @@ This test case verifies that the `mode1P1Score` method updates the score for pla
 
 #### Description
 
-This test case verifies that the `mode1P1Score` method updates the score for player 1 and increments the games if player 1 has more than 3 points and the difference between player 1's points and player 2's points is more than 1.
+This test case verifies that the `playerOneScore` method updates the score for player 1 and increments the games if player 1 has more than 3 points and the difference between player 1's points and player 2's points is more than 1.
 
 ### `TestMode1P1Score_4Points`
 
@@ -174,6 +174,6 @@ This test case verifies that the `mode1P1Score` method updates the score for pla
 
 #### Description
 
-This test case verifies that the `mode1P1Score` method updates the score for player 1 and sets the point flash and toggle if player 1 has 4 points.
+This test case verifies that the `playerOneScore` method updates the score for player 1 and sets the point flash and toggle if player 1 has 4 points.
 
 These are the main files and their contents that make up the program.

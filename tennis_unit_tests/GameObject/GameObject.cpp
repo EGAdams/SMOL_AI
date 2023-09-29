@@ -44,6 +44,9 @@ GameObject::GameObject( GameState* gameState ) : _gameState( gameState ) {
     std::cout << "GameObject constructed." << std::endl;
 }
 
+Player* GameObject::getPlayer1() { return _player1; }
+Player* GameObject::getPlayer2() { return _player2; }
+
 GameObject::~GameObject() {};
 void GameObject::_signalHandler( int signal ) { GameObject::gSignalStatus = signal; }
 volatile int GameObject::gSignalStatus = 0;
@@ -59,7 +62,7 @@ void GameObject::loopGame() {
         std::cout << "*** //////////// starting another loop.  current set is: " << _gameState->getCurrentSet() << " ////////////////// ***" << std::endl;
         int rotaryValue = 1; // int rotaryValue = _gameInputs->readRotary(); TODO: actually read rotary
         // std::cout << "rotaryValue: " << rotaryValue << ".  setting game mode to " << rotaryValue << "." << std::endl;
-        _gameModes->setGameMode( rotaryValue );  // mode1() called here <--- entry point !! --------------<<
+        /* ENTRY POINT! don't step over, step into !! */_gameModes->setGameMode( rotaryValue );  // mode1() called here <--- entry point !! --------------<<
         // std::cout << "delaying for " << GAME_LOOP_DELAY << " milliseconds..." << std::endl;
         GameTimer::gameDelay( GAME_LOOP_DELAY );
         // std::cout << "updating game state..." << std::endl;

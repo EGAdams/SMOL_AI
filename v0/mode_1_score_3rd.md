@@ -44,10 +44,10 @@
     - If the current player's points are equal to 4, set the point flash to 1, set the previous time to the current game time, and set the toggle to 0.
   - Calls the updatePoints method on the _pointLeds object.
 
-### Method: mode1P1Score
+### Method: playerOneScore
 - Calls the updateScore method with player1 as the parameter.
 
-### Method: mode1P2Score
+### Method: playerTwoScore
 - Calls the updateScore method with player2 as the parameter.
 
 ### Method: mode1P1Games
@@ -129,33 +129,33 @@
 - Contains test cases for the Mode1Score class.
 
 ### Test Case: TestMode1P1Score_LessThan3Points
-- Tests the mode1P1Score method when player1 has less than 3 points.
+- Tests the playerOneScore method when player1 has less than 3 points.
 - Sets up the necessary expectations.
-- Calls the mode1P1Score method.
+- Calls the playerOneScore method.
 - Asserts the expected behavior.
 
 ### Test Case: TestMode1P1Score_3Points_LessThan3PointsP2
-- Tests the mode1P1Score method when player1 has 3 points and player2 has less than 3 points.
+- Tests the playerOneScore method when player1 has 3 points and player2 has less than 3 points.
 - Sets up the necessary expectations.
-- Calls the mode1P1Score method.
+- Calls the playerOneScore method.
 - Asserts the expected behavior.
 
 ### Test Case: TestMode1P1Score_3Points_EqualPoints
-- Tests the mode1P1Score method when player1 has 3 points and player2 has 3 points.
+- Tests the playerOneScore method when player1 has 3 points and player2 has 3 points.
 - Sets up the necessary expectations.
-- Calls the mode1P1Score method.
+- Calls the playerOneScore method.
 - Asserts the expected behavior.
 
 ### Test Case: TestMode1P1Score_MoreThan3Points_DifferenceMoreThan1
-- Tests the mode1P1Score method when player1 has more than 3 points and the point difference with player2 is more than 1.
+- Tests the playerOneScore method when player1 has more than 3 points and the point difference with player2 is more than 1.
 - Sets up the necessary expectations.
-- Calls the mode1P1Score method.
+- Calls the playerOneScore method.
 - Asserts the expected behavior.
 
 ### Test Case: TestMode1P1Score_4Points
-- Tests the mode1P1Score method when player1 has 4 points.
+- Tests the playerOneScore method when player1 has 4 points.
 - Sets up the necessary expectations.
-- Calls the mode1P1Score method.
+- Calls the playerOneScore method.
 - Asserts the expected behavior.
 
 # Mode1Score.h

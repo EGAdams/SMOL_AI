@@ -9,6 +9,8 @@
 #define BOTH_PLAYER_BLINK           "blink both players"
 #define PLAYER_1_BLINK              "player1 blink"
 #define PLAYER_2_BLINK              "player2 blink"
+#define PLAYER_ONE_BUTTON           1
+#define PLAYER_TWO_BUTTON           2
 #define ACTIVE_BLINK                "blink"
 #define NORMAL_GAME_STATE           "normal game state"
 #define TESTING                     1

@@ -28,7 +28,12 @@ def overwrite_files(src_dir, dest_dir):
             continue
 
         for file in files:
+            print ( "checking file: " + file + " ..." )
             if "Test" in file:
+                continue
+            if "gmock" in file:
+                continue
+            if "gtest" in file:
                 continue
             if file.endswith(('.cpp', '.h')):
                 src_file = os.path.join(root, file)
@@ -38,12 +43,15 @@ def overwrite_files(src_dir, dest_dir):
                     difference = get_difference(src_file, dest_file)
                     
                     if difference:
+                        print( "difference: " + difference + " \n\n")
                         print(f"Difference found for {file}:")
 
-                        # if confirm_action("Do you want to overwrite?"):
-                        #     shutil.copy(src_file, dest_file)
-                        print( "overwriting... " )
-                        shutil.copy(src_file, dest_file)
+                        if confirm_action("Do you want to overwrite?"):
+                            print( "overwriting... " )
+                            shutil.copy(src_file, dest_file)
+                        else: 
+                            print( "skipping the overwriting of file " + file )
+                        
                     else:
                         print(f"No difference between {file}. Skipping...")
                 else:
@@ -52,8 +60,25 @@ def overwrite_files(src_dir, dest_dir):
                         shutil.copy(src_file, dest_file)
 
 # Define the source and destination directories
-src_directory = "/home/adamsl/rpi-rgb-led-matrix/tennis-game"
+src_directory  = "/home/adamsl/rpi-rgb-led-matrix/tennis-game"
 dest_directory = "/home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests"
+
+
+confirm_source_and_destination = confirm_action(f"\n\nLive Production to Test Fixture Transfer\n\nSource:      {src_directory}\nDestination: {dest_directory}\n\nAre these correct?")
+if not confirm_source_and_destination:
+    src_directory  = "/home/adamsl/linuxBash/SMOL_AI/tennis_unit_tests"
+    dest_directory = "/home/adamsl/rpi-rgb-led-matrix/tennis-game"
+    confirm_source_and_destination = confirm_action(f"\n\nText Fixture to Live Production Transfer\n\n\nSource:      {src_directory}\nDestination: {dest_directory}\n\nAre these correct?")
+
+    if not confirm_source_and_destination:
+        print("Exiting...")
+        exit()
+    else: 
+        print(" continuing \n\nText Fixture to Live Production Transfer\n\n..." )   
+else:
+    print( "continuing \n\nLive Production to Test Fixture Transfer\n\n..." )
+
+ 
 
 # Call the function to start the overwriting process (Note: This is a demonstration and will not run in this environment)
 overwrite_files(src_directory, dest_directory)

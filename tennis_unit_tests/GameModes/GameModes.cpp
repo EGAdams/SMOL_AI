@@ -21,7 +21,7 @@ GameModes::GameModes(
     _inputs( player1, player2, pinInterface, gameState ),
     _undo( player1, player2, pinInterface, gameState ),
     _serveLeds( pinInterface, gameState ),
-    _mode1TieBreaker( player1, player2, pinInterface, gameState, history ),
+    _tieBreaker( player1, player2, pinInterface, gameState, history ),
     _mode1Functions( player1, player2, pinInterface, gameState, history ),
     _mode2Functions( player1, player2, pinInterface, gameState ) {
     _logger = new Logger( "test.txt" );
@@ -76,15 +76,17 @@ void GameModes::mode1() {
     // std::cout << "calling serveLeds serveSwitch()... " << std::endl;
     _serveLeds.serveSwitch(); // if serveSwitch >= 2, serveSwitch = 0; and toggle serve variable
     // std::cout << "after serveLeds serveSwitch().  serveSwitch: " << _gameState->getServeSwitch() << std::endl;
-    if ( _gameState->getTieBreak()    == 1 ) { _mode1TieBreaker.run(); }   // TieBreaker();
-    if ( _gameState->getSetTieBreak() == 1 ) { _mode1TieBreaker.setTieBreaker();  // SetTieBreaker();
-    } else { _mode1Functions.mode1ButtonFunction(); _mode1Functions.pointFlash(); }}
+    if ( _gameState->getSetTieBreak() == 1 ) { 
+        _tieBreaker.setTieBreaker();
+    } else { 
+        _mode1Functions.mode1ButtonFunction(); // <--------- ENTRY POINT --------------<<
+        _mode1Functions.pointFlash(); }}
 
 void GameModes::mode2() {
     _gameState->setNow( GameTimer::gameMillis() );
     if ( _gameState->getTieBreakOnly() == 0 ) {
         _gameState->setTieBreak( 1 );  
-        _mode1TieBreaker.tieBreakEnable();
+        _tieBreaker.initializeTieBreakMode();
         _gameState->setTieBreakOnly( 1 );
     }
     mode1(); }
@@ -93,7 +95,7 @@ void GameModes::mode4() {
     _gameState->setNow( GameTimer::gameMillis() );  
     if ( _gameState->getTieBreakOnly() == 0 ) {
         _gameState->setTieBreak( 1 );  
-        _mode1TieBreaker.tieBreakEnable();
+        _tieBreaker.initializeTieBreakMode();
         _gameState->setTieBreakOnly( 1 );  
     }
     mode1(); }
@@ -270,7 +272,7 @@ void GameModes::setGameMode( int rotaryPosition ) {
         _gameState->setNow( GameTimer::gameMillis() );  
         if ( _gameState->getTieBreakOnly() == 0 ) {
             _gameState->setTieBreak( 1 );  
-            _mode1TieBreaker.tieBreakEnable();
+            _tieBreaker.initializeTieBreakMode();
             _gameState->setTieBreakOnly( 1 );  
         }
         mode1();
@@ -284,7 +286,7 @@ void GameModes::setGameMode( int rotaryPosition ) {
         gameStart();
         _player1->setPoints( 5 );
         _pointLeds.updatePoints();
-        mode1();
+        mode1(); // <----------------- ENTRY POINT -------------------<<
         break;
     }
 }

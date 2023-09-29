@@ -9,9 +9,9 @@ The destructor is empty and does not perform any specific actions.
 This function is responsible for handling button presses in mode 1. It uses a switch statement to determine the action based on the value of `_gameState->getPlayerButton()`. 
 
 - Case 0: No action is taken.
-- Case 1: Player 1 scores a point. It sets the mode 1 undo, checks if point flashing is enabled, updates the player points, delays the game, updates the undo memory, and calls the `mode1P1Score()` function of `_mode1Score`.
+- Case 1: Player 1 scores a point. It sets the mode 1 undo, checks if point flashing is enabled, updates the player points, delays the game, updates the undo memory, and calls the `playerOneScore()` function of `_mode1Score`.
 - Case 2: Undo button is pressed. It delays the game and calls the `mode1Undo()` function of `_undo`.
-- Case 3: Player 2 scores a point. It sets the mode 1 undo, checks if point flashing is enabled, updates the player points, delays the game, updates the undo memory, and calls the `mode1P2Score()` function of `_mode1Score`.
+- Case 3: Player 2 scores a point. It sets the mode 1 undo, checks if point flashing is enabled, updates the player points, delays the game, updates the undo memory, and calls the `playerTwoScore()` function of `_mode1Score`.
 - Case 4: Undo button is pressed. It delays the game and calls the `mode1Undo()` function of `_undo`.
 
 After performing the corresponding action, it sets `_gameState->setPlayerButton(0)` to reset the button state.

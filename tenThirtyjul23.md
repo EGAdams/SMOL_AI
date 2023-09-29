@@ -25,9 +25,9 @@ This file contains the implementation of the `Mode1Functions` class. This class 
 - Description: Handles the button press events in mode 1. It performs different actions based on the button pressed by the player.
 - Switch Cases:
   - Case 0: No action.
-  - Case 1: Player 1 scores a point. It sets the mode 1 undo, updates the player's points, and calls the `mode1P1Score` function of the `Mode1Score` object.
+  - Case 1: Player 1 scores a point. It sets the mode 1 undo, updates the player's points, and calls the `playerOneScore` function of the `Mode1Score` object.
   - Case 2: Undo button pressed. It calls the `mode1Undo` function of the `Undo` object.
-  - Case 3: Player 2 scores a point. It sets the mode 1 undo, updates the player's points, and calls the `mode1P2Score` function of the `Mode1Score` object.
+  - Case 3: Player 2 scores a point. It sets the mode 1 undo, updates the player's points, and calls the `playerTwoScore` function of the `Mode1Score` object.
   - Case 4: Undo button pressed. It calls the `mode1Undo` function of the `Undo` object.
 - After performing the action, it resets the player button state to 0.
 

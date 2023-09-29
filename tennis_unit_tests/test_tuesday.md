@@ -135,8 +135,8 @@ void Mode1Score::updateScore( IPlayer* currentPlayer ) {
     // std::cout << "inside updateScore().  updating points..." << std::endl;
     _pointLeds.updatePoints(); }
 
-void Mode1Score::mode1P1Score() { updateScore( _player1 );}
-void Mode1Score::mode1P2Score() { updateScore( _player2 );}
+void Mode1Score::playerOneScore() { updateScore( _player1 );}
+void Mode1Score::playerTwoScore() { updateScore( _player2 );}
 
 
 /////////////////////////////////////// MODE 1 GAMES //////////////////////////////////////////////
@@ -146,7 +146,7 @@ void Mode1Score::mode1P1Games() {
     if ( _player1->getGames() >= GAMES_TO_WIN_SET ) {
         if ( _player1->getGames() == GAMES_TO_WIN_SET && _player2->getGames() == GAMES_TO_WIN_SET ) {
             _gameState->setTieBreak( 1 );
-            _TieBreaker.tieBreakEnable(); }
+            _TieBreaker.initializeTieBreakMode(); }
         if ( _gameState->getTieBreak() == 0 ) {
             std::cout << "*** tie break is zero.  checking if p1 games - p2 games > 1... ***" << std::endl;
             if( !_player1 || !_player2 ) { std::cout << "*** ERROR: player1 or player2 is NULL.  exiting... ***" << std::endl; exit( 1 ); }
@@ -201,8 +201,8 @@ void Mode1Score::mode1P2Games() {
     if ( _player2->getGames()  >= GAMES_TO_WIN_SET ) {
         if ( _player2->getGames()  == GAMES_TO_WIN_SET && _player1->getGames() == GAMES_TO_WIN_SET ) {
             _gameState->setTieBreak( 1 );
-            std::cout << "*** calling tieBreakEnable() from inside Mode1Score::mode1P2Games()... ***" << std::endl;
-            _TieBreaker.tieBreakEnable();
+            std::cout << "*** calling initializeTieBreakMode() from inside Mode1Score::mode1P2Games()... ***" << std::endl;
+            _TieBreaker.initializeTieBreakMode();
         }
         if ( _gameState->getTieBreak() == 0 ) {
             if (( _player2->getGames() - _player1->getGames()) > 1 ) {
