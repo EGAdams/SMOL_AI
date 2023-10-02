@@ -7,7 +7,9 @@ def get_difference(file1, file2):
     Return the difference between two files as a string.
     """
     with open(file1, 'r') as f1, open(file2, 'r') as f2:
-        diff = difflib.ndiff(f1.readlines(), f2.readlines())
+        # create only the difference between the two files
+        diff = difflib.unified_diff(f1.readlines(), f2.readlines(), fromfile=file1, tofile=file2)
+        # diff = difflib.ndiff(f1.readlines(), f2.readlines())
         return '\n'.join(list(diff))
 
 def confirm_action(message):
@@ -42,7 +44,8 @@ def overwrite_files(src_dir, dest_dir):
                 if os.path.exists(dest_file):
                     difference = get_difference(src_file, dest_file)
                     
-                    if difference:
+                    # if the length of the difference is greater than 0
+                    if ( len( difference ) > 0 ):
                         print( "difference: " + difference + " \n\n")
                         print(f"Difference found for {file}:")
 
