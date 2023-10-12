@@ -33,3 +33,18 @@
 {"timestamp":1695394274000,"id":"Undo_1877531092_1695394274000","message":"updating leds...","method":"mode1Undo"}
 {"timestamp":1695394306000,"id":"Undo_1821637276_1695394306000","message":"updating leds...","method":"mode1Undo"}
 {"timestamp":1695394353000,"id":"Undo_1488734529_1695394353000","message":"updating leds...","method":"mode1Undo"}
+{"timestamp":1697126661000,"id":"Reset_1580992527_1697126661000","message":"resetting scoreboard...","method":"resetScoreboard"}
+{"timestamp":1697126661000,"id":"Reset_1580992528_1697126661000","message":"turning tie leds off... ","method":"resetScoreboard"}
+{"timestamp":1697126661000,"id":"Reset_1580992529_1697126661000","message":"done resetting game.","method":"resetScoreboard"}
+{"timestamp":1697126957000,"id":"Reset_982899065_1697126957000","message":"resetting scoreboard...","method":"resetScoreboard"}
+{"timestamp":1697126959000,"id":"Reset_65982739_1697126959000","message":"turning tie leds off... ","method":"resetScoreboard"}
+{"timestamp":1697126959000,"id":"Reset_65982740_1697126959000","message":"done resetting game.","method":"resetScoreboard"}
+{"timestamp":1697128173000,"id":"Reset_220348345_1697128173000","message":"resetting scoreboard...","method":"resetScoreboard"}
+{"timestamp":1697128191000,"id":"Reset_108001081_1697128191000","message":"turning tie leds off... ","method":"resetScoreboard"}
+{"timestamp":1697128212000,"id":"Reset_1258508094_1697128212000","message":"done resetting game.","method":"resetScoreboard"}
+{"timestamp":1697128438000,"id":"Reset_156436848_1697128438000","message":"resetting scoreboard...","method":"resetScoreboard"}
+{"timestamp":1697128438000,"id":"Reset_156436849_1697128438000","message":"turning tie leds off... ","method":"resetScoreboard"}
+{"timestamp":1697128438000,"id":"Reset_156436850_1697128438000","message":"done resetting game.","method":"resetScoreboard"}
+{"timestamp":1697128865000,"id":"Reset_1291312915_1697128865000","message":"resetting scoreboard...","method":"resetScoreboard"}
+{"timestamp":1697128865000,"id":"Reset_1291312916_1697128865000","message":"turning tie leds off... ","method":"resetScoreboard"}
+{"timestamp":1697128865000,"id":"Reset_1291312917_1697128865000","message":"done resetting game.","method":"resetScoreboard"}

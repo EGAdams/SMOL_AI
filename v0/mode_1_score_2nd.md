@@ -44,7 +44,7 @@
 - Updates the score based on the current player's points:
   - If the current player has 3 or more points:
     - If the current player's points are equal to the opponent's points, set both players' points to 3.
-    - If the current player's points are greater than 3 and the point difference is more than 1, increment the current player's games, call the _undo.memory() method, and call the corresponding mode1P1Games() or mode1P2Games() method based on the current player's number.
+    - If the current player's points are greater than 3 and the point difference is more than 1, increment the current player's games, call the _undo.memory() method, and call the corresponding playerOneGameWin() or playerTwoGameWin() method based on the current player's number.
     - If the current player's points are equal to 4, set the game state's point flash to 1, set the previous time to the current game time, and set the toggle to 0.
   - Updates the point LEDs.
 
@@ -54,7 +54,7 @@
 ### Method: playerTwoScore
 - Calls the updateScore method with player2 as the current player.
 
-### Method: mode1P1Games
+### Method: playerOneGameWin
 - Updates the game state and player1's games:
   - Increments the serve switch.
   - If player1 has won enough games to win a set:
@@ -64,7 +64,7 @@
     - Otherwise, call the corresponding p1GameWinSequence() method and reset the game.
   - If player1 has not won enough games to win a set, call the corresponding p1GameWinSequence() method and reset the game.
 
-### Method: mode1P2Games
+### Method: playerTwoGameWin
 - Updates the game state and player2's games:
   - Increments the serve switch.
   - If player2 has won enough games to win a set:
@@ -169,7 +169,7 @@
 ### Method: playerOneScore
 - Updates the score for player1.
 
-### Method: mode1P1Games
+### Method: playerOneGameWin
 - Updates the game state and player1's games.
 
 ### Method: mode1TBP1Games
@@ -181,7 +181,7 @@
 ### Method: playerTwoScore
 - Updates the score for player2.
 
-### Method: mode1P2Games
+### Method: playerTwoGameWin
 - Updates the game state and player2's games.
 
 ### Method: mode1TBP2Games

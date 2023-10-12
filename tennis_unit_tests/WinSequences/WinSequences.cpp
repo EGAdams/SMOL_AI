@@ -1,7 +1,7 @@
 #include "WinSequences.h"
 
 Mode1WinSequences::~Mode1WinSequences() {
-    std::cout << "*** Mode1WinSequences destructor called. ***" << std::endl;
+    // std::cout << "*** Mode1WinSequences destructor called. ***" << std::endl;
     delete _setWin; }
     
 Mode1WinSequences::Mode1WinSequences( Player* player1, Player* player2, PinInterface* pinInterface,
@@ -42,12 +42,16 @@ void Mode1WinSequences::p1SetWinSequence() {
 
 void Mode1WinSequences::p1MatchWinSequence() {
     std::cout << "//////////////////////// p1MatchWinSequence() ////////////////////////" << std::endl;
-    _undo.memory();
-    _pointLeds.updateTBPoints();
-    _player2->setGames( 5 );
-    _gameLeds.updateGames();
-    MatchWinSequence matchWinSequence; matchWinSequence.run( _player1, _gameState, &_gameLeds, &_setLeds );
-    _reset.resetScoreboard();}
+    if ( _scoreBoard->hasCanvas()) {
+        std::cout << "scoreboard has canvas.  updating..." << std::endl;
+    } else {
+        _undo.memory();
+        _pointLeds.updateTBPoints();
+        // _player2->setGames( 5 );
+        // _gameLeds.updateGames();
+        MatchWinSequence matchWinSequence;
+        matchWinSequence.run( _player1, _gameState, &_gameLeds, &_setLeds );
+        _reset.resetScoreboard(); }}
 
 void Mode1WinSequences::p2GameWinSequence() {
     GameWinSequence gameWinSequence; 

@@ -20,8 +20,7 @@ TieBreaker::TieBreaker( Player* player1,
 TieBreaker::~TieBreaker() {}
 
 int TieBreaker::_getServe() {
-    switch ( _iteration )
-    {
+    switch ( _iteration ) {
     case 1:
         return PLAYER_2_SERVE; // doesn't matter who scores here.  doesn't concern me.
         break;
@@ -93,8 +92,39 @@ int TieBreaker::_getServe() {
     case 18:
         return PLAYER_2_SERVE;
         break;
+
+    case 19:
+        return PLAYER_1_SERVE;
+        break;
+
+    case 20:
+        return PLAYER_1_SERVE;
+        break;
+
+    case 21:
+        return PLAYER_2_SERVE;
+        break;
+
+    case 22:
+        return PLAYER_2_SERVE;
+        break;
+
+    case 23:
+        return PLAYER_1_SERVE;
+        break;
+
+    case 24:
+        return PLAYER_1_SERVE;
+        break;
+
+    case 25:
+        return PLAYER_2_SERVE;
+        break;
     
     default:
+        std::cout << "*** WARNING: _getServe() in TieBreaker.cpp is returning default value. ***"
+                  << std::endl;
+        std::cout << "The iteration is: " << _iteration << std::endl;
         return PLAYER_1_SERVE;
         break;
     }
@@ -102,7 +132,9 @@ int TieBreaker::_getServe() {
 
 void TieBreaker::setIteration( int iteration ) { _iteration = iteration; }
 int  TieBreaker::getIteration() { return _iteration; }
-void TieBreaker::incrementIteration() { _iteration++; }
+void TieBreaker::incrementIteration() { 
+    // std::cout << "Incrementing iteration in TieBreaker::incrementIteration()... " << std::endl;
+    _iteration++; }
 
 void TieBreaker::setScoreBoards( ScoreBoard* scoreBoard ) {
     _pointLeds.setScoreBoard( scoreBoard );
@@ -122,9 +154,11 @@ void TieBreaker::tieLEDsOff() {
     _pinInterface->pinDigitalWrite( P1_TIEBREAKER, LOW );
     _pinInterface->pinDigitalWrite( P2_TIEBREAKER, LOW ); }
 
-void TieBreaker::celebrate() {
+void TieBreaker::celebrate( Player* currentPlayer) {
     std::cout << "*** celebrateWin() called. ***" << std::endl;
     GameTimer::gameDelay( _gameState->getWinDelay() );
+    SetWin setWin( &_undo, _gameState, &_setLeds );
+    setWin.execute( currentPlayer, _scoreBoard );
     std::cout << "*** done celebrating. *** " << std::endl;
 }
 
@@ -138,20 +172,20 @@ void TieBreaker::run( Player* currentPlayer ) {
     _scoreBoard->update();
     Player* opponent = currentPlayer->getOpponent();
 
-    if ( currentPlayer->getPoints() == 15 ) {
+    if ( currentPlayer->getPoints() == TIE_BREAK_MAX_POINTS ) {
         _undo.snapshot( _history );                                   
         currentPlayer->setGames( currentPlayer->getGames() + 1 );     // increment games
         _scoreBoard->update();
-        celebrate();    // this is a win no matter what.
+        celebrate( currentPlayer );    // this is a win no matter what.
         GameTimer::gameDelay( 3000 );
-        endTieBreak(); 
         incrementSet();
-    } else if ( currentPlayer->getPoints() >= 10 && 
+        endTieBreak(); 
+    } else if ( currentPlayer->getPoints() >= TIE_BREAK_WIN_BY_TWO  && 
         ( currentPlayer->getPoints() - opponent->getPoints() >= 2)) {
         _undo.snapshot( _history );                                   
         currentPlayer->setGames( currentPlayer->getGames() + 1 );     // increment games
         _scoreBoard->update();
-        celebrate();
+        celebrate( currentPlayer );
         GameTimer::gameDelay( 3000 );
         incrementSet(); 
         endTieBreak(); 
@@ -257,13 +291,15 @@ void TieBreaker::endTieBreak() {
     _iteration = 0;
     _player1->setPoints( 0 );
     _player2->setPoints( 0 );
-    _player1->setGames(  0 );  // TODO: set to 7 6 and increment the current serve and 
+    _player1->setGames(  0 );
     _player2->setGames(  0 );
     std::cout << "*** calling _pointLeds.updatePoints() from inside endTieBreak()... ***" << std::endl;
     _pointLeds.updatePoints();
     _gameLeds.updateGames();
     _gameState->setTieBreak(    0 );
     _gameState->setSetTieBreak( 0 );
+    _gameState->setServeSwitch( 1 );
+    _gameState->setServe( 0 );
     _scoreBoard->update(); }
 
 void TieBreaker::mode1TBP1Games() {

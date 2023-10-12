@@ -18,7 +18,7 @@ protected:
     std::map< std::string, int > pin_map;
 
     void printBanner( std::string text_to_print ) {
-        std::cout << "\n\n" << std::endl;
+        std::cout << "\n\n\n\n\n\n" << std::endl;
         std::cout << "==============================================" << std::endl;
         std::cout << text_to_print << std::endl;
         std::cout << "==============================================" << std::endl;
@@ -178,49 +178,27 @@ TEST_F( Mode1ScoreTest, TestTiebreakScenarios ) {
         mode1Score->updateScore( player1 );
 
         // after the first score, player 2 is the server for the next 2 points
-        if ( i == 0 ) {
-            ASSERT_EQ( PLAYER_2_SERVE , gameState->getServe());
-        } else if ( i == 1 ) {
-            ASSERT_EQ( PLAYER_1_SERVE , gameState->getServe());
-        } // after the 3rd score, player 1 is the server for the next 2 points
-        else if ( i == 2 ) {
-            ASSERT_EQ( PLAYER_2_SERVE , gameState->getServe());
-        } else if ( i == 3 ) {
-            ASSERT_EQ( PLAYER_1_SERVE , gameState->getServe());
-        } else if ( i == 4 ) {
-            ASSERT_EQ( PLAYER_2_SERVE , gameState->getServe());
-        } else if ( i == 5 ) {
-            ASSERT_EQ( PLAYER_1_SERVE , gameState->getServe());
-        } else if ( i == 6 ) {
-            ASSERT_EQ( PLAYER_2_SERVE , gameState->getServe());
-        } else if ( i == 7 ) {
-            ASSERT_EQ( PLAYER_1_SERVE , gameState->getServe());
-        }
+        if ( i == 0 ) {        ASSERT_EQ( PLAYER_2_SERVE , gameState->getServe());
+        } else if ( i == 1 ) { ASSERT_EQ( PLAYER_1_SERVE , gameState->getServe());
+        } else if ( i == 2 ) { ASSERT_EQ( PLAYER_2_SERVE , gameState->getServe());
+        } else if ( i == 3 ) { ASSERT_EQ( PLAYER_1_SERVE , gameState->getServe());
+        } else if ( i == 4 ) { ASSERT_EQ( PLAYER_2_SERVE , gameState->getServe());
+        } else if ( i == 5 ) { ASSERT_EQ( PLAYER_1_SERVE , gameState->getServe());
+        } else if ( i == 6 ) { ASSERT_EQ( PLAYER_2_SERVE , gameState->getServe());
+        } else if ( i == 7 ) { ASSERT_EQ( PLAYER_1_SERVE , gameState->getServe()); }
 
         gameState->setPlayerButton( PLAYER_TWO_BUTTON );
         player2->setPoints( i + 1 );
         mode1Score->updateScore( player2 );
 
-        // after the second score, player 2 is still the server for the next point
-        if ( i == 0 ) {
-            ASSERT_EQ( PLAYER_2_SERVE , gameState->getServe());
-        } else if ( i == 1 ) { // after the 4th score, player 1 serves for 1 more point
-            ASSERT_EQ( PLAYER_1_SERVE , gameState->getServe());
-        } else if ( i == 2 ) {
-            ASSERT_EQ( PLAYER_2_SERVE , gameState->getServe());
-        } else if ( i == 3 ) {
-            ASSERT_EQ( PLAYER_1_SERVE , gameState->getServe());
-        } else if ( i == 4 ) {
-            ASSERT_EQ( PLAYER_2_SERVE , gameState->getServe());
-        } else if ( i == 5 ) {
-            ASSERT_EQ( PLAYER_1_SERVE , gameState->getServe());
-        } else if ( i == 6 ) {
-            ASSERT_EQ( PLAYER_2_SERVE , gameState->getServe());
-        } else if ( i == 7 ) {
-            ASSERT_EQ( PLAYER_1_SERVE , gameState->getServe());
-        }
-
-
+        if ( i == 0 ) {        ASSERT_EQ( PLAYER_2_SERVE , gameState->getServe());
+        } else if ( i == 1 ) { ASSERT_EQ( PLAYER_1_SERVE , gameState->getServe());
+        } else if ( i == 2 ) { ASSERT_EQ( PLAYER_2_SERVE , gameState->getServe());
+        } else if ( i == 3 ) { ASSERT_EQ( PLAYER_1_SERVE , gameState->getServe());
+        } else if ( i == 4 ) { ASSERT_EQ( PLAYER_2_SERVE , gameState->getServe());
+        } else if ( i == 5 ) { ASSERT_EQ( PLAYER_1_SERVE , gameState->getServe());
+        } else if ( i == 6 ) { ASSERT_EQ( PLAYER_2_SERVE , gameState->getServe());
+        } else if ( i == 7 ) { ASSERT_EQ( PLAYER_1_SERVE , gameState->getServe()); }
     }
     // At this point, the score should be "eight all"
     ASSERT_EQ( 8, player1->getPoints());
@@ -254,51 +232,131 @@ TEST_F( Mode1ScoreTest, TestTiebreakScenarios ) {
     printBanner( "End of Test #4\n\n" );
 }
 
-// TEST_F( Mode1ScoreTest, TestSetWinScenario ) {
-//     // Mock a situation where both players have 6 games each in a set, leading to a tiebreak
-//     player1->setGames(  5 );
-//     player2->setGames(  6 );
+
+/*
+ * Test #5 Tiebreak Scenario 2 - Player 1 wins 13 to 12
+ */
+TEST_F( Mode1ScoreTest, Test_Tiebreak_13_by_one ) {
+    printBanner( "Test #5\n\nTie Break Scenario 13 by 1 test" );
+    player1->setGames( 5 ); // Mock a situation where both players have 
+    player2->setGames( 6 ); // 6 games each in a set, leading to a tiebreak
+    ASSERT_EQ( 5, player1->getGames() ); // Verify that we are setting up a tiebreak 
+    ASSERT_EQ( 6, player2->getGames() ); // for when player 1 wins the next game
+
+    player1->setPoints( 4 );
+    player2->setPoints( 3 );
+    ASSERT_EQ( 4, player1->getPoints() ); // Verify player 1 is one point away from winning the game
+    ASSERT_EQ( 3, player2->getPoints() );
+
+    player1->setPoints( 5 ); // This game score should set up for a tie break trigger
+    mode1Score->updateScore( player1 ); // This game win should trigger the tie break
+
+    std::cout << "checking tiebreak flag... " << std::endl;
+    std::cout << "tiebreak flag: " << gameState->getTieBreak() << std::endl;
+    ASSERT_EQ( true, gameState->getTieBreak() ); // ASSERT tie break flag is true
+
+    // make sure that player 1 is the server
+    ASSERT_EQ( PLAYER_1_SERVE, gameState->getServe() );
+
+    std::cout << "simulating the progression of points during the tiebreak... " << std::endl;
+    for ( int i = 0; i < 12; i++ ) {
+        gameState->setPlayerButton( PLAYER_ONE_BUTTON );
+        player1->setPoints( i + 1 );
+        mode1Score->updateScore( player1 );
+
+        if ( i == 0 ) {         ASSERT_EQ( PLAYER_2_SERVE , gameState->getServe());
+        } else if ( i == 1  ) { ASSERT_EQ( PLAYER_1_SERVE , gameState->getServe());
+        } else if ( i == 2  ) { ASSERT_EQ( PLAYER_2_SERVE , gameState->getServe());
+        } else if ( i == 3  ) { ASSERT_EQ( PLAYER_1_SERVE , gameState->getServe());
+        } else if ( i == 4  ) { ASSERT_EQ( PLAYER_2_SERVE , gameState->getServe());
+        } else if ( i == 5  ) { ASSERT_EQ( PLAYER_1_SERVE , gameState->getServe());
+        } else if ( i == 6  ) { ASSERT_EQ( PLAYER_2_SERVE , gameState->getServe());
+        } else if ( i == 7  ) { ASSERT_EQ( PLAYER_1_SERVE , gameState->getServe());
+        } else if ( i == 8  ) { ASSERT_EQ( PLAYER_2_SERVE , gameState->getServe());
+        } else if ( i == 9  ) { ASSERT_EQ( PLAYER_1_SERVE , gameState->getServe());
+        } else if ( i == 10 ) { ASSERT_EQ( PLAYER_2_SERVE , gameState->getServe());
+        } else if ( i == 11 ) { ASSERT_EQ( PLAYER_1_SERVE , gameState->getServe()); }
+
+        gameState->setPlayerButton( PLAYER_TWO_BUTTON );
+        player2->setPoints( i + 1 );
+        mode1Score->updateScore( player2 );
+
+        if ( i == 0 ) {         ASSERT_EQ( PLAYER_2_SERVE , gameState->getServe());
+        } else if ( i == 1  ) { ASSERT_EQ( PLAYER_1_SERVE , gameState->getServe());
+        } else if ( i == 2  ) { ASSERT_EQ( PLAYER_2_SERVE , gameState->getServe());
+        } else if ( i == 3  ) { ASSERT_EQ( PLAYER_1_SERVE , gameState->getServe());
+        } else if ( i == 4  ) { ASSERT_EQ( PLAYER_2_SERVE , gameState->getServe());
+        } else if ( i == 5  ) { ASSERT_EQ( PLAYER_1_SERVE , gameState->getServe());
+        } else if ( i == 6  ) { ASSERT_EQ( PLAYER_2_SERVE , gameState->getServe());
+        } else if ( i == 7  ) { ASSERT_EQ( PLAYER_1_SERVE , gameState->getServe());
+        } else if ( i == 8  ) { ASSERT_EQ( PLAYER_2_SERVE , gameState->getServe());
+        } else if ( i == 9  ) { ASSERT_EQ( PLAYER_1_SERVE , gameState->getServe());
+        } else if ( i == 10 ) { ASSERT_EQ( PLAYER_2_SERVE , gameState->getServe());
+        } else if ( i == 11 ) { ASSERT_EQ( PLAYER_1_SERVE , gameState->getServe()); }
+    }
+
+    // At this point, the score should be "twelve all"
+    ASSERT_EQ( 12, player1->getPoints() );
+    ASSERT_EQ( 12, player2->getPoints() );
+
+    // Player1 scores the next point to win the tiebreak
+    player1->setPoints( 13 );
+    mode1Score->updateScore( player1 ); // for the win...
     
-//     // Verify that we are setting up a tiebreak for when player 1 wins the next game
-//     ASSERT_EQ( 5, player1->getGames());
-//     ASSERT_EQ( 6, player2->getGames());
+    // Verify that player1 has won the tiebreak and the set
+    ASSERT_EQ( 7, player1->getSetHistory()[ 1 ] );
+    ASSERT_EQ( 6, player2->getSetHistory()[ 1 ] );
 
-//     player1->setPoints( 5 );
-//     player2->setPoints( 3 );
-
-//     // Verify player 1 is one point away from winning the game
-//     ASSERT_EQ( 5, player1->getPoints());
-//     ASSERT_EQ( 3, player2->getPoints());
-
-//     // This game win should trigger the tie break
-//     mode1Score->updateScore( player1 );
-
-//     // Simulate the progression of points in the tiebreak
-//     for ( int i = 0; i < 6; i++ ) {
-//         player1->setPoints( i + 1 );
-//         mode1Score->updateScore( player1 );
-//         player2->setPoints( i + 1 );
-//         mode1Score->updateScore( player2 );
-//     }
-//     // At this point, the score should be "six all"
-//     ASSERT_EQ( 6, player1->getPoints());
-//     ASSERT_EQ( 6, player2->getPoints());
-
-//     // Player1 scores the next point
-//     player1->setPoints( 7 );
-//     mode1Score->updateScore( player1 );
+    // Verify that the tiebreak flag is false
+    ASSERT_EQ( false, gameState->getTieBreak() ); // ASSERT tie break flag is false
     
-//     // Verify that the tiebreak hasn't been won yet since there isn't a 2 point lead
-//     ASSERT_EQ( 6, player2->getPoints());
-//     ASSERT_EQ( 6, player1->getGames());
-//     ASSERT_EQ( 6, player2->getGames());
+    // verify that the tie break iteration is 0
+    ASSERT_EQ( 0, mode1Score->getTieBreaker()->getIteration() ); // ASSERT tie break iteration is 0
 
-//     // Player1 scores one more point and wins the tiebreak
-//     player1->setPoints( 8 );
-//     mode1Score->updateScore( player1 );
+    printBanner( "End of Test #5\n\n" );
+}
+
+
+
+/*
+ * Test #6 Player 1 wins a set, Player 2 wins a set, Player 1 wins a set and therefore the match
+ */
+TEST_F( Mode1ScoreTest, Test_Two_Set_Win_Scenario ) {
+    printBanner( "Test #6\n\nTwo Set Match win scenario test" );
     
-//     // Verify that player1 has won the tiebreak and the set
-//     ASSERT_EQ( 7, player1->getGames());
-//     ASSERT_EQ( 6, player2->getGames());
-// }
+    // make sure Player One and Player Two have 0 points to start
+    ASSERT_EQ( 0, player1->getPoints());
+    ASSERT_EQ( 0, player2->getPoints());
+
+    // verify that the set is 1
+    ASSERT_EQ( 1, gameState->getCurrentSet() );
+
+    // Set 1: Player 1 wins
+    player1->setGames(  5 ); // Player One has 5 games
+    player2->setGames(  4 ); // Player Two has 4 games
+    player1->setPoints( 4 ); // Player 1 wins the next game ( 4 to 0 ) to win Set 1
+    mode1Score->updateScore( player1 );
+
+    ASSERT_EQ( 6, player1->getSetHistory()[ 1 ] ); // make sure that the set
+    ASSERT_EQ( 4, player2->getSetHistory()[ 1 ] ); // history is good at this point
+
+    // make sure that the set is "2"
+    ASSERT_EQ( 2, gameState->getCurrentSet() );
+
+    // make sure Player One and Player Two have 0 points to start
+    ASSERT_EQ( 0, player1->getPoints());
+    ASSERT_EQ( 0, player2->getPoints());
+    
+    // Set 2: Player 1 wins match
+    player1->setGames(  5 ); // Player One has 5 games
+    player2->setGames(  4 ); // Player Two has 4 games
+    player1->setPoints( 4 ); // Player 1 wins the next game to win Set 2
+    mode1Score->updateScore( player1 );
+
+    // This should be a match win, thy game should be over
+    ASSERT_EQ( 0, gameState->gameRunning());
+
+    printBanner( "End of Modified Test Case\n\n" );
+}
+
 

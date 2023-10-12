@@ -171,7 +171,7 @@ tennis-game.o : tennis-game.cpp
 	$(CXX) -I$(RGB_INCDIR) $(CXXFLAGS) -c -o $@ $<
 
 clean:
-	rm -f $(MAIN_OBJECTS) $(TEST_OBJECTS) $(BINARIES)
+	rm -f $( SCORE_TEST_OBJECTS ) $( MAIN_OBJECTS ) $( TEST_OBJECTS ) $( BINARIES )
 
 FORCE:
 .PHONY: FORCE
