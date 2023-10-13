@@ -67,11 +67,11 @@ ScoreBoard::ScoreBoard( Player* player1, Player* player2, GameState* gameState )
 }
 
 ScoreBoard::~ScoreBoard() {
-    std::cout << "destroying ScoreBoard..." << std::endl;
+    // std::cout << "destroying ScoreBoard..." << std::endl;
     if ( _canvas != NULL ) {
         std::cout << "NOT deleting _canvas..." << std::endl;
         // delete _canvas.get(); // this causes some error.  only one scoreBoard is created anyway.
-    } else { std::cout << "*** WARNING: _canvas == NULL, not deleting. ***" << std::endl; }}
+    } else { /* std::cout << "*** WARNING: _canvas == NULL, not deleting. ***" << std::endl; */ }}
 
 void ScoreBoard::writeMessage( std::string message ) {
     std::cout << "inside ScoreBoard::_writeMessage()..." << std::endl;
@@ -155,7 +155,7 @@ std::string ScoreBoard::drawPlayerScore( Player* player ) {
         _pipeDrawer->DrawNumber( serve_bar, 1, _big_number_font.baseline() + vertical_offset ); // draw pipe
         int baseline = _big_number_font.baseline();                  // set the coordinates for the text
         int first_offset  = _characterOffset( score.substr( 0, 1 ));
-        int second_offset = _characterOffset( score.substr( 1, 1 ));
+        int second_offset = ( score.length() > 1 ) ? _characterOffset( score.substr( 1, 1 )) : 0;
         if( player->number() == PLAYER_1_INITIALIZED ) { // then draw text depending on player
             _playerOneScoreDrawer->DrawNumber( score.substr( 0, 1 ), first_offset  + 16, baseline + vertical_offset );
             if ( score.length() > 1 ) {

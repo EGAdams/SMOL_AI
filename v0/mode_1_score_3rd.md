@@ -40,7 +40,7 @@
 - Updates the score based on the current player's points:
   - If the current player has 3 or more points:
     - If the current player's points are equal to the opponent's points, set both players' points to 3.
-    - If the current player's points are greater than 3 and the point difference is more than 1, increment the current player's games, call the memory method on the _undo object, and call the mode1P1Games or mode1P2Games method based on the current player's number.
+    - If the current player's points are greater than 3 and the point difference is more than 1, increment the current player's games, call the memory method on the _undo object, and call the playerOneGameWin or playerTwoGameWin method based on the current player's number.
     - If the current player's points are equal to 4, set the point flash to 1, set the previous time to the current game time, and set the toggle to 0.
   - Calls the updatePoints method on the _pointLeds object.
 
@@ -50,7 +50,7 @@
 ### Method: playerTwoScore
 - Calls the updateScore method with player2 as the parameter.
 
-### Method: mode1P1Games
+### Method: playerOneGameWin
 - Updates the games for player1:
   - Increments the serve switch.
   - If player1 has won enough games to win a set:
@@ -60,7 +60,7 @@
     - Otherwise, increment the current set, call the p1SetWinSequence method on the _mode1WinSequences object, update the sets on the _setLeds object, delay the game for a certain duration, and reset the game.
   - If player1 has not won enough games to win a set, call the p1GameWinSequence method on the _mode1WinSequences object and reset the game.
 
-### Method: mode1P2Games
+### Method: playerTwoGameWin
 - Updates the games for player2:
   - Increments the serve switch.
   - If player2 has won enough games to win a set:

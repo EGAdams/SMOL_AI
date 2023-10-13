@@ -37,6 +37,19 @@ def overwrite_files(src_dir, dest_dir):
                 continue
             if "gtest" in file:
                 continue
+            if "minified" in file:
+                continue
+            if "PinInterface" in file:
+                continue
+            if "Mock" in file:
+                continue
+            if "IGame" in file:
+                continue
+            if "IPin" in file:
+                continue
+            if "IPlayer" in file:
+                continue
+            
             if file.endswith(('.cpp', '.h')):
                 src_file = os.path.join(root, file)
                 dest_file = os.path.join(dest_dir, os.path.relpath(src_file, src_dir))

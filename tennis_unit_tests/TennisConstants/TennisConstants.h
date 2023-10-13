@@ -21,11 +21,13 @@
 #define WIN_DELAY                   1000
 #define WATCH_INTERVAL              250
 #define UPDATE_DISPLAY_DELAY        50
-#define LOOP_MATCH_LAMP_WIN         5
+#define LOOP_MATCH_LAMP_WIN         2
 #define NUMBER_OF_GAME_LAMPS        7
 #define LOOP_GAME_LAMP_WIN          5
 #define TIE_PULSE_COUNT             5
 #define SET_WIN_PULSE_COUNT         5
+#define TIE_BREAK_WIN_BY_TWO        10
+#define TIE_BREAK_MAX_POINTS        13
 #define TIE_BREAK_BLINK_DELAY       100 // 750
 #define TIE_BREAK_WATCH_INTERVAL    50
 #define BATTERY_TEST_BLINK_DELAY    1000
@@ -39,7 +41,7 @@
 #define TOTAL_SETS                  3
 #define PLAYER_ONE_SET_INDEX        0
 #define PLAYER_TWO_SET_INDEX        1
-#define SETS_TO_WIN_MATCH           3
+#define SETS_TO_WIN_MATCH           2
 #define SCORE_CASE_4                4
 #define SCORE_CASE_5                5
 #define UNDEFINED_SCORE             99
@@ -61,7 +63,7 @@
 #define LOG_FILE_PATH          "C:\\Users\\EG\\Desktop\\2022\\june\\4th_week\\test.txt"
 #define PIN_FILE_PATH          "C:\\Users\\EG\\Desktop\\2022\\june\\2nd_week\\tennis_cpp\\pin_data\\"
 #define GAME_STATE_UPDATE_PATH "C:\\Users\\EG\\Desktop\\2022\\june\\2nd_week\\tennis_cpp\\game_state_data\\"
-#define MATCH_WIN_FLASH_DELAY  200
+#define MATCH_WIN_FLASH_DELAY  100
 #define BATTERY_TEST_DELAY      500
 #define BATTERY_TEST_FLASH_COUNT 5
 #include <iostream>

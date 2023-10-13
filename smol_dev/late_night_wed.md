@@ -20,8 +20,8 @@ This file contains the implementation of the `Mode1Score` class.
 - `void updateScore(IPlayer* currentPlayer)`: Updates the score for the current player.
 - `void playerOneScore()`: Updates the score for player 1.
 - `void playerTwoScore()`: Updates the score for player 2.
-- `void mode1P1Games()`: Updates the games for player 1.
-- `void mode1P2Games()`: Updates the games for player 2.
+- `void playerOneGameWin()`: Updates the games for player 1.
+- `void playerTwoGameWin()`: Updates the games for player 2.
 - `void mode1TBP1Games()`: Updates the games for player 1 in tie-break mode.
 - `void mode1SetTBP1Games()`: Updates the games for player 1 in set tie-break mode.
 - `void mode1TBP2Games()`: Updates the games for player 2 in tie-break mode.
@@ -67,8 +67,8 @@ This file contains the declaration of the `Mode1Score` class.
 - `void updateScore(IPlayer* currentPlayer)`: Updates the score for the current player.
 - `void playerOneScore()`: Updates the score for player 1.
 - `void playerTwoScore()`: Updates the score for player 2.
-- `void mode1P1Games()`: Updates the games for player 1.
-- `void mode1P2Games()`: Updates the games for player 2.
+- `void playerOneGameWin()`: Updates the games for player 1.
+- `void playerTwoGameWin()`: Updates the games for player 2.
 - `void mode1TBP1Games()`: Updates the games for player 1 in tie-break mode.
 - `void mode1SetTBP1Games()`: Updates the games for player 1 in set tie-break mode.
 - `void mode1TBP2Games()`: Updates the games for player 2 in tie-break mode.

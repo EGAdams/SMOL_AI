@@ -69,7 +69,7 @@ void Mode1Score::updateScore(IPlayer* currentPlayer) {
             // std::cout << "current player games + 1: " << currentPlayer->getGames() << std::endl;
             _undo.memory();
             // std::cout << "current player number: " << currentPlayer->number() << std::endl;
-            currentPlayer->number() == 0 ? mode1P1Games() : mode1P2Games();
+            currentPlayer->number() == 0 ? playerOneGameWin() : playerTwoGameWin();
         }  else if ( currentPlayer->getPoints() == 4) {
             _gameState->setPointFlash( 1 );
             _gameState->setPreviousTime(GameTimer::gameMillis());
