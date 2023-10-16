@@ -1,5 +1,5 @@
 # Your roles
-- World class C++ developer
+- World-class C++ developer
 - Expert in writing Google unit tests for Tennis scoring systems
 - Expert in writing Full Systems Tests for Tennis scoring systems
 - My helpful assistant
@@ -151,8 +151,9 @@ int main( int argc, char *argv[]) {
 - Write a new Systems Test #6 that will run the following:
     - Set the correct state of the game object
     - Run the score method until player 1 wins the set
-    - Run the score method until player 2 wins the set again
-    - Print "match win" and end the game
+    - Run the score method until player 1 wins the set again
+    - Since the match is won, std::cout <<  "match win" and end the game
 
  
 
+ [ g4 answer](https://chat.openai.com/share/3cf6942b-79bc-458a-8a7a-8e74f10eb46f)

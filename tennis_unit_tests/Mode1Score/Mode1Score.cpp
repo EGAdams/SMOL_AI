@@ -69,7 +69,6 @@ void Mode1Score::updateScore( Player* currentPlayer ) {
         _pointLeds.updatePoints();
     }
 }
-
 void Mode1Score::playerOneScore() { updateScore( _player1 );}
 void Mode1Score::playerTwoScore() { updateScore( _player2 );}
 
