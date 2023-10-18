@@ -15,4 +15,5 @@ void MatchWinSequence::run( Player* player, GameState* gameState, GameLeds* game
             player->setGames( current_lamp );
             gameLeds->updateGames();
             GameTimer::gameDelay( MATCH_WIN_FLASH_DELAY ); }
-        GameTimer::gameDelay( MATCH_WIN_FLASH_DELAY ); }} // end LOOP_MATCH_LAMP_WIN loop  // end run().
+        GameTimer::gameDelay( MATCH_WIN_FLASH_DELAY ); }
+} // end LOOP_MATCH_LAMP_WIN loop  // end run().
