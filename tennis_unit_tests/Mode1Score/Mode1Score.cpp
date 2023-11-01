@@ -26,9 +26,9 @@ void Mode1Score::setScoreBoard( ScoreBoard* scoreBoard ) {
     _gameLeds.setScoreBoard(           scoreBoard ); 
     _mode1WinSequences.setScoreBoards( scoreBoard ); 
     _setLeds.setScoreBoard(            scoreBoard ); 
-    _tieBreaker.setScoreBoards(   scoreBoard );  // all day debug. in the future.
-    _undo.setScoreBoard(               scoreBoard );  // need to find a way to avoid this
-}                                                     // in the future.
+    _tieBreaker.setScoreBoards(   scoreBoard );         // all day debug. in the future.
+    _undo.setScoreBoard(               scoreBoard ); }    // need to find a way to avoid this
+
 ScoreBoard* Mode1Score::getScoreBoard() { return _scoreBoard; }
 
 void Mode1Score::_resetGame() {
@@ -69,6 +69,7 @@ void Mode1Score::updateScore( Player* currentPlayer ) {
         _pointLeds.updatePoints();
     }
 }
+
 void Mode1Score::playerOneScore() { updateScore( _player1 );}
 void Mode1Score::playerTwoScore() { updateScore( _player2 );}
 
@@ -93,7 +94,7 @@ void Mode1Score::playerGameWin( Player* player ) {
                     _gameState->setSetTieBreak(1);
                     _tieBreaker.setTieBreakEnable();
                 } else if (player->getSets() == SETS_TO_WIN_MATCH) {
-                    player->number() == PLAYER_1_INITIALIZED ? _mode1WinSequences.p1MatchWinSequence() : _mode1WinSequences.p2MatchWinSequence();
+                    player->number() == PLAYER_1_INITIALIZED ? _mode1WinSequences.playerOneMatchWin() : _mode1WinSequences.playerTwoMatchWin();
                     _gameState->stopGameRunning();
                 } else {
                     _gameState->setPlayer1SetHistory(player->getSetHistory());
@@ -174,7 +175,7 @@ void Mode1Score::mode1SetTBP1Games() {
         GameTimer::gameDelay( UPDATE_DISPLAY_DELAY );
         _mode1WinSequences.p1SetTBWinSequence();
         _tieBreaker.tieLEDsOff();
-        _mode1WinSequences.p1MatchWinSequence();
+        _mode1WinSequences.playerOneMatchWin();
         _gameState->stopGameRunning(); }
     _gameState->setServeSwitch( _gameState->getServeSwitch() + 1 ); }
 
@@ -221,7 +222,7 @@ void Mode1Score::mode1SetTBP2Games() {
         GameTimer::gameDelay( UPDATE_DISPLAY_DELAY );
         _mode1WinSequences.p2SetTBWinSequence();
         _tieBreaker.tieLEDsOff();
-        _mode1WinSequences.p2MatchWinSequence(); 
+        _mode1WinSequences.playerTwoMatchWin(); 
         _gameState->stopGameRunning(); 
     }
     std::cout << "setting serve switch to: " << _gameState->getServeSwitch() + 1 << std::endl;

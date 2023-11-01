@@ -110,8 +110,8 @@ TEST_F( Mode1ScoreTest, TestDeuceScenario ) {
     ASSERT_EQ( "PLAYER 2: //////   40 //////", scoreBoard->drawPlayerScore( player2 ));
    
     player1->setPoints(   4 ); // Update score such that player1 gains advantage
-    mode1Score->updateScore( player1 ); // Verify that player1 has the advantage
-    ASSERT_EQ( "PLAYER 1: ////// I Ad //////", scoreBoard->drawPlayerScore( player1 ));
+    mode1Score->updateScore( player1 );
+    ASSERT_EQ( "PLAYER 1: ////// I Ad //////", scoreBoard->drawPlayerScore( player1 )); // Verify that player1 has the advantage
     ASSERT_EQ( "PLAYER 2: //////   40 //////", scoreBoard->drawPlayerScore( player2 ));
     player2->setPoints(   4 ); // Update score such that player2 ties the score, returning to deuce
     mode1Score->updateScore( player2 ); // Verify the score is deuce again

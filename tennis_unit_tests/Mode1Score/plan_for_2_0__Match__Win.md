@@ -125,15 +125,3 @@ Right now I have tried to run the generic assistant and it seems like it starts 
 
 - [ ] Write the "Match Win" text in any old font
 - [ ] Attach it to the game 
-
-
-
-
-
-
-
-
-
-
-
-

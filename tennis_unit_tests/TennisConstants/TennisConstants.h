@@ -4,7 +4,7 @@
 #include "../Arduino/Arduino.h"
 
 //  Written by Chris Bean for Teensy 4.1 only
-//  re-written in C++ by EG in June 2022 
+//  re-written in C++ by EG in June 2022
 
 #define BOTH_PLAYER_BLINK           "blink both players"
 #define PLAYER_1_BLINK              "player1 blink"
@@ -47,7 +47,7 @@
 #define UNDEFINED_SCORE             99
 #define BLUE_BAR_VERTICAL_OFFSET    121
 #define BLUE_BAR_HORIZONTAL_OFFSET  54
-#define MATRIX_DISABLED             1
+#define MATRIX_DISABLED             0
 
 // #define INPUT 0 // not in windows.. ouch!!
 // #define OUTPUT 0
