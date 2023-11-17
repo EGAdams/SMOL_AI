@@ -89,7 +89,7 @@ TEST_F( Mode1ScoreTest, TestMode1P1Score_3Points) {
     player2->setPoints( 2 );   
     mode1Score->updateScore( player1 );             // Act
     EXPECT_EQ( player1->getPoints(), 3);
-    EXPECT_EQ( player2->getPoints(), 2 );            // Assert
+    EXPECT_EQ( player2->getPoints(), 2 );           // Assert
     ASSERT_EQ( "PLAYER 1: ////// I 40 //////", scoreBoard->drawPlayerScore( player1 ));
     ASSERT_EQ( "PLAYER 2: //////   30 //////", scoreBoard->drawPlayerScore( player2 ));
 }

@@ -10,7 +10,7 @@ defaultmodel    = "gpt-3.5-turbo-16k"
 
 def main(prompt, generate_folder_path="generated", debug=False, model: str = defaultmodel):
     prompt = open( "/home/adamsl/developer/smol_dev/late_night_wed.md", "r").read()
-    # create generateFolder folder if doesnt exist
+    # create generateFolder folder if doesn't exist
     generate_folder(generate_folder_path)
 
     # plan shared_deps
@@ -105,5 +105,5 @@ if __name__ == "__main__":
 #   Make the paddles 100px long, yellow and the ball small and red.
 #   Make sure to render the paddles and name them so they can controlled in javascript.
 #   Implement the collision detection and scoring as well.
-#   Every time the ball bouncess off a paddle, the ball should move faster.
+#   Every time the ball bounces off a paddle, the ball should move faster.
 #   It is meant to run in Chrome browser, so dont use anything that is not supported by Chrome, and don't use the import and export keywords.

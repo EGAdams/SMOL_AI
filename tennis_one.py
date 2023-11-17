@@ -13,15 +13,7 @@ import argparse
 
 if __name__ == "__main__":
     prompt = """
-  a simple JavaScript/HTML/CSS/Canvas app that is a one player game of PONG. 
-  The left paddle is controlled by the player, following where the mouse goes.
-  The right paddle is controlled by a simple AI algorithm, which slowly moves the paddle toward the ball at every frame, with some probability of error.
-  Make the canvas a 400 x 400 black square and center it in the app.
-  Make the paddles 100px long, yellow and the ball small and red.
-  Make sure to render the paddles and name them so they can controlled in javascript.
-  Implement the collision detection and scoring as well.
-  Every time the ball bounces off a paddle, the ball should move faster.
-  It is meant to run in Chrome browser, so dont use anything that is not supported by Chrome, and don't use the import and export keywords.
+  
   """
     if len(sys.argv) == 2:
         prompt = sys.argv[1]
@@ -37,8 +29,11 @@ if __name__ == "__main__":
             prompt = args.prompt
 
     # read file from prompt if it ends in a .md filetype
-    if len(prompt) < 100 and prompt.endswith(".md"):
-        with open(prompt, "r") as promptfile:
+    # if len(prompt) < 100 and prompt.endswith(".md"):
+    #     with open(prompt, "r") as promptfile:
+    #         prompt = promptfile.read()
+    
+    with open( "tennis_ont_prompt.md", "r") as promptfile:
             prompt = promptfile.read()
 
     print(prompt)

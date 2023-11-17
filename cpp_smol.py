@@ -4,7 +4,7 @@ import ast
 from time import sleep
 
 generatedDir = "generated"
-openai_model = "gpt-3.5-turbo-16k"
+openai_model = "gpt-3.5-turbo"
 SOMETHING_TWEAK_UNTIL_PROPER = 3000 # waz 2000
 openai_model_max_tokens = SOMETHING_TWEAK_UNTIL_PROPER
 # openai_model_max_tokens = 2000  
