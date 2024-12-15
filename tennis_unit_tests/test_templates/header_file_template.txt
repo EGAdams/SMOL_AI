@@ -1,0 +1,17 @@
+#ifndef { YOURHEADERFILE }_H
+#define { YOURHEADERFILE }_H
+
+#include "{ YourClass }.h"
+#include <map>
+
+class { YourClass } {
+  public:
+    { YourClass }();
+    virtual ~{ YourClass }();
+    // Declare your methods here
+    int { yourMethod }();
+
+  private:
+    // Declare your private variables here
+    int { yourVariable }; };
+#endif

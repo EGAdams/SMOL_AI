@@ -33,7 +33,7 @@ def main(prompt, directory=DEFAULT_DIR, model="gpt-3.5-turbo"):
   # You can send this to OpenAI's text-davinci-003 for help
 
   context = "\n".join(f"{path}:\n{contents}" for path, contents in code_contents.items())
-  system = "You are an AI debugger who is trying to debug a program for a user based on their file system. The user has provided you with the following files and their contents, finally folllowed by the error message or issue they are facing."
+  system = "You are an AI debugger who is trying to debug a program for a user based on their file system. The user has provided you with the following files and their contents, finally followed by the error message or issue they are facing."
   prompt = "My files are as follows: " + context + "\n\n" + "My issue is as follows: " + prompt
   prompt += "\n\nGive me ideas for what could be wrong and what fixes to do in which files."
   res = generate_response.call(system, prompt, model)
@@ -69,7 +69,6 @@ def generate_response(system_prompt, user_prompt, model="gpt-3.5-turbo", *args):
 
     params = {
         'model': model,
-        # "model": "gpt-4",
         "messages": messages,
         "max_tokens": 1500,
         "temperature": 0,

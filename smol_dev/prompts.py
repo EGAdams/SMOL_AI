@@ -3,13 +3,19 @@ import re
 import time
 import openai
 import logging
-from tenacity import retry, stop_after_attempt, wait_random_exponential
 from typing import List, Optional, Callable, Any
+from openai_function_call import openai_function
+from tenacity import (
+    retry,
+    stop_after_attempt,
+    wait_random_exponential,
+)
 
-logger = logging.getLogger(__name__)
-
-SMOL_DEV_SYSTEM_PROMPT = """
-You are a top-tier AI developer who is trying to write a program that will generate code for the user based on their intent.
+# tried this, unsure... 
+# Act as a superintelligent Object-Oriented C++ design expert
+# and always adheres to the SOLID Principles of Programming.
+SMOL_DEV_SYSTEM_PROMPT = """ 
+You are expected to be a top tier AI developer who is trying to write a program that will generate code for the user based on their intent.
 Do not leave any todos, fully implement every feature requested.
 
 When writing code, add comments to explain what you intend to do and why it aligns with the program plan and specific instructions from the original prompt.
@@ -84,7 +90,11 @@ def plan(prompt: str,
         return ""
 
 @retry(wait=wait_random_exponential(min=1, max=60), stop=stop_after_attempt(6))
-async def generate_code(prompt: str, plan: str, current_file: str, stream_handler: Optional[Callable[Any, Any]] = None, model: str = 'gpt-3.5-turbo-0613') -> str:
+async def generate_code(prompt: str, plan: str, current_file: str, stream_handler: Optional[Callable[Any, Any]] = None,
+                        model: str = 'gpt-3.5-turbo-0125') -> str:
+    first = True
+    chunk_count = 0
+    start_time = time.time()
     completion = openai.ChatCompletion.acreate(
         model=model,
         temperature=0.7,

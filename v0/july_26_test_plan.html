@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TestPlan</title>
+</head>
+
+<body>
+    <h1>Test Plan</h1>
+    <!-- table to show plan -->
+    <table>
+        <thead>
+            <tr>
+                <th style="text-align: left;">Method</th>
+                <th style="text-align: left;">Test Case</th>
+                <th style="text-align: left;">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="text-align: left;"><code>playerOneScorerererere()</code></td>
+                <td style="text-align: left;">Player 1 has less than 3 points</td>
+                <td style="text-align: left;">Validate that the score is updated correctly.</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;"><code>playerOneScore()</code></td>
+                <td style="text-align: left;">Player 1 has exactly 3 points and Player 2 has less than 3 points</td>
+                <td style="text-align: left;">Validate that the score is updated correctly.</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;"><code>playerOneScore()</code></td>
+                <td style="text-align: left;">Player 1 has exactly 3 points and Player 2 also has 3 points</td>
+                <td style="text-align: left;">Validate that both players' points are set to 3.</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;"><code>playerOneScore()</code></td>
+                <td style="text-align: left;">Player 1 has more than 3 points and the difference in points between
+                    Player 1 and Player 2 is more than 1</td>
+                <td style="text-align: left;">Validate that Player 1's games are incremented correctly.</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;"><code>playerOneScore()</code></td>
+                <td style="text-align: left;">Player 1 has exactly 4 points</td>
+                <td style="text-align: left;">Validate that the game state's point flash and toggle are set correctly.
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: left;"><code>playerTwoScore()</code></td>
+                <td style="text-align: left;">Similar test cases to <code>playerOneScore()</code>, but for Player 2</td>
+                <td style="text-align: left;">Mirror the Player 1 test cases to ensure that scoring works correctly for
+                    Player 2.</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;"><code>playerOneGameWin()</code></td>
+                <td style="text-align: left;">Various combinations of Player 1 and Player 2's game counts</td>
+                <td style="text-align: left;">Validate that the game count, set count, and tie break logic works
+                    correctly for Player 1.</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;"><code>playerTwoGameWin()</code></td>
+                <td style="text-align: left;">Various combinations of Player 1 and Player 2's game counts</td>
+                <td style="text-align: left;">Validate that the game count, set count, and tie break logic works
+                    correctly for Player 2.</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;"><code>mode1TBP1Games()</code></td>
+                <td style="text-align: left;">Various combinations of Player 1's game counts in tiebreak situations</td>
+                <td style="text-align: left;">Validate that the game count, set count, and tie break logic works
+                    correctly for Player 1 in tiebreak situations.</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;"><code>mode1TBP2Games()</code></td>
+                <td style="text-align: left;">Various combinations of Player 2's game counts in tiebreak situations</td>
+                <td style="text-align: left;">Validate that the game count, set count, and tie break logic works
+                    correctly for Player 2 in tiebreak situations.</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;"><code>mode1SetTBP1Games()</code></td>
+                <td style="text-align: left;">Various combinations of Player 1's game counts in set tiebreak situations
+                </td>
+                <td style="text-align: left;">Validate that the game count, set count, and tie break logic works
+                    correctly for Player 1 in set tiebreak situations.</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;"><code>mode1SetTBP2Games()</code></td>
+                <td style="text-align: left;">Various combinations of Player 2's game counts in set tiebreak situations
+                </td>
+                <td style="text-align: left;">Validate that the game count, set count, and tie break logic works
+                    correctly for Player 2 in set tiebreak situations.</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;"><code>_resetGame()</code></td>
+                <td style="text-align: left;">After a game reset</td>
+                <td style="text-align: left;">Validate that player points are reset, serve switch is set to 1, serve is
+                    set to 0, and point LEDs are updated.</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;"><code>setScoreBoard()</code></td>
+                <td style="text-align: left;">After setting the score board</td>
+                <td style="text-align: left;">Validate that each class attribute that represents a game feature
+                    (pointLeds, gameLeds, mode1WinSequences, setLeds) has the score board set correctly.</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;"><code>updateScore()</code></td>
+                <td style="text-align: left;">Similar test cases to <code>playerOneScore()</code> and
+                    <code>playerTwoScore()</code>, but with generic players</td>
+                <td style="text-align: left;">Validate that scoring works correctly for any player.</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>
