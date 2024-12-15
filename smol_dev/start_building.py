@@ -1,6 +1,6 @@
 import sys
 import time
-
+from openai import OpenAI
 from prompts import plan, specify_file_paths, generate_code_sync
 from utils import generate_folder, write_file
 # from smol_dev.prompts import plan, specify_file_paths, generate_code_sync
@@ -91,7 +91,6 @@ if __name__ == "__main__":
     if len(sys.argv) == 2:
         prompt = sys.argv[1]
     else:
-        
         parser = argparse.ArgumentParser()
         parser.add_argument("--prompt", type=str, required=True, help="Prompt for the app to be created.")
         parser.add_argument("--generate_folder_path", type=str, default="generated", help="Path of the folder for generated code.")
@@ -99,7 +98,14 @@ if __name__ == "__main__":
         args = parser.parse_args()
         if args.prompt:
             prompt = args.prompt
-        
+
     print(prompt)
-        
+
+    # Ensure args is defined even if sys.argv has only one argument
+    if 'args' not in locals():
+        class Args:
+            generate_folder_path = "generated"
+            debug = False
+        args = Args()
+
     main(prompt=prompt, generate_folder_path=args.generate_folder_path, debug=args.debug)
