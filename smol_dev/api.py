@@ -91,3 +91,17 @@ async def step_handler(step: Step):
 
 
 Agent.setup_agent(task_handler, step_handler).start()
+
+# test this
+# start main...
+if __name__ == "__main__":
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Run the AI debugging script.")
+    parser.add_argument("--prompt", type=str, help="Additional context or instructions for the AI.", default=None)
+    parser.add_argument("--directory", type=str, help="Directory to scan for code files.", default=DEFAULT_DIR)
+    parser.add_argument("--model", type=str, help="OpenAI model to use.", default=DEFAULT_MODEL)
+    args = parser.parse_args()
+
+    from smol_dev.main import main
+    main(prompt=args.prompt, directory=args.directory, model=args.model)
